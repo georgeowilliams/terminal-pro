@@ -1,43 +1,68 @@
-# terminal-pro
-
-## Local Development
-
-```bash
+terminal-pro
+Local Development
 npm install
 npm run dev
-```
+
 
 Open: http://localhost:5173
 
-## Available npm commands
+Local LLM (Ollama)
+
+The extraction step uses a local LLM via Ollama to analyze textbook chunks and extract concepts and commands.
+
+Install Ollama
+
+https://ollama.com/download
+
+Pull model (recommended for this laptop)
+ollama pull qwen2.5:3b
+
+
+Fallback:
+
+ollama pull phi3:mini
+
+Start Ollama
+
+Run before npm run extract:
+
+ollama run qwen2.5:3b
+
+
+Ollama runs locally at:
+
+http://localhost:11434
+
+
+Leave it running while using the pipeline.
+
+Available npm commands
 
 Use these scripts from the project root:
 
-- `npm run dev` (or `npm start`) — run the local server.
-- `npm run ingest -- --input "sources/linux.pdf" --docId linuxbook1` — ingest source docs.
-- `npm run extract -- --docId linuxbook1` — extract concepts from ingested sources.
-- `npm run outline -- --docId linuxbook1 --courseId linux-terminal --title "Linux Terminal Expert" --lessons 40 --out artifacts/linuxbook1/outline.json` — build deterministic outline.
-- `npm run context -- --courseId linux-terminal --lang en` — build lesson context.
-- `npm run validate -- --dir content/courses/linux-terminal/en` — validate generated JSON.
-- `npm run batch -- --input sources --concurrency 2` — process multiple source docs.
+npm run dev (or npm start) — run the local server.
 
-### Why not `file://`?
+npm run ingest -- --input "sources/linux.pdf" --docId linuxbook1 — ingest source docs.
 
-This project uses JavaScript ES modules (`type="module"`). Browsers enforce stricter security rules for modules, so opening `index.html` directly with `file://` can block imports and cause CORS-related loading errors.
+npm run extract -- --docId linuxbook1 — extract concepts from ingested sources (requires Ollama running).
 
-Running the app through a local server provides the required `http://` origin, so modules, styles, and deep links all load correctly.
+npm run outline -- --docId linuxbook1 --courseId linux-terminal --title "Linux Terminal Expert" --lessons 40 — build deterministic course outline.
 
-## Local course generation pipeline
+npm run context -- --docId linuxbook1 — build lesson context files for manual prompting.
 
-Publisher-controlled pipeline scripts are available under `tools/`:
+npm run validate -- --dir content/courses/linux-terminal/en — validate generated course JSON.
 
-1. Ingest source docs:
-   - `node tools/ingest.js --input "sources/linux.pdf" --docId linuxbook1`
-2. Build deterministic outline:
-   - `node tools/build-outline.js --docId linuxbook1 --courseId linux-terminal --title "Linux Terminal Expert" --lessons 40 --out artifacts/linuxbook1/outline.json`
-3. Generate JSON course content via hosted model:
-   - `OPENAI_API_KEY=... node tools/generate-course.js --outline artifacts/linuxbook1/outline.json --courseId linux-terminal --model gpt-5 --outDir content/courses/linux-terminal/en`
-4. Validate generated JSON:
-   - `node tools/validateContent.js --dir content/courses/linux-terminal/en`
-5. Batch all docs in `sources/`:
-   - `OPENAI_API_KEY=... node tools/batch.js --input sources --concurrency 2`
+npm run batch -- --input sources --concurrency 1 — run ingest → extract → outline → context for all docs.
+
+Workflow
+PDF → ingest → extract → outline → lesson context → manual Codex prompt → course JSON → platform
+
+
+Place PDFs into:
+
+/sources/
+
+
+Generated artifacts appear in:
+
+/artifacts/<docId>/
