@@ -14,20 +14,62 @@ function resolveJsonPath(basePath, relativePath) {
   return new URL(relativePath, new URL(basePath, window.location.origin)).pathname;
 }
 
-export async function loadCourseList() {
-  if (listCache.value) return listCache.value;
+function normalizeIndexEntry(item) {
+  if (!item || typeof item !== 'object') return null;
+
+  if (item.courseId && item.defaultLocale) {
+    return {
+      courseId: item.courseId,
+      defaultLocale: item.defaultLocale,
+      locales: Array.isArray(item.locales) && item.locales.length ? item.locales : [item.defaultLocale],
+      paths: item.paths || {},
+      path: item.path,
+    };
+  }
+
+  if (item.id && item.path) {
+    return {
+      courseId: item.id,
+      defaultLocale: 'en',
+      locales: ['en'],
+      path: item.path,
+      paths: { en: item.path },
+    };
+  }
+
+  return null;
+}
+
+function resolveCourseJsonPath(entry, locale) {
+  if (entry.paths && entry.paths[locale]) return entry.paths[locale];
+  if (entry.path) return entry.path;
+  return `/content/courses/${entry.courseId}/${locale}/course.json`;
+}
+
+export async function loadCourseIndex() {
+  if (indexCache.value) return indexCache.value;
+
   let list;
   try {
     list = await fetchJson('/content/courses/index.json');
   } catch (error) {
     list = await fetchJson('/courses/index.json');
   }
+
   if (!Array.isArray(list)) {
     throw new Error('Invalid content/courses/index.json: expected an array');
   }
-  indexCache.value = list;
-  return list;
+
+  const normalized = list.map(normalizeIndexEntry).filter(Boolean);
+  if (!normalized.length) {
+    throw new Error('Invalid content/courses/index.json: no usable course entries');
+  }
+
+  indexCache.value = normalized;
+  return normalized;
 }
+
+export const loadCourseList = loadCourseIndex;
 
 async function loadCourseMeta(entry, locale) {
   const courseJsonPath = resolveCourseJsonPath(entry, locale);
