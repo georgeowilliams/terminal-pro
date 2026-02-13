@@ -14,75 +14,94 @@ function runNode(script, args) {
   });
 }
 
+function titleCase(text) {
+  return text
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 function discoverInputs(inputDir) {
+  if (!fs.existsSync(inputDir)) return [];
   return fs.readdirSync(inputDir)
     .filter((file) => ['.pdf', '.txt', '.md'].includes(path.extname(file).toLowerCase()))
     .map((file) => path.join(inputDir, file));
 }
 
-function nextJobs(inputDir) {
-  return discoverInputs(inputDir).map((fullPath) => {
-    const base = path.basename(fullPath, path.extname(fullPath));
-    return {
-      input: fullPath,
-      docId: slugify(base),
-      courseId: slugify(base),
-      title: base.replace(/[-_]+/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()),
-    };
-  });
+function stepList(only) {
+  if (!only) return ['ingest', 'extract', 'outline', 'context'];
+  if (only === 'ingest') return ['ingest'];
+  if (only === 'extract') return ['extract'];
+  if (only === 'outline') return ['outline'];
+  throw new Error('Invalid --only value. Use ingest|extract|outline');
 }
 
-async function processJob(job, model) {
-  const statePath = path.join('tools', 'jobState', `${job.docId}.json`);
-  const state = fs.existsSync(statePath) ? readJson(statePath) : { completed: [] };
-  const done = new Set(state.completed || []);
-
-  if (!done.has('ingest')) {
+async function runStep(step, job, model) {
+  if (step === 'ingest') {
     await runNode('tools/ingest.js', ['--input', job.input, '--docId', job.docId]);
-    done.add('ingest');
-    writeJson(statePath, { ...job, completed: [...done] });
+  } else if (step === 'extract') {
+    await runNode('tools/extract-concepts.js', ['--docId', job.docId, '--model', model]);
+  } else if (step === 'outline') {
+    await runNode('tools/build-outline.js', [
+      '--docId', job.docId,
+      '--courseId', job.courseId,
+      '--title', job.title,
+      '--lessons', String(job.lessons),
+    ]);
+  } else if (step === 'context') {
+    await runNode('tools/build-lesson-context.js', ['--docId', job.docId]);
   }
-  if (!done.has('outline')) {
-    await runNode('tools/build-outline.js', ['--docId', job.docId, '--courseId', job.courseId, '--title', job.title, '--lessons', '40', '--out', `artifacts/${job.docId}/outline.json`]);
-    done.add('outline');
-    writeJson(statePath, { ...job, completed: [...done] });
-  }
-  if (!done.has('generate')) {
-    await runNode('tools/generate-course.js', ['--outline', `artifacts/${job.docId}/outline.json`, '--courseId', job.courseId, '--model', model, '--outDir', `content/courses/${job.courseId}/en`]);
-    done.add('generate');
-    writeJson(statePath, { ...job, completed: [...done] });
-  }
-  if (!done.has('validate')) {
-    await runNode('tools/validateContent.js', ['--dir', `content/courses/${job.courseId}/en`]);
-    done.add('validate');
-    writeJson(statePath, { ...job, completed: [...done] });
+}
+
+async function processJob(job, steps, resume, model) {
+  const statePath = path.join('tools', 'jobState', `${job.docId}.json`);
+  const state = resume && fs.existsSync(statePath) ? readJson(statePath) : { completed: [] };
+  const completed = new Set(state.completed || []);
+
+  for (const step of steps) {
+    if (resume && completed.has(step)) {
+      console.log(`Skipping ${step} for ${job.docId} (--resume)`);
+      continue;
+    }
+
+    await runStep(step, job, model);
+    completed.add(step);
+    writeJson(statePath, { ...job, completed: [...completed] });
   }
 }
 
 async function main() {
   const args = parseArgs(process.argv);
-  const input = args.input || 'sources';
-  const concurrency = Number(args.concurrency || 2);
-  const model = args.model || process.env.COURSE_MODEL || 'gpt-5';
+  const inputDir = args.input || 'sources';
+  const model = args.model || 'qwen2.5:3b';
+  const resume = Boolean(args.resume);
+  const only = args.only;
+  const lessons = Number(args.lessons || 40);
 
   ensureDir(path.join('tools', 'jobState'));
-  const jobs = nextJobs(input);
-  if (!jobs.length) {
-    console.log(`No source files found in ${input}`);
+  const steps = stepList(only);
+  const files = discoverInputs(inputDir);
+
+  if (!files.length) {
+    console.log(`No source files found in ${inputDir}`);
     return;
   }
 
-  const queue = [...jobs];
-  const workers = Array.from({ length: Math.max(1, concurrency) }, async () => {
-    while (queue.length) {
-      const job = queue.shift();
-      if (!job) return;
-      console.log(`\n== Processing ${job.docId} ==`);
-      await processJob(job, model);
-    }
-  });
+  for (const input of files) {
+    const base = path.basename(input, path.extname(input));
+    const docId = slugify(base);
+    const job = {
+      input,
+      docId,
+      courseId: slugify(base),
+      title: titleCase(base),
+      lessons,
+    };
 
-  await Promise.all(workers);
+    console.log(`\n== Processing ${docId} ==`);
+    await processJob(job, steps, resume, model);
+  }
 }
 
 main().catch((err) => {

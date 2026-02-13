@@ -1,1 +1,13 @@
-/node_modules/
+node_modules/
+
+artifacts/*
+!artifacts/.gitkeep
+
+sources/*
+!sources/.gitkeep
+
+tools/cache/*
+!tools/cache/.gitkeep
+
+tools/jobState/*
+!tools/jobState/.gitkeep
