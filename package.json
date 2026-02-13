@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "validate": "node tools/validateContent.js"
   },
   "dependencies": {
     "express": "^4.19.2"

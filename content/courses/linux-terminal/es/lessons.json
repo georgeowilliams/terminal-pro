@@ -1,0 +1,92 @@
+[
+  {
+    "id": "mindset",
+    "module": "[ES] 0. Welcome",
+    "title": "[ES] How terminal pros think",
+    "tags": [
+      "fundamentals",
+      "workflow"
+    ],
+    "content": "<p>Traducción parcial generada por IA para <strong>How terminal pros think</strong>.</p>\n<p>Becoming “terminal expert” is less about memorizing commands and more about building a <b>mental model</b>:</p>\n<ul>\n  <li><b>Everything is a file</b> (or a stream): config, devices, sockets, logs.</li>\n  <li><b>Small tools + pipes</b>: compose commands like LEGO.</li>\n  <li><b>Inspect first, then act</b>: preview before you delete/overwrite.</li>\n</ul>\n\n<pre>\nASCII model of streams + pipe composition:\n\nstdin(0) -> [ tool A ] -> [ tool B ] -> [ tool C ] -> stdout(1)\n                 |            |            |\n               flags       filters     formatters\n\nstderr(2) -------------------------------------> terminal\n\nRedirect patterns:\n  cmd > out.txt\n  cmd 2> err.txt\n  cmd > all.txt 2>&1\n</pre>\n\n<div class=\"hint\">\nCore pro habit: keep a scratch pad command:\n<code>history | tail</code>, then refine.\n</div>\n\n<p><span class=\"pill\">Pro tools you’ll adopt</span> <code>tmux</code>, <code>fzf</code>, <code>ripgrep</code>, <code>bat</code>, <code>fd</code>, <code>jq</code>, <code>ssh</code>, <code>git</code></p>\n",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "[ES] What does `2> err.txt` do?",
+        "choices": [
+          "[ES] Redirect stdout to err.txt",
+          "[ES] Redirect stderr to err.txt",
+          "[ES] Append stdout to err.txt",
+          "[ES] Pipe stderr to the next command"
+        ],
+        "answerIndex": 1,
+        "explanation": "[ES] File descriptor 2 is stderr, so `2>` redirects stderr."
+      },
+      {
+        "type": "short",
+        "prompt": "[ES] What command shows your recent command history tail?",
+        "answer": "history | tail",
+        "explanation": "[ES] This gives a quick scratchpad of recent commands."
+      }
+    ]
+  },
+  {
+    "id": "navigation",
+    "module": "[ES] 1. Movement & Discovery",
+    "title": "[ES] Navigation: files, paths, and fast jumping",
+    "tags": [
+      "fundamentals",
+      "filesystem"
+    ],
+    "content": "<p>Traducción parcial generada por IA para <strong>Navigation: files, paths, and fast jumping</strong>.</p>\n<p>Learn to move like a native:</p>\n<ul>\n  <li><code>pwd</code>, <code>ls</code>, <code>cd</code> basics — but the pro upgrades are <code>eza</code>, <code>zoxide</code>, and fuzzy finding.</li>\n  <li>Use <code>pushd</code>/<code>popd</code> like a stack for directories.</li>\n</ul>\n\n<div class=\"grid2\">\n<pre>\nFilesystem tree mental model:\n\n/ (root)\n├─ home/\n│  ├─ you/\n│  │  ├─ projects/\n│  │  └─ downloads/\n├─ dev/\n├─ proc/\n└─ etc/\n   ├─ ssh/\n   └─ systemd/\n</pre>\n\n<pre>\nFast jumping (recommended):\n\nzoxide (z) remembers directories:\n  z proj\n  z iso\n\nfzf fuzzy search:\n  cd \"$(find . -type d | fzf)\"\n</pre>\n</div>\n\n<div class=\"hint warn\">\nIf you install one “quality of life” tool first, make it <b>fzf</b>. It upgrades everything.\n</div>\n",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "[ES] What does `pushd`/`popd` help with?",
+        "choices": [
+          "[ES] File permissions",
+          "[ES] Directory stack navigation",
+          "[ES] Process signals",
+          "[ES] Port scanning"
+        ],
+        "answerIndex": 1,
+        "explanation": "[ES] They manage a stack of directories for quick jumping."
+      },
+      {
+        "type": "short",
+        "prompt": "[ES] Use zoxide to jump to a folder remembered as proj.",
+        "answer": "z proj",
+        "explanation": "[ES] zoxide stores weighted directory history."
+      }
+    ]
+  },
+  {
+    "id": "help",
+    "module": "[ES] 2. Reading the System",
+    "title": "[ES] Getting help: man, tldr, and discoverability",
+    "tags": [
+      "fundamentals",
+      "docs"
+    ],
+    "content": "<p>Traducción parcial generada por IA para <strong>Getting help: man, tldr, and discoverability</strong>.</p>\n<p>Pros don’t guess. They query documentation fast.</p>\n<ul>\n  <li><code>man rsync</code> (full manual)</li>\n  <li><code>tldr rsync</code> (quick examples)</li>\n  <li><code>command --help</code> (fast flags overview)</li>\n  <li><code>apropos keyword</code> or <code>man -k keyword</code></li>\n</ul>\n\n<pre>\nASCII: How to learn a command in 30 seconds\n\n1) tldr curl\n2) man curl  (search inside man: /pattern)\n3) try a tiny example\n4) add flags one at a time\n</pre>\n\n<p><span class=\"pill\">Pro libraries/tools</span> <code>tldr</code>, <code>man</code>, <code>info</code>, <code>cheat</code></p>\n",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "[ES] Which command lists manuals matching a keyword?",
+        "choices": [
+          "[ES] whereis keyword",
+          "[ES] man -k keyword",
+          "[ES] help keyword",
+          "[ES] which keyword"
+        ],
+        "answerIndex": 1,
+        "explanation": "[ES] `man -k` (or apropos) searches man page names/descriptions."
+      },
+      {
+        "type": "short",
+        "prompt": "[ES] Open the quick examples for curl.",
+        "answer": "tldr curl",
+        "explanation": "[ES] tldr provides concise examples."
+      }
+    ]
+  }
+]

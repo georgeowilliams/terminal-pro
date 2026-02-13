@@ -1,0 +1,171 @@
+[
+  {
+    "termId": "file",
+    "display": "file",
+    "aliases": [
+      "files"
+    ],
+    "short": "[ES] Named data stored on disk.",
+    "long": "[ES] A file is a sequence of bytes with metadata like owner and permissions.",
+    "seeAlso": [
+      "filesystem",
+      "path",
+      "permission"
+    ]
+  },
+  {
+    "termId": "filesystem",
+    "display": "filesystem",
+    "aliases": [
+      "file system"
+    ],
+    "short": "[ES] Hierarchy used to organize files and directories.",
+    "long": "[ES] Linux exposes storage as a rooted tree that starts at / and contains mounted devices.",
+    "seeAlso": [
+      "directory",
+      "path",
+      "/etc",
+      "/proc"
+    ]
+  },
+  {
+    "termId": "path",
+    "display": "path",
+    "aliases": [
+      "pathname"
+    ],
+    "short": "[ES] Address to a file or directory.",
+    "long": "[ES] Paths can be absolute (/var/log) or relative (../src). The shell resolves them based on current directory.",
+    "examples": [
+      "[ES] cd /etc/ssh",
+      "[ES] cat ../notes.txt"
+    ],
+    "seeAlso": [
+      "directory",
+      "root"
+    ]
+  },
+  {
+    "termId": "directory",
+    "display": "directory",
+    "aliases": [
+      "folder",
+      "directories"
+    ],
+    "short": "[ES] Container that holds files and other directories.",
+    "long": "[ES] Directories build the tree structure for the filesystem.",
+    "seeAlso": [
+      "filesystem",
+      "path"
+    ]
+  },
+  {
+    "termId": "permission",
+    "display": "permission",
+    "aliases": [
+      "permissions"
+    ],
+    "short": "[ES] Read/write/execute access rules.",
+    "long": "[ES] Permissions are defined for user, group, and others and can be set with chmod.",
+    "seeAlso": [
+      "ownership",
+      "group",
+      "umask"
+    ]
+  },
+  {
+    "termId": "ownership",
+    "display": "ownership",
+    "aliases": [
+      "owner"
+    ],
+    "short": "[ES] User/group associated with a file.",
+    "long": "[ES] chown changes ownership. Ownership controls default permission interpretation.",
+    "seeAlso": [
+      "group",
+      "permission",
+      "sudo"
+    ]
+  },
+  {
+    "termId": "group",
+    "display": "group",
+    "aliases": [
+      "groups"
+    ],
+    "short": "[ES] Shared account role used in permissions.",
+    "long": "[ES] Users can be members of groups to share access to files and services.",
+    "seeAlso": [
+      "ownership",
+      "permission"
+    ]
+  },
+  {
+    "termId": "root",
+    "display": "root",
+    "aliases": [
+      "superuser"
+    ],
+    "short": "[ES] Administrative account with near-unrestricted access.",
+    "long": "[ES] root can bypass many permission checks, so use carefully.",
+    "seeAlso": [
+      "sudo",
+      "permission"
+    ]
+  },
+  {
+    "termId": "sudo",
+    "display": "sudo",
+    "aliases": [],
+    "short": "[ES] Run a command with elevated privileges.",
+    "long": "[ES] sudo executes one command as another user (default root), usually after policy checks.",
+    "seeAlso": [
+      "root",
+      "permission"
+    ]
+  },
+  {
+    "termId": "umask",
+    "display": "umask",
+    "aliases": [],
+    "short": "[ES] Default permission mask for new files/dirs.",
+    "long": "[ES] umask removes permission bits from defaults (files 666, dirs 777).",
+    "seeAlso": [
+      "permission"
+    ]
+  },
+  {
+    "termId": "stream",
+    "display": "stream",
+    "aliases": [
+      "streams"
+    ],
+    "short": "[ES] A flow of bytes through stdin/stdout/stderr.",
+    "long": "[ES] Unix tools read and write streams, making redirection and composition possible.",
+    "examples": [
+      "[ES] echo hi | wc -c",
+      "[ES] command > out.txt",
+      "[ES] command 2> err.txt"
+    ],
+    "seeAlso": [
+      "stdin",
+      "stdout",
+      "stderr",
+      "pipe",
+      "redirection"
+    ]
+  },
+  {
+    "termId": "stdin",
+    "display": "stdin",
+    "aliases": [
+      "standard input"
+    ],
+    "short": "[ES] Input stream (fd 0).",
+    "long": "[ES] Programs read data from stdin by default, often from keyboard or a pipe.",
+    "seeAlso": [
+      "stream",
+      "pipe"
+    ]
+  }
+]
