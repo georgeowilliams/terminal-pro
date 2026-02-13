@@ -27,9 +27,13 @@ function main() {
     lessonIds.add(lesson.id);
     if (!Array.isArray(lesson.quiz) || lesson.quiz.length === 0) fail(`lesson ${lesson.id} must include quiz questions`);
     lesson.quiz.forEach((q, qIdx) => {
-      if (q.type !== 'mcq') fail(`lesson ${lesson.id} quiz ${qIdx} type must be mcq`);
-      if (!Array.isArray(q.choices) || q.choices.length < 2) fail(`lesson ${lesson.id} quiz ${qIdx} requires >= 2 choices`);
-      if (typeof q.answerIndex !== 'number' || q.answerIndex < 0 || q.answerIndex >= q.choices.length) fail(`lesson ${lesson.id} quiz ${qIdx} invalid answerIndex`);
+      if (!q.type) fail(`lesson ${lesson.id} quiz ${qIdx} missing type`);
+      if (q.type === 'mcq') {
+        if (!Array.isArray(q.choices) || q.choices.length < 2) fail(`lesson ${lesson.id} quiz ${qIdx} requires >= 2 choices`);
+        if (typeof q.answerIndex !== 'number' || q.answerIndex < 0 || q.answerIndex >= q.choices.length) fail(`lesson ${lesson.id} quiz ${qIdx} invalid answerIndex`);
+      }
+      if (q.type === 'short' && typeof q.answer !== 'string') fail(`lesson ${lesson.id} quiz ${qIdx} short answer must be a string`);
+      if (q.type === 'output' && typeof q.answer !== 'string') fail(`lesson ${lesson.id} quiz ${qIdx} output answer must be a string`);
     });
   });
 
