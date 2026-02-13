@@ -287,6 +287,91 @@
       color: var(--text);
       font-size:11px;
     }
+    .term{
+      border-bottom: 1px dotted rgba(136,240,199,0.7);
+      background: rgba(136,240,199,0.08);
+      cursor: help;
+      border-radius: 4px;
+      padding: 0 2px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .term:hover,
+    .term:focus-visible{
+      background: rgba(136,240,199,0.22);
+      border-bottom-color: rgba(136,240,199,1);
+      outline: none;
+    }
+    .tooltip{
+      position: fixed;
+      z-index: 2000;
+      width: min(360px, calc(100vw - 24px));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(24,33,67,0.96), rgba(13,19,42,0.96));
+      box-shadow: 0 18px 36px rgba(0,0,0,0.42);
+      padding: 12px;
+      display: none;
+    }
+    .tooltip.open{ display:block; }
+    .tooltip-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-bottom:8px;
+    }
+    .tooltip-title{ margin:0; font-size:14px; }
+    .tooltip-close{ padding:4px 8px; font-size:11px; }
+    .tooltip-short{ color: var(--text); margin:0 0 8px; line-height:1.4; }
+    .tooltip-more-btn{
+      background:none;
+      border:none;
+      color:var(--accent2);
+      padding:0;
+      font-size:12px;
+      cursor:pointer;
+      font-family: var(--mono);
+    }
+    .tooltip-more{ display:none; margin-top:8px; color: var(--muted); line-height:1.45; }
+    .tooltip-more.open{ display:block; }
+    .tooltip-see{ margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; }
+    .see-chip{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(122,162,255,0.14);
+      color: var(--text);
+      cursor:pointer;
+    }
+    .glossary-wrap{
+      display:grid;
+      gap:12px;
+    }
+    .glossary-search{
+      width:100%;
+      padding:10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,0.25);
+      color: var(--text);
+      font-family: var(--mono);
+    }
+    .glossary-list{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:8px;
+    }
+    .glossary-item{
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:8px;
+      background: rgba(255,255,255,0.03);
+      cursor:pointer;
+      text-align:left;
+      color:var(--text);
+    }
+    .glossary-empty{ color: var(--muted); font-style: italic; }
 
     @media (max-width: 980px){
       .app{ grid-template-columns: 1fr; }
@@ -352,6 +437,8 @@
   </main>
 </div>
 
+<div class="tooltip" id="termTooltip" role="dialog" aria-live="polite" aria-label="Term definition"></div>
+
 <script>
   // --- Course Data ----------------------------------------------------------
   const lessons = [
@@ -369,11 +456,18 @@
 </ul>
 
 <pre>
-ASCII model of a typical pipeline:
+ASCII model of streams + pipe composition:
 
-[stdin] --> (tool A) --> (tool B) --> (tool C) --> [stdout]
-              |            |            |
-            flags        filters      formatters
+stdin(0) -> [ tool A ] -> [ tool B ] -> [ tool C ] -> stdout(1)
+                 |            |            |
+               flags       filters     formatters
+
+stderr(2) -------------------------------------> terminal
+
+Redirect patterns:
+  cmd > out.txt
+  cmd 2> err.txt
+  cmd > all.txt 2>&1
 </pre>
 
 <div class="hint">
@@ -399,13 +493,15 @@ Core pro habit: keep a scratch pad command:
 
 <div class="grid2">
 <pre>
-Path mental model:
+Filesystem tree mental model:
 
 / (root)
 ├─ home/
 │  ├─ you/
 │  │  ├─ projects/
 │  │  └─ downloads/
+├─ dev/
+├─ proc/
 └─ etc/
    ├─ ssh/
    └─ systemd/
@@ -548,14 +644,31 @@ If a path might contain spaces, quote it: <code>"$path"</code>
 <p>Permissions are a 3×3 grid: <b>user</b>, <b>group</b>, <b>others</b> with <b>rwx</b>.</p>
 
 <pre>
+Permissions grid:
+
+        r  w  x
+user    1  1  1
+group   1  0  1
+other   0  0  0
+
 -rwxr-x---  file
  ^^^ ^^^ ^^^
  u   g   o
 
-r=4 w=2 x=1
+Octal map: r=4 w=2 x=1
+7=rwx 5=r-x 0=---
 
 chmod 750 file
-u=7 (rwx), g=5 (r-x), o=0 (---)
+</pre>
+
+<pre>
+Ownership flow:
+
+[user alice] ---- member of ----> [devops group]
+      |                              |
+ owns deploy.sh                 can read logs/
+
+chown alice:devops deploy.sh
 </pre>
 
 <ul>
@@ -581,15 +694,20 @@ Try: <code>ls -la</code>
 
 <div class="grid2">
 <pre>
-Process view:
+Process tree + signals flow:
 
+terminal ---- spawns ----> shell ---- spawns ----> program
+   |                          |
+ Ctrl+C                    jobs/bg/fg
+   |
+ sends SIGINT --------------> program
+
+Inspect:
 ps aux | rg node
 pstree -p
 
 Signals:
-SIGINT  (Ctrl+C)
-SIGTERM (polite stop)
-SIGKILL (force: kill -9)
+SIGINT, SIGTERM, SIGKILL
 </pre>
 
 <pre>
@@ -616,9 +734,23 @@ disown
 <p>Terminal pros can diagnose network issues quickly.</p>
 
 <pre>
-ASCII: request path
+Networking path:
 
-[you] -> DNS -> IP -> TCP/UDP -> service -> response
+you -> DNS -> IP -> TCP handshake -> service:port -> response
+         |                        |
+      name->addr               443/22/80
+
+Socket map:
+client:ephemeral_port -> server:443
+</pre>
+
+<pre>
+Ports cheat:
+
+22  -> SSH
+80  -> HTTP
+443 -> HTTPS
+53  -> DNS
 </pre>
 
 <ul>
@@ -675,14 +807,29 @@ A -- B -- C -- D (main)
 <p><b>tmux</b> is how terminal pros keep context and speed.</p>
 
 <pre>
-ASCII: layout
+tmux model:
+
+session: work
+  ├─ window: editor
+  │   ├─ pane 1
+  │   └─ pane 2
+  └─ window: logs
+      └─ pane 3
 
 +---------------------------+
 | pane 1       | pane 2     |
-|              |            |
 |--------------+------------|
 | pane 3                    |
 +---------------------------+
+</pre>
+
+<pre>
+Key chords map:
+
+Ctrl+b c   new window
+Ctrl+b %   split vertical
+Ctrl+b "   split horizontal
+Ctrl+b o   rotate panes
 </pre>
 
 <ul>
@@ -861,13 +1008,83 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     },
   ];
 
+  // --- Glossary -------------------------------------------------------------
+  const glossary = [
+    { term: "file", aliases:["files"], short:"Named data stored on disk.", long:"A file is a sequence of bytes with metadata like owner and permissions.", seeAlso:["filesystem","path","permission"] },
+    { term: "filesystem", aliases:["file system"], short:"Hierarchy used to organize files and directories.", long:"Linux exposes storage as a rooted tree that starts at / and contains mounted devices.", seeAlso:["directory","path","/etc","/proc"] },
+    { term: "path", aliases:["pathname"], short:"Address to a file or directory.", long:"Paths can be absolute (/var/log) or relative (../src). The shell resolves them based on current directory.", examples:["cd /etc/ssh","cat ../notes.txt"], seeAlso:["directory","root"] },
+    { term: "directory", aliases:["folder","directories"], short:"Container that holds files and other directories.", long:"Directories build the tree structure for the filesystem.", seeAlso:["filesystem","path"] },
+    { term: "permission", aliases:["permissions"], short:"Read/write/execute access rules.", long:"Permissions are defined for user, group, and others and can be set with chmod.", seeAlso:["ownership","group","umask"] },
+    { term: "ownership", aliases:["owner"], short:"User/group associated with a file.", long:"chown changes ownership. Ownership controls default permission interpretation.", seeAlso:["group","permission","sudo"] },
+    { term: "group", aliases:["groups"], short:"Shared account role used in permissions.", long:"Users can be members of groups to share access to files and services.", seeAlso:["ownership","permission"] },
+    { term: "root", aliases:["superuser"], short:"Administrative account with near-unrestricted access.", long:"root can bypass many permission checks, so use carefully.", seeAlso:["sudo","permission"] },
+    { term: "sudo", aliases:[], short:"Run a command with elevated privileges.", long:"sudo executes one command as another user (default root), usually after policy checks.", seeAlso:["root","permission"] },
+    { term: "umask", aliases:[], short:"Default permission mask for new files/dirs.", long:"umask removes permission bits from defaults (files 666, dirs 777).", seeAlso:["permission"] },
+    { term: "stream", aliases:["streams"], short:"A flow of bytes through stdin/stdout/stderr.", long:"Unix tools read and write streams, making redirection and composition possible.", examples:["echo hi | wc -c","command > out.txt","command 2> err.txt"], seeAlso:["stdin","stdout","stderr","pipe","redirection"] },
+    { term: "stdin", aliases:["standard input"], short:"Input stream (fd 0).", long:"Programs read data from stdin by default, often from keyboard or a pipe.", seeAlso:["stream","pipe"] },
+    { term: "stdout", aliases:["standard output"], short:"Output stream (fd 1).", long:"Normal command output is written to stdout and can be redirected.", seeAlso:["stream","redirection"] },
+    { term: "stderr", aliases:["standard error"], short:"Error stream (fd 2).", long:"Diagnostic output goes to stderr so it can be separated from normal output.", seeAlso:["stdout","redirection"] },
+    { term: "pipe", aliases:["pipes"], short:"Connect stdout of one command to stdin of another.", long:"Pipes let you chain tiny tools into powerful workflows.", examples:["rg error app.log | sort | uniq -c"], seeAlso:["stream","redirection"] },
+    { term: "redirection", aliases:["redirect"], short:"Send stdin/stdout/stderr to files/devices.", long:">, >>, <, and 2> control where data flows.", seeAlso:["stream","stdout","stderr"] },
+    { term: "socket", aliases:["sockets"], short:"Endpoint for network communication.", long:"Sockets are file-like interfaces used by TCP/UDP and Unix domain communication.", seeAlso:["port","TCP","UDP"] },
+    { term: "device file", aliases:["device"], short:"Special file representing hardware or pseudo-devices.", long:"/dev entries provide a file interface to devices (disk, terminal, null).", seeAlso:["/dev"] },
+    { term: "/dev", aliases:[], short:"Directory of device files.", long:"Contains pseudo/devices like /dev/null and /dev/tty.", seeAlso:["device file"] },
+    { term: "/proc", aliases:[], short:"Virtual filesystem exposing process/kernel info.", long:"Read-only-ish runtime data such as /proc/cpuinfo and /proc/<pid>.", seeAlso:["PID","process"] },
+    { term: "/etc", aliases:[], short:"System-wide configuration directory.", long:"Global config files for services and tools usually live under /etc.", seeAlso:["filesystem","service"] },
+    { term: "daemon", aliases:["daemons"], short:"Background service process.", long:"Daemons run without interactive terminals and often start at boot.", seeAlso:["service","process"] },
+    { term: "service", aliases:["services"], short:"Managed long-running process.", long:"systemd and similar tools supervise services and their lifecycle.", seeAlso:["daemon"] },
+    { term: "signal", aliases:["signals"], short:"Async notification sent to a process.", long:"Signals like SIGINT/SIGTERM instruct processes to stop, reload, or handle events.", seeAlso:["process","job control"] },
+    { term: "process", aliases:["processes"], short:"Running program instance.", long:"Each process has a PID, parent process, environment, and open files.", seeAlso:["PID","signal"] },
+    { term: "PID", aliases:["pid"], short:"Process identifier number.", long:"Unique numeric ID for a running process.", seeAlso:["process"] },
+    { term: "job control", aliases:["jobs"], short:"Shell controls for foreground/background jobs.", long:"Use Ctrl+Z, bg, fg, and jobs to manage interactive processes.", seeAlso:["signal","process"] },
+    { term: "port", aliases:["ports"], short:"Numeric endpoint on a host.", long:"Ports identify specific network services (e.g., 22 SSH, 443 HTTPS).", seeAlso:["socket","TCP","UDP","SSH"] },
+    { term: "DNS", aliases:["dns"], short:"Name system mapping domains to IPs.", long:"DNS resolves human-readable names to IP addresses before connecting.", seeAlso:["TCP","UDP"] },
+    { term: "TCP", aliases:["tcp"], short:"Reliable connection-oriented transport protocol.", long:"TCP performs handshake, ordering, and retransmission.", seeAlso:["UDP","port"] },
+    { term: "UDP", aliases:["udp"], short:"Connectionless transport protocol.", long:"UDP is low overhead and used for DNS, streaming, and telemetry.", seeAlso:["TCP"] },
+    { term: "SSH", aliases:["ssh"], short:"Secure Shell for remote login/commands.", long:"SSH provides encrypted terminal access, port forwarding, and file transfer.", seeAlso:["port","service"] },
+    { term: "glob", aliases:["globs"], short:"Shell wildcard pattern matching.", long:"Patterns like *.log are expanded by the shell before command execution.", seeAlso:["quoting"] },
+    { term: "quoting", aliases:["quote"], short:"Control shell interpretation of characters.", long:"Single and double quotes change expansion behavior for variables and spaces.", seeAlso:["glob","environment variable"] },
+    { term: "environment variable", aliases:["env var","environment variables"], short:"Named value inherited by child processes.", long:"Variables like PATH and HOME configure command behavior.", seeAlso:["process","exit code"] },
+    { term: "exit code", aliases:["exit status"], short:"Numeric success/failure result from a command.", long:"0 usually means success; nonzero indicates errors or special states.", seeAlso:["process"] },
+    { term: "JSON", aliases:["json"], short:"Structured text data format.", long:"Common for APIs, logs, and config; parsed with jq.", seeAlso:["jq","YAML"] },
+    { term: "YAML", aliases:["yaml"], short:"Human-friendly structured text format.", long:"Used heavily for config and infra manifests.", seeAlso:["JSON"] },
+    { term: "jq", aliases:[], short:"Command-line JSON processor.", long:"jq filters, transforms, and queries JSON streams.", seeAlso:["JSON","YAML"] },
+    { term: "commit", aliases:["commits"], short:"Snapshot in git history.", long:"A commit records staged changes plus message, author, and parent.", seeAlso:["branch","HEAD","staging area"] },
+    { term: "branch", aliases:["branches"], short:"Movable pointer to a commit chain.", long:"Branches isolate work and can be merged or rebased.", seeAlso:["commit","HEAD"] },
+    { term: "HEAD", aliases:["head"], short:"Current checked-out commit pointer.", long:"HEAD usually points to the current branch tip.", seeAlso:["branch","staging area"] },
+    { term: "staging area", aliases:["index"], short:"Git area prepared for next commit.", long:"git add puts changes in the index before commit.", seeAlso:["commit","HEAD"] },
+    { term: "tmux session", aliases:["session"], short:"Persistent tmux workspace.", long:"Sessions contain windows/panes and survive terminal disconnects.", seeAlso:["tmux window","tmux pane"] },
+    { term: "tmux window", aliases:["window"], short:"Tab-like container within a tmux session.", long:"Each window can hold one or more panes.", seeAlso:["tmux session","tmux pane"] },
+    { term: "tmux pane", aliases:["pane","panes"], short:"Split terminal region inside tmux.", long:"Panes let you view multiple commands simultaneously.", seeAlso:["tmux session","tmux window"] },
+    { term: "fzf", aliases:[], short:"Fuzzy finder for interactive selection.", long:"fzf provides fast fuzzy filtering for files, history, processes, and more." },
+    { term: "ripgrep", aliases:["rg"], short:"Fast recursive text search tool.", long:"ripgrep replaces many grep/find combos with speed and smart defaults." },
+    { term: "fd", aliases:[], short:"User-friendly alternative to find.", long:"fd has simpler syntax and good default ignore behavior." },
+    { term: "bat", aliases:[], short:"Improved cat with syntax highlighting.", long:"bat shows files with line numbers, colors, and paging support." }
+  ];
+
+  const glossaryByKey = new Map(glossary.map(item => [item.term.toLowerCase(), item]));
+  const aliasIndex = new Map();
+  glossary.forEach(item => {
+    [item.term, ...(item.aliases || [])].forEach(alias => aliasIndex.set(alias.toLowerCase(), item.term.toLowerCase()));
+  });
+
   // --- UI State -------------------------------------------------------------
+  const allLessons = [...lessons, {id:"glossary",module:"15. Reference",title:"Glossary",tags:["reference","fundamentals"],content:""}];
   const state = {
     filterTag: "All",
     search: "",
-    visible: [...lessons],
-    currentIndex: 0
+    visible: [...allLessons],
+    currentIndex: 0,
+    tooltipTermKey: null
   };
+  const annotatedCache = new Map();
+
+  // TODO: Add practice mode quiz widgets per lesson.
+  // TODO: Add command-output puzzle cards with reveal answers.
+  // TODO: Add install checklist page for major distros and macOS.
+  // TODO: Add dotfiles generator UI exporting a starter .zshrc.
+  // TODO: Add learning path progression and completion tracking.
+  // TODO: Add printable mini cheat sheets (rg/permissions/ssh/git/tmux).
 
   // --- Elements -------------------------------------------------------------
   const tocEl = document.getElementById("toc");
@@ -882,26 +1099,31 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   const searchEl = document.getElementById("search");
   const chiprowEl = document.getElementById("chiprow");
   const countEl = document.getElementById("count");
+  const tooltipEl = document.getElementById("termTooltip");
 
   // --- Helpers --------------------------------------------------------------
   const uniqueTags = () => {
     const s = new Set();
-    lessons.forEach(l => l.tags.forEach(t => s.add(t)));
+    allLessons.forEach(l => l.tags.forEach(t => s.add(t)));
     return ["All", ...Array.from(s).sort()];
   };
+
+  function normalizeTerm(raw){
+    return aliasIndex.get(String(raw || "").toLowerCase()) || null;
+  }
 
   function applyFilters() {
     const q = state.search.trim().toLowerCase();
     const tag = state.filterTag;
 
-    state.visible = lessons.filter(l => {
+    state.visible = allLessons.filter(l => {
       const matchesTag = (tag === "All") ? true : l.tags.includes(tag);
-      const blob = (l.module + " " + l.title + " " + l.tags.join(" ") + " " + stripHtml(l.content)).toLowerCase();
+      const base = l.id === "glossary" ? createGlossaryPageHTML() : l.content;
+      const blob = (l.module + " " + l.title + " " + l.tags.join(" ") + " " + stripHtml(base)).toLowerCase();
       const matchesQ = q ? blob.includes(q) : true;
       return matchesTag && matchesQ;
     });
 
-    // Keep current lesson if possible; else clamp.
     if (state.visible.length === 0) {
       state.currentIndex = 0;
     } else {
@@ -940,6 +1162,166 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     history.replaceState(null, "", "#" + encodeURIComponent(l.id));
   }
 
+  function escapeRegex(str){
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function annotateTerms(htmlString, lessonId){
+    if (annotatedCache.has(lessonId)) return annotatedCache.get(lessonId);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<div id="root">${htmlString}</div>`, "text/html");
+    const root = doc.getElementById("root");
+    const entries = [];
+    glossary.forEach(item => {
+      [item.term, ...(item.aliases || [])].forEach(alias => entries.push({ alias, key: item.term.toLowerCase() }));
+    });
+    entries.sort((a,b) => b.alias.length - a.alias.length);
+    const combined = entries.map(e => escapeRegex(e.alias)).join("|");
+    const regex = new RegExp(`\b(${combined})\b`, "gi");
+
+    const walker = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const replaceTargets = [];
+    while(walker.nextNode()){
+      const node = walker.currentNode;
+      if (!node.nodeValue || !node.nodeValue.trim()) continue;
+      const parent = node.parentElement;
+      if (!parent) continue;
+      if (parent.closest("pre, code, a, .term, button, input, textarea")) continue;
+      replaceTargets.push(node);
+    }
+
+    for (const node of replaceTargets){
+      regex.lastIndex = 0;
+      const text = node.nodeValue;
+      if (!regex.test(text)) continue;
+      regex.lastIndex = 0;
+      const frag = doc.createDocumentFragment();
+      let last = 0;
+      let m;
+      while((m = regex.exec(text))){
+        const before = text.slice(last, m.index);
+        if (before) frag.appendChild(doc.createTextNode(before));
+        const match = m[0];
+        const key = normalizeTerm(match);
+        if (key){
+          const span = doc.createElement("span");
+          span.className = "term";
+          span.setAttribute("data-term", key);
+          span.setAttribute("tabindex", "0");
+          span.setAttribute("role", "button");
+          span.textContent = match;
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(doc.createTextNode(match));
+        }
+        last = regex.lastIndex;
+      }
+      const after = text.slice(last);
+      if (after) frag.appendChild(doc.createTextNode(after));
+      node.parentNode.replaceChild(frag, node);
+    }
+
+    const out = root.innerHTML;
+    annotatedCache.set(lessonId, out);
+    return out;
+  }
+
+  function createGlossaryPageHTML(){
+    return `
+      <h2>Glossary</h2>
+      <p>Search terms and open mini wiki cards.</p>
+      <div class="glossary-wrap">
+        <input id="glossarySearch" class="glossary-search" placeholder="Search glossary terms..." />
+        <div id="glossaryList" class="glossary-list"></div>
+        <div id="glossaryEmpty" class="glossary-empty" style="display:none;">No matching terms.</div>
+      </div>
+    `;
+  }
+
+  function bindGlossaryPage(){
+    const box = document.getElementById("glossarySearch");
+    const list = document.getElementById("glossaryList");
+    const empty = document.getElementById("glossaryEmpty");
+    if (!box || !list) return;
+    const render = () => {
+      const q = box.value.trim().toLowerCase();
+      const filtered = glossary.filter(item => {
+        const text = [item.term, ...(item.aliases || []), item.short, item.long].join(" ").toLowerCase();
+        return !q || text.includes(q);
+      });
+      list.innerHTML = "";
+      empty.style.display = filtered.length ? "none" : "block";
+      filtered.forEach(item => {
+        const btn = document.createElement("button");
+        btn.className = "glossary-item";
+        btn.type = "button";
+        btn.textContent = item.term;
+        btn.addEventListener("click", () => openTooltip(item.term.toLowerCase(), btn, {centered:true}));
+        list.appendChild(btn);
+      });
+    };
+    box.addEventListener("input", render);
+    render();
+  }
+
+  function positionTooltip(anchor, centered=false){
+    const pad = 10;
+    const tipRect = tooltipEl.getBoundingClientRect();
+    if (centered){
+      const x = Math.max(pad, (window.innerWidth - tipRect.width) / 2);
+      const y = Math.max(pad, (window.innerHeight - tipRect.height) / 2);
+      tooltipEl.style.left = `${x}px`;
+      tooltipEl.style.top = `${y}px`;
+      return;
+    }
+    const a = anchor.getBoundingClientRect();
+    let left = a.right + 8;
+    let top = a.top - tipRect.height - 8;
+    if (left + tipRect.width > window.innerWidth - pad) left = a.left - tipRect.width - 8;
+    if (left < pad) left = Math.min(window.innerWidth - tipRect.width - pad, Math.max(pad, a.left));
+    if (top < pad) top = a.bottom + 8;
+    if (top + tipRect.height > window.innerHeight - pad) top = Math.max(pad, window.innerHeight - tipRect.height - pad);
+    tooltipEl.style.left = `${left}px`;
+    tooltipEl.style.top = `${top}px`;
+  }
+
+  function openTooltip(termKey, anchor, opts={}){
+    const item = glossaryByKey.get(termKey);
+    if (!item) return;
+    state.tooltipTermKey = termKey;
+    tooltipEl.innerHTML = `
+      <div class="tooltip-head">
+        <h3 class="tooltip-title">${escapeHtml(item.term)}</h3>
+        <button class="tooltip-close" type="button" aria-label="Close definition">✕</button>
+      </div>
+      <p class="tooltip-short">${escapeHtml(item.short || "")}</p>
+      ${item.long ? `<button class="tooltip-more-btn" type="button">More...</button><div class="tooltip-more">${escapeHtml(item.long)}</div>` : ""}
+      ${item.examples?.length ? `<pre>${escapeHtml(item.examples.join("\n"))}</pre>` : ""}
+      ${item.seeAlso?.length ? `<div class="tooltip-see">${item.seeAlso.map(x=>`<button type="button" class="see-chip" data-see="${escapeHtml(x)}">${escapeHtml(x)}</button>`).join("")}</div>` : ""}
+    `;
+    tooltipEl.classList.add("open");
+    tooltipEl.querySelector(".tooltip-close")?.addEventListener("click", closeTooltip);
+    tooltipEl.querySelector(".tooltip-more-btn")?.addEventListener("click", (e) => {
+      const more = tooltipEl.querySelector(".tooltip-more");
+      more?.classList.toggle("open");
+      e.target.textContent = more?.classList.contains("open") ? "Less" : "More...";
+      positionTooltip(anchor || tooltipEl, !!opts.centered);
+    });
+    tooltipEl.querySelectorAll(".see-chip").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = normalizeTerm(btn.dataset.see);
+        if (target) openTooltip(target, anchor || btn, opts);
+      });
+    });
+    positionTooltip(anchor || tooltipEl, !!opts.centered);
+  }
+
+  function closeTooltip(){
+    tooltipEl.classList.remove("open");
+    tooltipEl.innerHTML = "";
+    state.tooltipTermKey = null;
+  }
+
   // --- Render ---------------------------------------------------------------
   function renderChips(){
     const tags = uniqueTags();
@@ -959,7 +1341,7 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
 
   function renderToc(){
     tocEl.innerHTML = "";
-    countEl.textContent = `${state.visible.length}/${lessons.length}`;
+    countEl.textContent = `${state.visible.length}/${allLessons.length}`;
 
     const current = getCurrentLesson();
     state.visible.forEach(l => {
@@ -988,12 +1370,15 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
       barEl.style.width = "0%";
       footerLeft.textContent = "";
       footerRight.textContent = "";
+      closeTooltip();
       return;
     }
 
     kickerEl.textContent = l.module;
     titleEl.textContent = l.title;
-    contentEl.innerHTML = l.content;
+    const raw = l.id === "glossary" ? createGlossaryPageHTML() : l.content;
+    contentEl.innerHTML = annotateTerms(raw, l.id);
+    if (l.id === "glossary") bindGlossaryPage();
 
     prevBtn.disabled = state.currentIndex <= 0;
     nextBtn.disabled = state.currentIndex >= state.visible.length - 1;
@@ -1018,12 +1403,14 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   prevBtn.addEventListener("click", () => {
     if (state.currentIndex > 0) {
       state.currentIndex--;
+      closeTooltip();
       renderLesson(); renderToc(); updateUrlHash();
     }
   });
   nextBtn.addEventListener("click", () => {
     if (state.currentIndex < state.visible.length - 1) {
       state.currentIndex++;
+      closeTooltip();
       renderLesson(); renderToc(); updateUrlHash();
     }
   });
@@ -1033,8 +1420,36 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     applyFilters();
   });
 
+  contentEl.addEventListener("click", (e) => {
+    const term = e.target.closest(".term");
+    if (term){
+      openTooltip(term.dataset.term, term);
+    }
+  });
+
+  contentEl.addEventListener("mouseover", (e) => {
+    const term = e.target.closest(".term");
+    if (term && window.matchMedia("(hover: hover)").matches){
+      openTooltip(term.dataset.term, term);
+    }
+  });
+
+  contentEl.addEventListener("keydown", (e) => {
+    const term = e.target.closest(".term");
+    if (!term) return;
+    if (e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      openTooltip(term.dataset.term, term);
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!tooltipEl.classList.contains("open")) return;
+    if (tooltipEl.contains(e.target) || e.target.closest(".term") || e.target.closest(".glossary-item")) return;
+    closeTooltip();
+  });
+
   document.addEventListener("keydown", (e) => {
-    // Ignore if typing in input
     const active = document.activeElement;
     const typing = active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
     if (!typing && e.key === "/"){
@@ -1042,6 +1457,7 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
       searchEl.focus();
       return;
     }
+    if (e.key === "Escape") closeTooltip();
     if (typing) return;
 
     if (e.key === "ArrowLeft") prevBtn.click();
@@ -1057,13 +1473,10 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   function initFromHash(){
     const id = decodeURIComponent((location.hash || "").replace("#","")).trim();
     if (!id) return;
-    // Temporarily use full list to find a match, then apply current filters.
-    const idxAll = lessons.findIndex(l => l.id === id);
+    const idxAll = allLessons.findIndex(l => l.id === id);
     if (idxAll >= 0){
-      // set current by id after filters applied
       state.currentIndex = 0;
       applyFilters();
-      // If filtered list doesn't include it, fall back to All.
       if (!state.visible.some(l => l.id === id)){
         state.filterTag = "All";
         state.search = "";
@@ -1079,6 +1492,7 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   renderChips();
   applyFilters();
   initFromHash();
+
 </script>
 </body>
 </html>
