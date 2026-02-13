@@ -1,0 +1,17 @@
+{
+  "id": "linux-terminal",
+  "title": "Linux Terminal Expert",
+  "subtitle": "AI-generated terminal mastery course",
+  "version": 1,
+  "files": {
+    "lessons": "./lessons.json",
+    "glossary": "./glossary.json"
+  },
+  "drillTasks": [
+    "Find the 10 largest files under current directory.",
+    "List listening ports with owning processes.",
+    "Find TODO/FIXME lines in this repo.",
+    "Show top 5 memory-consuming processes.",
+    "Find files modified in the last 24 hours."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "linux-terminal",
+  "title": "Linux Terminal Expert",
+  "subtitle": "Curso de terminal generado por IA",
+  "version": 1,
+  "files": {
+    "lessons": "./lessons.json",
+    "glossary": "./glossary.json"
+  }
+}

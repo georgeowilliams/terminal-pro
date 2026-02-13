@@ -1,10 +1,10 @@
-const listCache = { value: null };
+const indexCache = { value: null };
 const courseCache = new Map();
-const metaCache = new Map();
 
-async function fetchJson(url) {
+async function fetchJson(url, { optional = false } = {}) {
   const response = await fetch(url);
   if (!response.ok) {
+    if (optional && response.status === 404) return null;
     throw new Error(`Failed to load ${url} (${response.status})`);
   }
   return response.json();
@@ -14,41 +14,73 @@ function resolveJsonPath(basePath, relativePath) {
   return new URL(relativePath, new URL(basePath, window.location.origin)).pathname;
 }
 
-export async function loadCourseList() {
-  if (listCache.value) return listCache.value;
-  const list = await fetchJson('/courses/index.json');
+function resolveCourseJsonPath(entry, locale) {
+  if (!entry?.pathPattern) throw new Error(`Invalid index entry for ${entry?.courseId || 'unknown course'}`);
+  return entry.pathPattern.replace('{locale}', locale);
+}
+
+export async function loadCourseIndex() {
+  if (indexCache.value) return indexCache.value;
+  const list = await fetchJson('/content/courses/index.json');
   if (!Array.isArray(list)) {
-    throw new Error('Invalid courses/index.json: expected an array');
+    throw new Error('Invalid content/courses/index.json: expected an array');
   }
-  listCache.value = list;
+  indexCache.value = list;
   return list;
 }
 
-export async function loadCourseMeta(courseId) {
-  if (metaCache.has(courseId)) return metaCache.get(courseId);
-  const list = await loadCourseList();
-  const entry = list.find((item) => item.id === courseId) || list[0];
-  if (!entry?.path) throw new Error(`Course not found: ${courseId}`);
-  const meta = await fetchJson(entry.path);
-  metaCache.set(entry.id, meta);
-  return meta;
+async function loadCourseMeta(entry, locale) {
+  const courseJsonPath = resolveCourseJsonPath(entry, locale);
+  const meta = await fetchJson(courseJsonPath, { optional: locale !== entry.defaultLocale });
+  if (meta) {
+    return { meta, localeUsed: locale, basePath: courseJsonPath };
+  }
+  const fallbackPath = resolveCourseJsonPath(entry, entry.defaultLocale);
+  const fallbackMeta = await fetchJson(fallbackPath);
+  return { meta: fallbackMeta, localeUsed: entry.defaultLocale, basePath: fallbackPath };
 }
 
-export async function loadCourse(courseId) {
-  if (courseCache.has(courseId)) return courseCache.get(courseId);
+export async function loadCourse(courseId, locale) {
+  const cacheKey = `${courseId}:${locale}`;
+  if (courseCache.has(cacheKey)) return courseCache.get(cacheKey);
 
-  const list = await loadCourseList();
-  const entry = list.find((item) => item.id === courseId) || list[0];
-  if (!entry?.path) throw new Error(`Course not found: ${courseId}`);
+  const index = await loadCourseIndex();
+  const entry = index.find((item) => item.courseId === courseId) || index[0];
+  if (!entry) throw new Error('No courses found in content/courses/index.json');
 
-  const meta = await loadCourseMeta(entry.id);
-  const lessonsPath = resolveJsonPath(entry.path, meta?.files?.lessons || './lessons.json');
-  const glossaryPath = resolveJsonPath(entry.path, meta?.files?.glossary || './glossary.json');
+  const requestedLocale = locale || entry.defaultLocale;
+  const { meta, localeUsed, basePath } = await loadCourseMeta(entry, requestedLocale);
+  const lessonsPath = resolveJsonPath(basePath, meta?.files?.lessons || './lessons.json');
+  const glossaryPath = resolveJsonPath(basePath, meta?.files?.glossary || './glossary.json');
 
-  const [lessons, glossary] = await Promise.all([fetchJson(lessonsPath), fetchJson(glossaryPath)]);
+  let lessons = await fetchJson(lessonsPath, { optional: localeUsed !== entry.defaultLocale });
+  let glossary = await fetchJson(glossaryPath, { optional: localeUsed !== entry.defaultLocale });
 
-  const payload = { meta, lessons, glossary };
-  courseCache.set(meta.id, payload);
-  if (meta.id !== courseId) courseCache.set(courseId, payload);
+  const fallbacks = { lessons: localeUsed, glossary: localeUsed };
+  if (!lessons || !glossary) {
+    const fallbackBasePath = resolveCourseJsonPath(entry, entry.defaultLocale);
+    if (!lessons) {
+      lessons = await fetchJson(resolveJsonPath(fallbackBasePath, meta?.files?.lessons || './lessons.json'));
+      fallbacks.lessons = entry.defaultLocale;
+    }
+    if (!glossary) {
+      glossary = await fetchJson(resolveJsonPath(fallbackBasePath, meta?.files?.glossary || './glossary.json'));
+      fallbacks.glossary = entry.defaultLocale;
+    }
+  }
+
+  const payload = {
+    meta,
+    lessons,
+    glossary,
+    courseId: entry.courseId,
+    defaultLocale: entry.defaultLocale,
+    availableLocales: entry.locales || [entry.defaultLocale],
+    locale: localeUsed,
+    requestedLocale,
+    fallbacks,
+  };
+
+  courseCache.set(cacheKey, payload);
   return payload;
 }
