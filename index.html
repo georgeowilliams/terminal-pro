@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Linux Terminal Expert — Mini Course</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">&gt;_</div>
+      <div>
+        <h1 id="brandTitle">Linux Terminal Expert</h1>
+        <div class="sub" id="brandSubtitle">Interactive notes + navigation</div>
+      </div>
+    </div>
+
+    <div class="settings" style="margin-bottom:10px;">
+      <div class="label">Course</div>
+      <select id="courseSelect"></select>
+    </div>
+
+    <div class="search">
+      <input id="search" placeholder="Search lessons (e.g. grep, ssh, tmux, permissions)..." />
+    </div>
+
+    <div class="chiprow" id="chiprow"></div>
+
+    <div class="settings">
+      <div class="label">Learning Settings</div>
+      <button id="practiceToggle" type="button">Practice Mode: OFF</button>
+      <button id="resetProgressBtn" type="button">Reset progress</button>
+    </div>
+
+    <div class="toc-title">
+      <span>Index</span>
+      <span id="count" style="color: var(--muted); font-family: var(--mono); font-size:11px;"></span>
+    </div>
+
+    <div class="toc" id="toc"></div>
+
+    <div class="hint warn" style="margin-top:14px;">
+      Tip: Use <span class="kbd">/</span> to focus search, <span class="kbd">J</span>/<span class="kbd">K</span> to move, <span class="kbd">←</span>/<span class="kbd">→</span> for prev/next.
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumbs">
+        <div class="small" id="kicker">Module</div>
+        <div class="big" id="title">Title</div>
+      </div>
+
+      <div class="navbtns">
+        <div class="progresswrap" title="Progress">
+          <div class="bar" id="bar"></div>
+        </div>
+        <button id="completeBtn">Mark complete ✓</button>
+        <button id="prevBtn">← Prev</button>
+        <button id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content" id="content"></div>
+      <div class="footer">
+        <div id="footerLeft"></div>
+        <div id="footerRight"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="tooltip" id="termTooltip" role="dialog" aria-live="polite" aria-label="Term definition"></div>
+
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>
