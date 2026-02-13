@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Linux Terminal Expert — Mini Course</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: #0f1630;
+      --panel2:#111b3a;
+      --text: #e6e6e6;
+      --muted:#a7b0cc;
+      --accent:#7aa2ff;
+      --accent2:#88f0c7;
+      --warn:#ffd57a;
+      --danger:#ff7a7a;
+      --border: rgba(255,255,255,0.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background: radial-gradient(1200px 900px at 30% 10%, #152252 0%, var(--bg) 50%, #070a14 100%);
+      color: var(--text);
+    }
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .app{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      min-height:100vh;
+    }
+    .sidebar{
+      border-right:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding:18px 14px;
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:10px;
+      background: linear-gradient(145deg, rgba(122,162,255,0.35), rgba(136,240,199,0.25));
+      border:1px solid var(--border);
+      display:grid; place-items:center;
+      font-family: var(--mono);
+      color: var(--accent2);
+      font-weight:700;
+    }
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:0.2px;
+    }
+    .brand .sub{
+      font-size:12px; color: var(--muted); margin-top:2px;
+    }
+    .search{
+      margin:10px 0 14px;
+      display:flex;
+      gap:8px;
+    }
+    .search input{
+      width:100%;
+      padding:10px 10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,0.25);
+      color: var(--text);
+      outline:none;
+      font-family: var(--mono);
+      font-size:12px;
+    }
+    .chiprow{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+    .chip{
+      font-size:11px;
+      border:1px solid var(--border);
+      padding:6px 8px;
+      border-radius:999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.active{
+      color: var(--text);
+      border-color: rgba(122,162,255,0.35);
+      background: rgba(122,162,255,0.12);
+    }
+    .toc-title{
+      font-size:12px;
+      color: var(--muted);
+      margin:14px 4px 8px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+    .toc{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding-bottom:14px;
+    }
+    .toc-item{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius:12px;
+      padding:10px 10px;
+      cursor:pointer;
+      transition: transform 0.05s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .toc-item:hover{
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+    }
+    .toc-item.active{
+      border-color: rgba(136,240,199,0.35);
+      background: rgba(136,240,199,0.08);
+    }
+    .toc-item .kicker{
+      font-size:10px;
+      color: var(--muted);
+      letter-spacing:0.5px;
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
+    .toc-item .title{
+      font-size:13px;
+      margin:0;
+      line-height:1.25;
+    }
+    .toc-item .meta{
+      margin-top:6px;
+      font-size:11px;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .main{
+      padding:22px 22px 40px;
+      overflow:auto;
+    }
+    .topbar{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:14px;
+    }
+    .crumbs{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .crumbs .small{
+      font-size:12px; color: var(--muted);
+    }
+    .crumbs .big{
+      font-size:18px; font-weight:700;
+    }
+    .navbtns{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    button{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-family: var(--mono);
+      font-size:12px;
+    }
+    button:hover{ background: rgba(255,255,255,0.06); }
+    button:disabled{ opacity:0.45; cursor:not-allowed; }
+    .progresswrap{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background: rgba(255,255,255,0.02);
+      overflow:hidden;
+      height:12px;
+      width:240px;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(122,162,255,0.9), rgba(136,240,199,0.9));
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      padding:18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .content{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .content h2{
+      margin:0;
+      font-size:16px;
+    }
+    .content p{
+      margin:0;
+      color: var(--text);
+      line-height:1.55;
+    }
+    .content ul{ margin:0; padding-left:18px; color: var(--text); }
+    .content li{ margin:6px 0; }
+
+    pre, code{
+      font-family: var(--mono);
+      font-size:12px;
+    }
+    pre{
+      margin:0;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,0.35);
+      overflow:auto;
+      line-height:1.35;
+    }
+    .hint{
+      border-left:3px solid rgba(122,162,255,0.7);
+      padding:10px 12px;
+      border-radius:10px;
+      background: rgba(122,162,255,0.10);
+      color: var(--text);
+    }
+    .warn{
+      border-left:3px solid rgba(255,213,122,0.8);
+      background: rgba(255,213,122,0.10);
+    }
+    .danger{
+      border-left:3px solid rgba(255,122,122,0.8);
+      background: rgba(255,122,122,0.10);
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size:11px;
+      font-family: var(--mono);
+      width:max-content;
+    }
+    .footer{
+      margin-top:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      color: var(--muted);
+      font-size:12px;
+      font-family: var(--mono);
+    }
+    .kbd{
+      border:1px solid var(--border);
+      border-bottom-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      padding:2px 6px;
+      border-radius:6px;
+      font-family: var(--mono);
+      color: var(--text);
+      font-size:11px;
+    }
+
+    @media (max-width: 980px){
+      .app{ grid-template-columns: 1fr; }
+      .sidebar{ position:relative; height:auto; }
+      .progresswrap{ width:160px; }
+      .grid2{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">&gt;_</div>
+      <div>
+        <h1>Linux Terminal Expert</h1>
+        <div class="sub">Interactive notes + navigation</div>
+      </div>
+    </div>
+
+    <div class="search">
+      <input id="search" placeholder="Search lessons (e.g. grep, ssh, tmux, permissions)..." />
+    </div>
+
+    <div class="chiprow" id="chiprow"></div>
+
+    <div class="toc-title">
+      <span>Index</span>
+      <span id="count" style="color: var(--muted); font-family: var(--mono); font-size:11px;"></span>
+    </div>
+
+    <div class="toc" id="toc"></div>
+
+    <div class="hint warn" style="margin-top:14px;">
+      Tip: Use <span class="kbd">/</span> to focus search, <span class="kbd">J</span>/<span class="kbd">K</span> to move, <span class="kbd">←</span>/<span class="kbd">→</span> for prev/next.
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumbs">
+        <div class="small" id="kicker">Module</div>
+        <div class="big" id="title">Title</div>
+      </div>
+
+      <div class="navbtns">
+        <div class="progresswrap" title="Progress">
+          <div class="bar" id="bar"></div>
+        </div>
+        <button id="prevBtn">← Prev</button>
+        <button id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content" id="content"></div>
+      <div class="footer">
+        <div id="footerLeft"></div>
+        <div id="footerRight"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // --- Course Data ----------------------------------------------------------
+  const lessons = [
+    {
+      id: "mindset",
+      module: "0. Welcome",
+      title: "How terminal pros think",
+      tags: ["fundamentals","workflow"],
+      content: `
+<p>Becoming “terminal expert” is less about memorizing commands and more about building a <b>mental model</b>:</p>
+<ul>
+  <li><b>Everything is a file</b> (or a stream): config, devices, sockets, logs.</li>
+  <li><b>Small tools + pipes</b>: compose commands like LEGO.</li>
+  <li><b>Inspect first, then act</b>: preview before you delete/overwrite.</li>
+</ul>
+
+<pre>
+ASCII model of a typical pipeline:
+
+[stdin] --> (tool A) --> (tool B) --> (tool C) --> [stdout]
+              |            |            |
+            flags        filters      formatters
+</pre>
+
+<div class="hint">
+Core pro habit: keep a scratch pad command:
+<code>history | tail</code>, then refine.
+</div>
+
+<p><span class="pill">Pro tools you’ll adopt</span> <code>tmux</code>, <code>fzf</code>, <code>ripgrep</code>, <code>bat</code>, <code>fd</code>, <code>jq</code>, <code>ssh</code>, <code>git</code></p>
+`
+    },
+
+    {
+      id: "navigation",
+      module: "1. Movement & Discovery",
+      title: "Navigation: files, paths, and fast jumping",
+      tags: ["fundamentals","filesystem"],
+      content: `
+<p>Learn to move like a native:</p>
+<ul>
+  <li><code>pwd</code>, <code>ls</code>, <code>cd</code> basics — but the pro upgrades are <code>eza</code>, <code>zoxide</code>, and fuzzy finding.</li>
+  <li>Use <code>pushd</code>/<code>popd</code> like a stack for directories.</li>
+</ul>
+
+<div class="grid2">
+<pre>
+Path mental model:
+
+/ (root)
+├─ home/
+│  ├─ you/
+│  │  ├─ projects/
+│  │  └─ downloads/
+└─ etc/
+   ├─ ssh/
+   └─ systemd/
+</pre>
+
+<pre>
+Fast jumping (recommended):
+
+zoxide (z) remembers directories:
+  z proj
+  z iso
+
+fzf fuzzy search:
+  cd "$(find . -type d | fzf)"
+</pre>
+</div>
+
+<div class="hint warn">
+If you install one “quality of life” tool first, make it <b>fzf</b>. It upgrades everything.
+</div>
+`
+    },
+
+    {
+      id: "help",
+      module: "2. Reading the System",
+      title: "Getting help: man, tldr, and discoverability",
+      tags: ["fundamentals","docs"],
+      content: `
+<p>Pros don’t guess. They query documentation fast.</p>
+<ul>
+  <li><code>man rsync</code> (full manual)</li>
+  <li><code>tldr rsync</code> (quick examples)</li>
+  <li><code>command --help</code> (fast flags overview)</li>
+  <li><code>apropos keyword</code> or <code>man -k keyword</code></li>
+</ul>
+
+<pre>
+ASCII: How to learn a command in 30 seconds
+
+1) tldr curl
+2) man curl  (search inside man: /pattern)
+3) try a tiny example
+4) add flags one at a time
+</pre>
+
+<p><span class="pill">Pro libraries/tools</span> <code>tldr</code>, <code>man</code>, <code>info</code>, <code>cheat</code></p>
+`
+    },
+
+    {
+      id: "text",
+      module: "3. Text as Data",
+      title: "Pipes, grep, rg, awk, sed, sort, uniq",
+      tags: ["text","search"],
+      content: `
+<p>Your superpower: turn text streams into answers.</p>
+
+<div class="grid2">
+<pre>
+Pipeline anatomy:
+
+cat file.txt
+| rg "error|warn"
+| sort
+| uniq -c
+| sort -nr
+</pre>
+
+<pre>
+Modern defaults:
+
+rg  = ripgrep (faster grep)
+fd  = friendlier find
+bat = better cat (syntax highlighting)
+</pre>
+</div>
+
+<p>Practice drills:</p>
+<ul>
+  <li>Find all TODOs: <code>rg -n "TODO|FIXME" .</code></li>
+  <li>Top 20 largest files: <code>du -ah . | sort -hr | head -20</code></li>
+  <li>Extract a column: <code>awk '{print $2}'</code></li>
+</ul>
+
+<div class="hint">
+When you’re stuck: print intermediate output after each pipe step.
+</div>
+
+<p><span class="pill">Pro libraries/tools</span> <code>ripgrep (rg)</code>, <code>awk</code>, <code>sed</code>, <code>sort</code>, <code>uniq</code>, <code>column</code></p>
+`
+    },
+
+    {
+      id: "globbing",
+      module: "4. Shell Power",
+      title: "Globs, quoting, variables, and exit codes",
+      tags: ["shell","fundamentals"],
+      content: `
+<p>This is where most “not quite expert” users break things. Learn these rules:</p>
+
+<pre>
+Globs (shell expands them):
+
+*.log     matches log files
+**/*.js   recursive glob (depends on shell)
+{a,b}.txt brace expansion -> a.txt b.txt
+
+Quoting:
+"..." keeps spaces, still expands $VARS
+'...' literal (no expansions)
+\\ escapes next character
+</pre>
+
+<pre>
+Exit codes:
+
+0   success
+!=0 failure
+
+Chain logic:
+cmd1 && cmd2   (only run cmd2 if cmd1 succeeded)
+cmd1 || cmd2   (run cmd2 if cmd1 failed)
+</pre>
+
+<div class="hint danger">
+If a path might contain spaces, quote it: <code>"$path"</code>
+</div>
+
+<p><span class="pill">Pro libraries/tools</span> <code>shellcheck</code> (lint), <code>bash</code>/<code>zsh</code>, <code>direnv</code> (env per folder)</p>
+`
+    },
+
+    {
+      id: "permissions",
+      module: "5. Ownership & Permissions",
+      title: "chmod, chown, umask (and why sudo is not a hammer)",
+      tags: ["security","filesystem"],
+      content: `
+<p>Permissions are a 3×3 grid: <b>user</b>, <b>group</b>, <b>others</b> with <b>rwx</b>.</p>
+
+<pre>
+-rwxr-x---  file
+ ^^^ ^^^ ^^^
+ u   g   o
+
+r=4 w=2 x=1
+
+chmod 750 file
+u=7 (rwx), g=5 (r-x), o=0 (---)
+</pre>
+
+<ul>
+  <li><code>chown user:group file</code></li>
+  <li><code>umask</code> controls default permission masking</li>
+  <li>Prefer least privilege over “sudo everything”</li>
+</ul>
+
+<div class="hint warn">
+A strong pro habit: understand who owns a file before fixing it.
+Try: <code>ls -la</code>
+</div>
+`
+    },
+
+    {
+      id: "processes",
+      module: "6. Processes & Performance",
+      title: "ps, top/htop, kill, signals, jobs",
+      tags: ["process","performance"],
+      content: `
+<p>Learn how Linux runs your programs.</p>
+
+<div class="grid2">
+<pre>
+Process view:
+
+ps aux | rg node
+pstree -p
+
+Signals:
+SIGINT  (Ctrl+C)
+SIGTERM (polite stop)
+SIGKILL (force: kill -9)
+</pre>
+
+<pre>
+Jobs (in your shell):
+
+cmd &
+jobs
+fg %1
+bg %1
+disown
+</pre>
+</div>
+
+<p><span class="pill">Pro libraries/tools</span> <code>htop</code>/<code>btop</code>, <code>strace</code>, <code>lsof</code>, <code>time</code></p>
+`
+    },
+
+    {
+      id: "networking",
+      module: "7. Networking Basics",
+      title: "curl, wget, ssh, scp/rsync, ports and DNS",
+      tags: ["network","security"],
+      content: `
+<p>Terminal pros can diagnose network issues quickly.</p>
+
+<pre>
+ASCII: request path
+
+[you] -> DNS -> IP -> TCP/UDP -> service -> response
+</pre>
+
+<ul>
+  <li><code>curl -I https://example.com</code> headers</li>
+  <li><code>dig example.com</code> DNS query</li>
+  <li><code>ss -tulpn</code> listening ports</li>
+  <li><code>ssh user@host</code> remote shell</li>
+  <li><code>rsync -avz</code> fast sync, resumable</li>
+</ul>
+
+<p><span class="pill">Pro libraries/tools</span> <code>openssh</code>, <code>rsync</code>, <code>mtr</code>, <code>tcpdump</code>, <code>nmap</code> (responsible use)</p>
+`
+    },
+
+    {
+      id: "git",
+      module: "8. Version Control",
+      title: "Git fundamentals for terminal workflow",
+      tags: ["git","workflow"],
+      content: `
+<p>If you build anything (you do), git is part of being a terminal pro.</p>
+
+<pre>
+Core loop:
+git status
+git diff
+git add -p
+git commit -m "message"
+git push
+</pre>
+
+<pre>
+ASCII: commits are a chain
+
+A -- B -- C -- D (main)
+      \\
+       E -- F     (feature)
+</pre>
+
+<p>Recommended tools:</p>
+<ul>
+  <li><code>delta</code> for nicer diffs</li>
+  <li><code>lazygit</code> if you like a terminal UI</li>
+</ul>
+`
+    },
+
+    {
+      id: "tmux",
+      module: "9. Multiplexing",
+      title: "tmux: sessions, panes, and muscle memory",
+      tags: ["workflow","tmux"],
+      content: `
+<p><b>tmux</b> is how terminal pros keep context and speed.</p>
+
+<pre>
+ASCII: layout
+
++---------------------------+
+| pane 1       | pane 2     |
+|              |            |
+|--------------+------------|
+| pane 3                    |
++---------------------------+
+</pre>
+
+<ul>
+  <li>Start: <code>tmux</code></li>
+  <li>New session: <code>tmux new -s work</code></li>
+  <li>Detach: <code>Ctrl+b</code> then <code>d</code></li>
+  <li>Reattach: <code>tmux a -t work</code></li>
+</ul>
+
+<div class="hint">
+Pro tip: keep one session per project: <code>work</code>, <code>infra</code>, <code>notes</code>.
+</div>
+`
+    },
+
+    {
+      id: "dotfiles",
+      module: "10. Professional Setup",
+      title: "Dotfiles: shell config, prompt, aliases, and safety rails",
+      tags: ["workflow","shell","security"],
+      content: `
+<p>Pros build guardrails and repeatability.</p>
+
+<ul>
+  <li><b>Shell</b>: bash or zsh</li>
+  <li><b>Prompt</b>: starship (fast, cross-shell)</li>
+  <li><b>Aliases</b>: short and safe (avoid hidden magic)</li>
+  <li><b>Functions</b>: for workflows (git, ssh, logs)</li>
+</ul>
+
+<pre>
+Recommended "safe defaults" aliases:
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Better tools:
+alias cat='bat'
+alias ls='eza -lah'
+</pre>
+
+<p><span class="pill">Pro libraries/tools</span> <code>starship</code>, <code>zoxide</code>, <code>direnv</code>, <code>chezmoi</code> (dotfiles mgmt)</p>
+`
+    },
+
+    {
+      id: "parsing",
+      module: "11. Structured Data",
+      title: "jq, yq, and logs (JSON/YAML as first-class)",
+      tags: ["data","logs"],
+      content: `
+<p>Modern ops/dev work is JSON everywhere. Learn <b>jq</b>.</p>
+
+<pre>
+Extract fields:
+cat file.json | jq '.items[] | {id, name}'
+
+Filter:
+jq '.items[] | select(.status=="error")'
+</pre>
+
+<p>YAML tools vary; <code>yq</code> is common.</p>
+
+<p><span class="pill">Pro libraries/tools</span> <code>jq</code>, <code>yq</code>, <code>python</code> (quick one-liners), <code>gron</code></p>
+`
+    },
+
+    {
+      id: "scripting",
+      module: "12. Scripting",
+      title: "Write reliable shell scripts (and avoid footguns)",
+      tags: ["shell","automation","security"],
+      content: `
+<p>Script like a pro: predictable, safe, tested.</p>
+
+<pre>
+Baseline script headers:
+
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\\n\\t'
+</pre>
+
+<ul>
+  <li><code>shellcheck</code> everything</li>
+  <li>Prefer <code>printf</code> over <code>echo</code> for portability</li>
+  <li>Handle paths safely; quote variables</li>
+</ul>
+
+<div class="hint danger">
+If you ever write: <code>rm -rf $VAR</code>
+…you must ensure VAR is never empty. Consider checks.
+</div>
+`
+    },
+
+    {
+      id: "tools",
+      module: "13. Pro Toolbox",
+      title: "The typical terminal-pro library stack",
+      tags: ["workflow","tools"],
+      content: `
+<p>This is a pragmatic “pro stack” you’ll see in modern setups:</p>
+
+<div class="grid2">
+<pre>
+Search & navigate:
+  fzf, ripgrep (rg), fd, zoxide
+
+Viewing:
+  bat, eza, less (with -R), delta
+
+Sessions:
+  tmux
+
+Data:
+  jq, yq
+
+Dev:
+  git, gh (GitHub CLI), make
+
+Quality:
+  shellcheck, shfmt
+
+Ops:
+  ssh, rsync, curl, wget
+</pre>
+
+<pre>
+Monitoring/debug:
+  htop/btop
+  lsof
+  strace
+  dmesg, journalctl
+  nc (netcat)
+</pre>
+</div>
+
+<p class="hint">
+You don’t need them all on day 1. Learn in layers:
+<b>rg + fzf + tmux</b> will 10× your speed quickly.
+</p>
+`
+    },
+
+    {
+      id: "challenge",
+      module: "14. Practice Path",
+      title: "30-day drills to become dangerous (in a good way)",
+      tags: ["practice","workflow"],
+      content: `
+<p>Here’s a simple training plan:</p>
+
+<ul>
+  <li><b>Days 1–5</b>: navigation + pipes (<code>rg</code>, <code>fd</code>, <code>sort</code>, <code>awk</code>)</li>
+  <li><b>Days 6–10</b>: permissions + processes (<code>chmod</code>, <code>ps</code>, <code>kill</code>, <code>lsof</code>)</li>
+  <li><b>Days 11–15</b>: networking (<code>curl</code>, <code>ssh</code>, <code>rsync</code>, <code>ss</code>)</li>
+  <li><b>Days 16–20</b>: tmux + dotfiles (speed & repeatability)</li>
+  <li><b>Days 21–30</b>: write scripts + automate (lint with shellcheck)</li>
+</ul>
+
+<pre>
+ASCII: skill stack
+
+      [automation/scripts]
+   [data parsing + networking]
+ [process + permissions + text]
+     [navigation + shell]
+</pre>
+
+<div class="hint">
+Pick one “real” project (e.g. log analysis, backups, deploy script) and build it over the month.
+</div>
+`
+    },
+  ];
+
+  // --- UI State -------------------------------------------------------------
+  const state = {
+    filterTag: "All",
+    search: "",
+    visible: [...lessons],
+    currentIndex: 0
+  };
+
+  // --- Elements -------------------------------------------------------------
+  const tocEl = document.getElementById("toc");
+  const titleEl = document.getElementById("title");
+  const kickerEl = document.getElementById("kicker");
+  const contentEl = document.getElementById("content");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const barEl = document.getElementById("bar");
+  const footerLeft = document.getElementById("footerLeft");
+  const footerRight = document.getElementById("footerRight");
+  const searchEl = document.getElementById("search");
+  const chiprowEl = document.getElementById("chiprow");
+  const countEl = document.getElementById("count");
+
+  // --- Helpers --------------------------------------------------------------
+  const uniqueTags = () => {
+    const s = new Set();
+    lessons.forEach(l => l.tags.forEach(t => s.add(t)));
+    return ["All", ...Array.from(s).sort()];
+  };
+
+  function applyFilters() {
+    const q = state.search.trim().toLowerCase();
+    const tag = state.filterTag;
+
+    state.visible = lessons.filter(l => {
+      const matchesTag = (tag === "All") ? true : l.tags.includes(tag);
+      const blob = (l.module + " " + l.title + " " + l.tags.join(" ") + " " + stripHtml(l.content)).toLowerCase();
+      const matchesQ = q ? blob.includes(q) : true;
+      return matchesTag && matchesQ;
+    });
+
+    // Keep current lesson if possible; else clamp.
+    if (state.visible.length === 0) {
+      state.currentIndex = 0;
+    } else {
+      const currentId = getCurrentLesson()?.id;
+      const newIndex = currentId ? state.visible.findIndex(x => x.id === currentId) : 0;
+      state.currentIndex = (newIndex >= 0) ? newIndex : Math.min(state.currentIndex, state.visible.length - 1);
+    }
+
+    renderToc();
+    renderLesson();
+  }
+
+  function stripHtml(html){
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
+  function getCurrentLesson(){
+    return state.visible[state.currentIndex] || state.visible[0] || null;
+  }
+
+  function setCurrentById(id){
+    const idx = state.visible.findIndex(l => l.id === id);
+    if (idx >= 0){
+      state.currentIndex = idx;
+      renderLesson();
+      renderToc();
+      updateUrlHash();
+    }
+  }
+
+  function updateUrlHash(){
+    const l = getCurrentLesson();
+    if (!l) return;
+    history.replaceState(null, "", "#" + encodeURIComponent(l.id));
+  }
+
+  // --- Render ---------------------------------------------------------------
+  function renderChips(){
+    const tags = uniqueTags();
+    chiprowEl.innerHTML = "";
+    tags.forEach(t => {
+      const chip = document.createElement("div");
+      chip.className = "chip" + (state.filterTag === t ? " active" : "");
+      chip.textContent = t;
+      chip.addEventListener("click", () => {
+        state.filterTag = t;
+        renderChips();
+        applyFilters();
+      });
+      chiprowEl.appendChild(chip);
+    });
+  }
+
+  function renderToc(){
+    tocEl.innerHTML = "";
+    countEl.textContent = `${state.visible.length}/${lessons.length}`;
+
+    const current = getCurrentLesson();
+    state.visible.forEach(l => {
+      const item = document.createElement("div");
+      item.className = "toc-item" + (current && current.id === l.id ? " active" : "");
+      item.innerHTML = `
+        <div class="kicker">${escapeHtml(l.module)}</div>
+        <p class="title">${escapeHtml(l.title)}</p>
+        <div class="meta">${escapeHtml(l.tags.join(" · "))}</div>
+      `;
+      item.addEventListener("click", () => {
+        setCurrentById(l.id);
+      });
+      tocEl.appendChild(item);
+    });
+  }
+
+  function renderLesson(){
+    const l = getCurrentLesson();
+    if (!l){
+      kickerEl.textContent = "No results";
+      titleEl.textContent = "Try a different search or tag filter.";
+      contentEl.innerHTML = `<div class="hint warn">No lessons match your filter.</div>`;
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      barEl.style.width = "0%";
+      footerLeft.textContent = "";
+      footerRight.textContent = "";
+      return;
+    }
+
+    kickerEl.textContent = l.module;
+    titleEl.textContent = l.title;
+    contentEl.innerHTML = l.content;
+
+    prevBtn.disabled = state.currentIndex <= 0;
+    nextBtn.disabled = state.currentIndex >= state.visible.length - 1;
+
+    const progress = (state.visible.length <= 1) ? 100 : (state.currentIndex / (state.visible.length - 1)) * 100;
+    barEl.style.width = `${progress}%`;
+
+    footerLeft.textContent = `Lesson ${state.currentIndex + 1} of ${state.visible.length}`;
+    footerRight.textContent = `Filter: ${state.filterTag} • Search: ${state.search ? '"' + state.search + '"' : "—"}`;
+  }
+
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  // --- Events ---------------------------------------------------------------
+  prevBtn.addEventListener("click", () => {
+    if (state.currentIndex > 0) {
+      state.currentIndex--;
+      renderLesson(); renderToc(); updateUrlHash();
+    }
+  });
+  nextBtn.addEventListener("click", () => {
+    if (state.currentIndex < state.visible.length - 1) {
+      state.currentIndex++;
+      renderLesson(); renderToc(); updateUrlHash();
+    }
+  });
+
+  searchEl.addEventListener("input", (e) => {
+    state.search = e.target.value;
+    applyFilters();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    // Ignore if typing in input
+    const active = document.activeElement;
+    const typing = active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
+    if (!typing && e.key === "/"){
+      e.preventDefault();
+      searchEl.focus();
+      return;
+    }
+    if (typing) return;
+
+    if (e.key === "ArrowLeft") prevBtn.click();
+    if (e.key === "ArrowRight") nextBtn.click();
+    if (e.key === "j" || e.key === "J") {
+      if (state.currentIndex < state.visible.length - 1) nextBtn.click();
+    }
+    if (e.key === "k" || e.key === "K") {
+      if (state.currentIndex > 0) prevBtn.click();
+    }
+  });
+
+  function initFromHash(){
+    const id = decodeURIComponent((location.hash || "").replace("#","")).trim();
+    if (!id) return;
+    // Temporarily use full list to find a match, then apply current filters.
+    const idxAll = lessons.findIndex(l => l.id === id);
+    if (idxAll >= 0){
+      // set current by id after filters applied
+      state.currentIndex = 0;
+      applyFilters();
+      // If filtered list doesn't include it, fall back to All.
+      if (!state.visible.some(l => l.id === id)){
+        state.filterTag = "All";
+        state.search = "";
+        searchEl.value = "";
+        renderChips();
+        applyFilters();
+      }
+      setCurrentById(id);
+    }
+  }
+
+  // --- Boot -----------------------------------------------------------------
+  renderChips();
+  applyFilters();
+  initFromHash();
+</script>
+</body>
+</html>
