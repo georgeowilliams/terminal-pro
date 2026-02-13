@@ -1,4 +1,4 @@
-import { courses } from "./courses/index.js";
+import { loadCourse, loadCourseList, loadCourseMeta } from "./courseLoader.js";
 import { createState } from "./state.js";
 import { keyFor, migrateV2ToV3, readJson, writeJson } from "./storage.js";
 import { getRoute, setCourse, setLessonHash } from "./router.js";
@@ -12,7 +12,7 @@ import { escapeHtml, stripHtml } from "./utils/text.js";
 
 const els = ["toc","title","kicker","content","prevBtn","nextBtn","bar","footerLeft","footerRight","search","chiprow","count","practiceToggle","resetProgressBtn","completeBtn","courseSelect"].reduce((acc,id)=> (acc[id]=$(id),acc),{});
 
-let state; let glossary = []; let aliasIndex = new Map(); let tooltip;
+let state; let glossary = []; let aliasIndex = new Map(); let tooltip; let availableCourseIds = [];
 
 const specialLessons = [
   {id:"daily-drills",module:"15. Reference",title:"Daily Drills",tags:["reference","practice"],content:""},
@@ -57,26 +57,34 @@ function renderAll(){
   setLessonHash(l.id);
 }
 
-async function loadCourse(courseId){
-  const loader = courses[courseId] || courses["linux-terminal"];
-  const { course, drillTasks } = await loader();
-  const gmod = await import(`./glossary/${course.glossaryId}.glossary.js`);
-  glossary = gmod.glossary;
+async function loadAndRenderCourse(courseId){
+  const payload = await loadCourse(courseId);
+  const course = { meta: payload.meta, lessons: payload.lessons };
+  glossary = payload.glossary;
   aliasIndex = new Map(); glossary.forEach((item)=>[item.term,...(item.aliases||[])].forEach((a)=>aliasIndex.set(a.toLowerCase(), item.term.toLowerCase())));
   migrateV2ToV3(course.meta.id, course.lessons);
-  state = createState(course); state.keys = keyFor(course.meta.id); state.drillTasks = drillTasks;
+  state = createState(course); state.keys = keyFor(course.meta.id); state.drillTasks = course.meta.drillTasks || [];
   renderLayout(course.meta); setPracticeMode(state.practiceMode);
   tooltip = createTooltipController({ glossary, normalizeTerm });
-  const route = getRoute("linux-terminal");
+  const route = getRoute(course.meta.id);
   state.visible = allLessons();
   if (route.lessonId) { const idx = state.visible.findIndex((l)=>l.id===route.lessonId); if (idx>=0) state.currentIndex = idx; }
   els.courseSelect.value = course.meta.id;
   applyFilters();
 }
 
-function initCourseSwitcher(){
-  els.courseSelect.innerHTML = Object.keys(courses).map((id)=>`<option value="${id}">${id === "linux-terminal" ? "Linux Terminal Expert" : id}</option>`).join("");
-  els.courseSelect.addEventListener("change", async (e)=>{ setCourse(e.target.value); await loadCourse(e.target.value); });
+async function initCourseSwitcher(){
+  const list = await loadCourseList();
+  availableCourseIds = list.map((item) => item.id);
+  const metas = await Promise.all(availableCourseIds.map((id) => loadCourseMeta(id)));
+  const titleById = new Map(metas.map((meta) => [meta.id, meta.title || meta.id]));
+  els.courseSelect.innerHTML = availableCourseIds.map((id)=>`<option value="${id}">${escapeHtml(titleById.get(id) || id)}</option>`).join("");
+  els.courseSelect.addEventListener("change", async (e)=>{
+    const selectedCourseId = e.target.value;
+    setCourse(selectedCourseId);
+    await loadAndRenderCourse(selectedCourseId);
+    els.chiprow.innerHTML = renderChips(uniqueTags(allLessons()), state.filterTag);
+  });
 }
 
 function bindEvents(){
@@ -97,11 +105,16 @@ function bindEvents(){
 }
 
 async function boot(){
-  initCourseSwitcher();
   bindEvents();
-  const route = getRoute("linux-terminal");
-  await loadCourse(route.courseId);
-  els.chiprow.innerHTML = renderChips(uniqueTags(allLessons()), state.filterTag);
+  await initCourseSwitcher();
+  const route = getRoute(availableCourseIds[0] || "linux-terminal");
+  try {
+    await loadAndRenderCourse(route.courseId);
+    els.chiprow.innerHTML = renderChips(uniqueTags(allLessons()), state.filterTag);
+  } catch (error) {
+    console.error(error);
+    els.content.innerHTML = `<p>Could not load course data. ${escapeHtml(String(error.message || error))}</p>`;
+  }
 }
 
 boot();

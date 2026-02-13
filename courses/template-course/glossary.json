@@ -1,0 +1,10 @@
+[
+  {
+    "term": "example",
+    "aliases": ["examples"],
+    "short": "Short definition.",
+    "long": "Longer explanation for the term.",
+    "examples": ["example usage"],
+    "seeAlso": []
+  }
+]
