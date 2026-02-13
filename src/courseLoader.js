@@ -14,14 +14,14 @@ function resolveJsonPath(basePath, relativePath) {
   return new URL(relativePath, new URL(basePath, window.location.origin)).pathname;
 }
 
-function resolveCourseJsonPath(entry, locale) {
-  if (!entry?.pathPattern) throw new Error(`Invalid index entry for ${entry?.courseId || 'unknown course'}`);
-  return entry.pathPattern.replace('{locale}', locale);
-}
-
-export async function loadCourseIndex() {
-  if (indexCache.value) return indexCache.value;
-  const list = await fetchJson('/content/courses/index.json');
+export async function loadCourseList() {
+  if (listCache.value) return listCache.value;
+  let list;
+  try {
+    list = await fetchJson('/content/courses/index.json');
+  } catch (error) {
+    list = await fetchJson('/courses/index.json');
+  }
   if (!Array.isArray(list)) {
     throw new Error('Invalid content/courses/index.json: expected an array');
   }

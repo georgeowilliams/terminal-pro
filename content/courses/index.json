@@ -1,8 +1,6 @@
 [
   {
-    "courseId": "linux-terminal",
-    "defaultLocale": "en",
-    "locales": ["en", "es", "fr", "de"],
-    "pathPattern": "/content/courses/linux-terminal/{locale}/course.json"
+    "id": "linux-terminal",
+    "path": "/courses/linux-terminal/course.json"
   }
 ]
