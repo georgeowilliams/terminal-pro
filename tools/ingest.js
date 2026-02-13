@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { parseArgs, ensureDir, writeJson } = require('./common');
 
-async function extractPdfPages(inputPath) {
+async function extractTextFromPdf(inputPath) {
   let pdfParse;
   try {
     pdfParse = require('pdf-parse');
@@ -13,101 +13,136 @@ async function extractPdfPages(inputPath) {
 
   const dataBuffer = fs.readFileSync(inputPath);
   const parsed = await pdfParse(dataBuffer);
-  const pagesText = String(parsed.text || '').split(/\f+/g).map((text, i) => ({ page: i + 1, text: text.trim() })).filter((p) => p.text);
-  if (pagesText.length) return pagesText;
-  return [{ page: 1, text: String(parsed.text || '').trim() }];
+  return String(parsed.text || '').trim();
 }
 
-function splitSections(text) {
-  const lines = text.split('\n');
-  const sections = [];
-  let current = { heading: 'Untitled', body: [] };
-  const isHeading = (line) => {
-    const clean = line.trim();
-    if (!clean) return false;
-    if (/^#{1,6}\s+/.test(clean)) return true;
-    if (clean.length <= 80 && /^[A-Z][A-Za-z0-9\s\-/:()]+$/.test(clean) && !/[.;]$/.test(clean)) return true;
-    return false;
+function isHeading(line) {
+  const clean = line.trim();
+  if (!clean) return false;
+  if (/^#{1,6}\s+/.test(clean)) return true;
+  if (/^\d+(\.\d+)*\s+[A-Z]/.test(clean)) return true;
+  return clean.length <= 100 && /^[A-Z][A-Za-z0-9\s\-:/()]+$/.test(clean) && !/[.;:,]$/.test(clean);
+}
+
+function findCutPoint(blockText, targetLength) {
+  const windowText = blockText.slice(0, targetLength + 200);
+  const headingMatch = windowText.match(/\n(?=#{1,6}\s|\d+(?:\.\d+)*\s+[A-Z])/g);
+  if (headingMatch && headingMatch.length) {
+    const idx = windowText.lastIndexOf('\n', targetLength);
+    if (idx > targetLength * 0.6) return idx;
+  }
+
+  const paragraphCut = windowText.lastIndexOf('\n\n', targetLength);
+  if (paragraphCut > targetLength * 0.6) return paragraphCut + 2;
+
+  const lineCut = windowText.lastIndexOf('\n', targetLength);
+  if (lineCut > targetLength * 0.6) return lineCut + 1;
+
+  const spaceCut = windowText.lastIndexOf(' ', targetLength);
+  if (spaceCut > targetLength * 0.6) return spaceCut + 1;
+  return Math.min(targetLength, blockText.length);
+}
+
+function splitIntoBlocks(rawText) {
+  const lines = rawText.split(/\r?\n/);
+  const blocks = [];
+  let inFence = false;
+  let current = [];
+
+  const flush = () => {
+    const text = current.join('\n').trimEnd();
+    if (text) blocks.push(text);
+    current = [];
   };
 
   for (const line of lines) {
-    if (isHeading(line) && current.body.length) {
-      sections.push(current);
-      current = { heading: line.replace(/^#{1,6}\s+/, '').trim(), body: [] };
-    } else if (isHeading(line) && !current.body.length) {
-      current.heading = line.replace(/^#{1,6}\s+/, '').trim();
-    } else {
-      current.body.push(line);
+    if (/^```/.test(line.trim())) {
+      inFence = !inFence;
+      current.push(line);
+      if (!inFence) flush();
+      continue;
     }
+
+    if (inFence) {
+      current.push(line);
+      continue;
+    }
+
+    if (isHeading(line)) {
+      flush();
+      blocks.push(line.trim());
+      continue;
+    }
+
+    if (/^\s{4,}\S/.test(line)) {
+      current.push(line);
+      continue;
+    }
+
+    current.push(line);
   }
-  if (current.body.length) sections.push(current);
-  return sections;
+  flush();
+  return blocks;
 }
 
-function chunkSection(sectionText, min = 2000, max = 3000, overlap = 200) {
-  const blocks = sectionText.match(/```[\s\S]*?```|[^\n]+(?:\n|$)/g) || [sectionText];
+function chunkText(rawText, chunkSize = 2500, overlap = 200) {
+  const blocks = splitIntoBlocks(rawText);
+  const full = blocks.join('\n\n');
   const chunks = [];
-  let cursor = '';
-  for (const block of blocks) {
-    if ((cursor + block).length > max && cursor.length >= min) {
-      chunks.push(cursor.trim());
-      const tail = cursor.slice(Math.max(0, cursor.length - overlap));
-      cursor = `${tail}\n${block}`;
-    } else {
-      cursor += block;
+  let start = 0;
+
+  while (start < full.length) {
+    const remaining = full.slice(start);
+    if (remaining.length <= chunkSize) {
+      chunks.push({ start, end: full.length, text: remaining.trim() });
+      break;
     }
+
+    const cut = findCutPoint(remaining, chunkSize);
+    const end = start + cut;
+    chunks.push({ start, end, text: full.slice(start, end).trim() });
+    start = Math.max(0, end - overlap);
   }
-  if (cursor.trim()) chunks.push(cursor.trim());
-  return chunks;
+
+  return chunks
+    .filter((c) => c.text)
+    .map((chunk, i) => ({
+      chunkId: `c${i + 1}`,
+      text: chunk.text,
+      start: chunk.start,
+      end: chunk.end,
+    }));
 }
 
 async function main() {
   const args = parseArgs(process.argv);
   const input = args.input;
   const docId = args.docId;
+
   if (!input || !docId) {
-    throw new Error('Usage: node tools/ingest.js --input "sources/linux.pdf" --docId linuxbook1');
+    throw new Error('Usage: node tools/ingest.js --input "sources/book.pdf" --docId linuxbook1');
   }
 
   const absInput = path.resolve(input);
   const ext = path.extname(absInput).toLowerCase();
-  let pages = [];
+  let rawText;
 
   if (ext === '.pdf') {
-    pages = await extractPdfPages(absInput);
+    rawText = await extractTextFromPdf(absInput);
   } else if (ext === '.txt' || ext === '.md') {
-    const text = fs.readFileSync(absInput, 'utf8');
-    pages = [{ page: 1, text }];
+    rawText = fs.readFileSync(absInput, 'utf8');
   } else {
-    throw new Error(`Unsupported file type: ${ext}`);
+    throw new Error(`Unsupported input type: ${ext}. Expected .pdf, .txt, or .md`);
   }
-
-  const rawText = pages.map((p) => p.text).join('\n\n');
-  const sections = splitSections(rawText);
-  const chunks = [];
-  let idx = 1;
-
-  sections.forEach((section, sectionIndex) => {
-    const scoped = `${section.heading}\n${section.body.join('\n')}`.trim();
-    const pieceList = chunkSection(scoped);
-    pieceList.forEach((piece) => {
-      chunks.push({
-        id: `${docId}-c${String(idx).padStart(4, '0')}`,
-        section: section.heading,
-        sectionIndex,
-        text: piece,
-      });
-      idx += 1;
-    });
-  });
 
   const outDir = path.join('artifacts', docId);
   ensureDir(outDir);
-  fs.writeFileSync(path.join(outDir, 'raw.txt'), rawText);
-  writeJson(path.join(outDir, 'pages.json'), pages);
+  fs.writeFileSync(path.join(outDir, 'raw.txt'), `${rawText.trim()}\n`);
+
+  const chunks = chunkText(rawText);
   writeJson(path.join(outDir, 'chunks.json'), chunks);
 
-  console.log(`Ingested ${input} -> ${outDir} (${chunks.length} chunks)`);
+  console.log(`Ingested ${input} into ${outDir} (${chunks.length} chunks)`);
 }
 
 main().catch((err) => {
