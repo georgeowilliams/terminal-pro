@@ -16,7 +16,12 @@ function resolveJsonPath(basePath, relativePath) {
 
 export async function loadCourseList() {
   if (listCache.value) return listCache.value;
-  const list = await fetchJson('/courses/index.json');
+  let list;
+  try {
+    list = await fetchJson('/content/courses/index.json');
+  } catch (error) {
+    list = await fetchJson('/courses/index.json');
+  }
   if (!Array.isArray(list)) {
     throw new Error('Invalid courses/index.json: expected an array');
   }
