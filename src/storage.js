@@ -10,6 +10,8 @@ export const keyFor = (courseId) => ({
   lessonPrefix: `terminalCourse.v3.${courseId}.lesson.`,
 });
 
+export const LANGUAGE_KEY = 'terminalCourse.v3.lang';
+
 export function migrateV2ToV3(courseId, lessons) {
   const v3 = keyFor(courseId);
   if (localStorage.getItem(v3.complete) || localStorage.getItem(v3.practiceMode)) return;

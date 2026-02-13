@@ -1,0 +1,637 @@
+[
+  {
+    "termId": "file",
+    "display": "file",
+    "aliases": [
+      "files"
+    ],
+    "short": "Named data stored on disk.",
+    "long": "A file is a sequence of bytes with metadata like owner and permissions.",
+    "seeAlso": [
+      "filesystem",
+      "path",
+      "permission"
+    ]
+  },
+  {
+    "termId": "filesystem",
+    "display": "filesystem",
+    "aliases": [
+      "file system"
+    ],
+    "short": "Hierarchy used to organize files and directories.",
+    "long": "Linux exposes storage as a rooted tree that starts at / and contains mounted devices.",
+    "seeAlso": [
+      "directory",
+      "path",
+      "/etc",
+      "/proc"
+    ]
+  },
+  {
+    "termId": "path",
+    "display": "path",
+    "aliases": [
+      "pathname"
+    ],
+    "short": "Address to a file or directory.",
+    "long": "Paths can be absolute (/var/log) or relative (../src). The shell resolves them based on current directory.",
+    "examples": [
+      "cd /etc/ssh",
+      "cat ../notes.txt"
+    ],
+    "seeAlso": [
+      "directory",
+      "root"
+    ]
+  },
+  {
+    "termId": "directory",
+    "display": "directory",
+    "aliases": [
+      "folder",
+      "directories"
+    ],
+    "short": "Container that holds files and other directories.",
+    "long": "Directories build the tree structure for the filesystem.",
+    "seeAlso": [
+      "filesystem",
+      "path"
+    ]
+  },
+  {
+    "termId": "permission",
+    "display": "permission",
+    "aliases": [
+      "permissions"
+    ],
+    "short": "Read/write/execute access rules.",
+    "long": "Permissions are defined for user, group, and others and can be set with chmod.",
+    "seeAlso": [
+      "ownership",
+      "group",
+      "umask"
+    ]
+  },
+  {
+    "termId": "ownership",
+    "display": "ownership",
+    "aliases": [
+      "owner"
+    ],
+    "short": "User/group associated with a file.",
+    "long": "chown changes ownership. Ownership controls default permission interpretation.",
+    "seeAlso": [
+      "group",
+      "permission",
+      "sudo"
+    ]
+  },
+  {
+    "termId": "group",
+    "display": "group",
+    "aliases": [
+      "groups"
+    ],
+    "short": "Shared account role used in permissions.",
+    "long": "Users can be members of groups to share access to files and services.",
+    "seeAlso": [
+      "ownership",
+      "permission"
+    ]
+  },
+  {
+    "termId": "root",
+    "display": "root",
+    "aliases": [
+      "superuser"
+    ],
+    "short": "Administrative account with near-unrestricted access.",
+    "long": "root can bypass many permission checks, so use carefully.",
+    "seeAlso": [
+      "sudo",
+      "permission"
+    ]
+  },
+  {
+    "termId": "sudo",
+    "display": "sudo",
+    "aliases": [],
+    "short": "Run a command with elevated privileges.",
+    "long": "sudo executes one command as another user (default root), usually after policy checks.",
+    "seeAlso": [
+      "root",
+      "permission"
+    ]
+  },
+  {
+    "termId": "umask",
+    "display": "umask",
+    "aliases": [],
+    "short": "Default permission mask for new files/dirs.",
+    "long": "umask removes permission bits from defaults (files 666, dirs 777).",
+    "seeAlso": [
+      "permission"
+    ]
+  },
+  {
+    "termId": "stream",
+    "display": "stream",
+    "aliases": [
+      "streams"
+    ],
+    "short": "A flow of bytes through stdin/stdout/stderr.",
+    "long": "Unix tools read and write streams, making redirection and composition possible.",
+    "examples": [
+      "echo hi | wc -c",
+      "command > out.txt",
+      "command 2> err.txt"
+    ],
+    "seeAlso": [
+      "stdin",
+      "stdout",
+      "stderr",
+      "pipe",
+      "redirection"
+    ]
+  },
+  {
+    "termId": "stdin",
+    "display": "stdin",
+    "aliases": [
+      "standard input"
+    ],
+    "short": "Input stream (fd 0).",
+    "long": "Programs read data from stdin by default, often from keyboard or a pipe.",
+    "seeAlso": [
+      "stream",
+      "pipe"
+    ]
+  },
+  {
+    "termId": "stdout",
+    "display": "stdout",
+    "aliases": [
+      "standard output"
+    ],
+    "short": "Output stream (fd 1).",
+    "long": "Normal command output is written to stdout and can be redirected.",
+    "seeAlso": [
+      "stream",
+      "redirection"
+    ]
+  },
+  {
+    "termId": "stderr",
+    "display": "stderr",
+    "aliases": [
+      "standard error"
+    ],
+    "short": "Error stream (fd 2).",
+    "long": "Diagnostic output goes to stderr so it can be separated from normal output.",
+    "seeAlso": [
+      "stdout",
+      "redirection"
+    ]
+  },
+  {
+    "termId": "pipe",
+    "display": "pipe",
+    "aliases": [
+      "pipes"
+    ],
+    "short": "Connect stdout of one command to stdin of another.",
+    "long": "Pipes let you chain tiny tools into powerful workflows.",
+    "examples": [
+      "rg error app.log | sort | uniq -c"
+    ],
+    "seeAlso": [
+      "stream",
+      "redirection"
+    ]
+  },
+  {
+    "termId": "redirection",
+    "display": "redirection",
+    "aliases": [
+      "redirect"
+    ],
+    "short": "Send stdin/stdout/stderr to files/devices.",
+    "long": ">, >>, <, and 2> control where data flows.",
+    "seeAlso": [
+      "stream",
+      "stdout",
+      "stderr"
+    ]
+  },
+  {
+    "termId": "socket",
+    "display": "socket",
+    "aliases": [
+      "sockets"
+    ],
+    "short": "Endpoint for network communication.",
+    "long": "Sockets are file-like interfaces used by TCP/UDP and Unix domain communication.",
+    "seeAlso": [
+      "port",
+      "tcp",
+      "udp"
+    ]
+  },
+  {
+    "termId": "device file",
+    "display": "device file",
+    "aliases": [
+      "device"
+    ],
+    "short": "Special file representing hardware or pseudo-devices.",
+    "long": "/dev entries provide a file interface to devices (disk, terminal, null).",
+    "seeAlso": [
+      "/dev"
+    ]
+  },
+  {
+    "termId": "/dev",
+    "display": "/dev",
+    "aliases": [],
+    "short": "Directory of device files.",
+    "long": "Contains pseudo/devices like /dev/null and /dev/tty.",
+    "seeAlso": [
+      "device file"
+    ]
+  },
+  {
+    "termId": "/proc",
+    "display": "/proc",
+    "aliases": [],
+    "short": "Virtual filesystem exposing process/kernel info.",
+    "long": "Read-only-ish runtime data such as /proc/cpuinfo and /proc/<pid>.",
+    "seeAlso": [
+      "pid",
+      "process"
+    ]
+  },
+  {
+    "termId": "/etc",
+    "display": "/etc",
+    "aliases": [],
+    "short": "System-wide configuration directory.",
+    "long": "Global config files for services and tools usually live under /etc.",
+    "seeAlso": [
+      "filesystem",
+      "service"
+    ]
+  },
+  {
+    "termId": "daemon",
+    "display": "daemon",
+    "aliases": [
+      "daemons"
+    ],
+    "short": "Background service process.",
+    "long": "Daemons run without interactive terminals and often start at boot.",
+    "seeAlso": [
+      "service",
+      "process"
+    ]
+  },
+  {
+    "termId": "service",
+    "display": "service",
+    "aliases": [
+      "services"
+    ],
+    "short": "Managed long-running process.",
+    "long": "systemd and similar tools supervise services and their lifecycle.",
+    "seeAlso": [
+      "daemon"
+    ]
+  },
+  {
+    "termId": "signal",
+    "display": "signal",
+    "aliases": [
+      "signals"
+    ],
+    "short": "Async notification sent to a process.",
+    "long": "Signals like SIGINT/SIGTERM instruct processes to stop, reload, or handle events.",
+    "seeAlso": [
+      "process",
+      "job control"
+    ]
+  },
+  {
+    "termId": "process",
+    "display": "process",
+    "aliases": [
+      "processes"
+    ],
+    "short": "Running program instance.",
+    "long": "Each process has a PID, parent process, environment, and open files.",
+    "seeAlso": [
+      "pid",
+      "signal"
+    ]
+  },
+  {
+    "termId": "pid",
+    "display": "PID",
+    "aliases": [
+      "pid"
+    ],
+    "short": "Process identifier number.",
+    "long": "Unique numeric ID for a running process.",
+    "seeAlso": [
+      "process"
+    ]
+  },
+  {
+    "termId": "job control",
+    "display": "job control",
+    "aliases": [
+      "jobs"
+    ],
+    "short": "Shell controls for foreground/background jobs.",
+    "long": "Use Ctrl+Z, bg, fg, and jobs to manage interactive processes.",
+    "seeAlso": [
+      "signal",
+      "process"
+    ]
+  },
+  {
+    "termId": "port",
+    "display": "port",
+    "aliases": [
+      "ports"
+    ],
+    "short": "Numeric endpoint on a host.",
+    "long": "Ports identify specific network services (e.g., 22 SSH, 443 HTTPS).",
+    "seeAlso": [
+      "socket",
+      "tcp",
+      "udp",
+      "ssh"
+    ]
+  },
+  {
+    "termId": "dns",
+    "display": "DNS",
+    "aliases": [
+      "dns"
+    ],
+    "short": "Name system mapping domains to IPs.",
+    "long": "DNS resolves human-readable names to IP addresses before connecting.",
+    "seeAlso": [
+      "tcp",
+      "udp"
+    ]
+  },
+  {
+    "termId": "tcp",
+    "display": "TCP",
+    "aliases": [
+      "tcp"
+    ],
+    "short": "Reliable connection-oriented transport protocol.",
+    "long": "TCP performs handshake, ordering, and retransmission.",
+    "seeAlso": [
+      "udp",
+      "port"
+    ]
+  },
+  {
+    "termId": "udp",
+    "display": "UDP",
+    "aliases": [
+      "udp"
+    ],
+    "short": "Connectionless transport protocol.",
+    "long": "UDP is low overhead and used for DNS, streaming, and telemetry.",
+    "seeAlso": [
+      "tcp"
+    ]
+  },
+  {
+    "termId": "ssh",
+    "display": "SSH",
+    "aliases": [
+      "ssh"
+    ],
+    "short": "Secure Shell for remote login/commands.",
+    "long": "SSH provides encrypted terminal access, port forwarding, and file transfer.",
+    "seeAlso": [
+      "port",
+      "service"
+    ]
+  },
+  {
+    "termId": "glob",
+    "display": "glob",
+    "aliases": [
+      "globs"
+    ],
+    "short": "Shell wildcard pattern matching.",
+    "long": "Patterns like *.log are expanded by the shell before command execution.",
+    "seeAlso": [
+      "quoting"
+    ]
+  },
+  {
+    "termId": "quoting",
+    "display": "quoting",
+    "aliases": [
+      "quote"
+    ],
+    "short": "Control shell interpretation of characters.",
+    "long": "Single and double quotes change expansion behavior for variables and spaces.",
+    "seeAlso": [
+      "glob",
+      "environment variable"
+    ]
+  },
+  {
+    "termId": "environment variable",
+    "display": "environment variable",
+    "aliases": [
+      "env var",
+      "environment variables"
+    ],
+    "short": "Named value inherited by child processes.",
+    "long": "Variables like PATH and HOME configure command behavior.",
+    "seeAlso": [
+      "process",
+      "exit code"
+    ]
+  },
+  {
+    "termId": "exit code",
+    "display": "exit code",
+    "aliases": [
+      "exit status"
+    ],
+    "short": "Numeric success/failure result from a command.",
+    "long": "0 usually means success; nonzero indicates errors or special states.",
+    "seeAlso": [
+      "process"
+    ]
+  },
+  {
+    "termId": "json",
+    "display": "JSON",
+    "aliases": [
+      "json"
+    ],
+    "short": "Structured text data format.",
+    "long": "Common for APIs, logs, and config; parsed with jq.",
+    "seeAlso": [
+      "jq",
+      "yaml"
+    ]
+  },
+  {
+    "termId": "yaml",
+    "display": "YAML",
+    "aliases": [
+      "yaml"
+    ],
+    "short": "Human-friendly structured text format.",
+    "long": "Used heavily for config and infra manifests.",
+    "seeAlso": [
+      "json"
+    ]
+  },
+  {
+    "termId": "jq",
+    "display": "jq",
+    "aliases": [],
+    "short": "Command-line JSON processor.",
+    "long": "jq filters, transforms, and queries JSON streams.",
+    "seeAlso": [
+      "json",
+      "yaml"
+    ]
+  },
+  {
+    "termId": "commit",
+    "display": "commit",
+    "aliases": [
+      "commits"
+    ],
+    "short": "Snapshot in git history.",
+    "long": "A commit records staged changes plus message, author, and parent.",
+    "seeAlso": [
+      "branch",
+      "head",
+      "staging area"
+    ]
+  },
+  {
+    "termId": "branch",
+    "display": "branch",
+    "aliases": [
+      "branches"
+    ],
+    "short": "Movable pointer to a commit chain.",
+    "long": "Branches isolate work and can be merged or rebased.",
+    "seeAlso": [
+      "commit",
+      "head"
+    ]
+  },
+  {
+    "termId": "head",
+    "display": "HEAD",
+    "aliases": [
+      "head"
+    ],
+    "short": "Current checked-out commit pointer.",
+    "long": "HEAD usually points to the current branch tip.",
+    "seeAlso": [
+      "branch",
+      "staging area"
+    ]
+  },
+  {
+    "termId": "staging area",
+    "display": "staging area",
+    "aliases": [
+      "index"
+    ],
+    "short": "Git area prepared for next commit.",
+    "long": "git add puts changes in the index before commit.",
+    "seeAlso": [
+      "commit",
+      "head"
+    ]
+  },
+  {
+    "termId": "tmux session",
+    "display": "tmux session",
+    "aliases": [
+      "session"
+    ],
+    "short": "Persistent tmux workspace.",
+    "long": "Sessions contain windows/panes and survive terminal disconnects.",
+    "seeAlso": [
+      "tmux window",
+      "tmux pane"
+    ]
+  },
+  {
+    "termId": "tmux window",
+    "display": "tmux window",
+    "aliases": [
+      "window"
+    ],
+    "short": "Tab-like container within a tmux session.",
+    "long": "Each window can hold one or more panes.",
+    "seeAlso": [
+      "tmux session",
+      "tmux pane"
+    ]
+  },
+  {
+    "termId": "tmux pane",
+    "display": "tmux pane",
+    "aliases": [
+      "pane",
+      "panes"
+    ],
+    "short": "Split terminal region inside tmux.",
+    "long": "Panes let you view multiple commands simultaneously.",
+    "seeAlso": [
+      "tmux session",
+      "tmux window"
+    ]
+  },
+  {
+    "termId": "fzf",
+    "display": "fzf",
+    "aliases": [],
+    "short": "Fuzzy finder for interactive selection.",
+    "long": "fzf provides fast fuzzy filtering for files, history, processes, and more."
+  },
+  {
+    "termId": "ripgrep",
+    "display": "ripgrep",
+    "aliases": [
+      "rg"
+    ],
+    "short": "Fast recursive text search tool.",
+    "long": "ripgrep replaces many grep/find combos with speed and smart defaults."
+  },
+  {
+    "termId": "fd",
+    "display": "fd",
+    "aliases": [],
+    "short": "User-friendly alternative to find.",
+    "long": "fd has simpler syntax and good default ignore behavior."
+  },
+  {
+    "termId": "bat",
+    "display": "bat",
+    "aliases": [],
+    "short": "Improved cat with syntax highlighting.",
+    "long": "bat shows files with line numbers, colors, and paging support."
+  }
+]
