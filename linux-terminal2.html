@@ -372,6 +372,31 @@
       color:var(--text);
     }
     .glossary-empty{ color: var(--muted); font-style: italic; }
+    .settings{
+      margin-top: 14px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px;
+      background: rgba(255,255,255,0.03);
+      display:grid;
+      gap:8px;
+    }
+    .settings .label{ font-size:11px; color:var(--muted); font-family:var(--mono); }
+    .settings button{ width:100%; }
+    button:focus-visible, .chip:focus-visible, .glossary-item:focus-visible, .toc-item:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+    .complete-badge{ color: var(--accent2); font-weight:700; margin-left:6px; }
+    .quiz-wrap{ border-top:1px solid var(--border); margin-top:8px; padding-top:14px; display:grid; gap:12px; }
+    .quiz-card{ border:1px solid var(--border); border-radius:12px; padding:12px; background: rgba(255,255,255,0.02); }
+    .quiz-card h4{ margin:0 0 8px; font-size:14px; }
+    .quiz-choices{ display:grid; gap:6px; margin:8px 0; }
+    .quiz-feedback{ margin-top:8px; font-size:12px; }
+    .quiz-feedback.ok{ color: var(--accent2); }
+    .quiz-feedback.bad{ color: var(--danger); }
+    .quiz-answer{ margin-top:8px; }
+    .quiz-answer pre{ margin-top:6px; }
+    .practice-on .content > p,
+    .practice-on .content > ul { opacity:0.86; }
+    .drill-task{ border:1px dashed var(--border); border-radius:10px; padding:10px; background:rgba(122,162,255,0.08); }
 
     @media (max-width: 980px){
       .app{ grid-template-columns: 1fr; }
@@ -399,6 +424,12 @@
 
     <div class="chiprow" id="chiprow"></div>
 
+    <div class="settings">
+      <div class="label">Learning Settings</div>
+      <button id="practiceToggle" type="button">Practice Mode: OFF</button>
+      <button id="resetProgressBtn" type="button">Reset progress</button>
+    </div>
+
     <div class="toc-title">
       <span>Index</span>
       <span id="count" style="color: var(--muted); font-family: var(--mono); font-size:11px;"></span>
@@ -422,6 +453,7 @@
         <div class="progresswrap" title="Progress">
           <div class="bar" id="bar"></div>
         </div>
+        <button id="completeBtn">Mark complete ✓</button>
         <button id="prevBtn">← Prev</button>
         <button id="nextBtn">Next →</button>
       </div>
@@ -1008,6 +1040,81 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     },
   ];
 
+  const quizBank = {
+    mindset: [
+      { type:"mcq", prompt:"What does `2> err.txt` do?", choices:["Redirect stdout to err.txt","Redirect stderr to err.txt","Append stdout to err.txt","Pipe stderr to the next command"], answerIndex:1, explanation:"File descriptor 2 is stderr, so `2>` redirects stderr." },
+      { type:"short", prompt:"What command shows your recent command history tail?", answer:"history | tail", explanation:"This gives a quick scratchpad of recent commands." }
+    ],
+    navigation: [
+      { type:"mcq", prompt:"What does `pushd`/`popd` help with?", choices:["File permissions","Directory stack navigation","Process signals","Port scanning"], answerIndex:1, explanation:"They manage a stack of directories for quick jumping." },
+      { type:"short", prompt:"Use zoxide to jump to a folder remembered as proj.", answer:"z proj", explanation:"zoxide stores weighted directory history." }
+    ],
+    help: [
+      { type:"mcq", prompt:"Which command lists manuals matching a keyword?", choices:["whereis keyword","man -k keyword","help keyword","which keyword"], answerIndex:1, explanation:"`man -k` (or apropos) searches man page names/descriptions." },
+      { type:"short", prompt:"Open the quick examples for curl.", answer:"tldr curl", explanation:"tldr provides concise examples." }
+    ],
+    text: [
+      { type:"short", prompt:"Find TODO recursively with line numbers in current folder.", answer:'rg -n "TODO" .', explanation:"ripgrep is recursive by default; -n prints line numbers." },
+      { type:"output", prompt:"Predict output for `printf \"a\\na\\nb\\n\" | sort | uniq -c`", answer:"      2 a\n      1 b", explanation:"sort groups lines; uniq -c counts adjacent duplicates." }
+    ],
+    globbing: [
+      { type:"mcq", prompt:"Which quote type prevents variable expansion?", choices:["Double quotes \"...\"","Single quotes '...'","Backticks","No quotes"], answerIndex:1, explanation:"Single quotes keep content literal in shell." },
+      { type:"short", prompt:"Write a safe command to list a path stored in variable path that might contain spaces.", answer:'ls "$path"', explanation:"Quote variables that may include spaces." }
+    ],
+    permissions: [
+      { type:"mcq", prompt:"What does chmod 750 grant to group?", choices:["rwx","r-x","rw-","---"], answerIndex:1, explanation:"7 user=rwx, 5 group=r-x, 0 others=---." },
+      { type:"short", prompt:"Set owner user and group devops on deploy.sh.", answer:"chown user:devops deploy.sh", explanation:"Format is chown user:group file." }
+    ],
+    processes: [
+      { type:"mcq", prompt:"Ctrl+C usually sends which signal?", choices:["SIGTERM","SIGKILL","SIGINT","SIGHUP"], answerIndex:2, explanation:"Interactive interrupt is SIGINT." },
+      { type:"short", prompt:"Bring first background job to foreground.", answer:"fg %1", explanation:"job spec `%1` targets the first job." }
+    ],
+    networking: [
+      { type:"mcq", prompt:"Default SSH port is:", choices:["80","22","443","53"], answerIndex:1, explanation:"SSH listens on TCP 22 by default." },
+      { type:"short", prompt:"List listening ports and processes.", answer:"ss -tulpn", explanation:"ss provides socket and process details." }
+    ],
+    git: [
+      { type:"mcq", prompt:"Which command stages patches interactively?", choices:["git add -p","git stage all","git patch","git commit -p"], answerIndex:0, explanation:"`git add -p` lets you stage hunks." },
+      { type:"short", prompt:"Check repo state before committing.", answer:"git status", explanation:"Always inspect status before changes." }
+    ],
+    tmux: [
+      { type:"mcq", prompt:"tmux key chord for new window (default prefix)?", choices:["Ctrl+b c","Ctrl+b %","Ctrl+b o","Ctrl+b d"], answerIndex:0, explanation:"Prefix Ctrl+b then c creates a window." },
+      { type:"short", prompt:"Reattach to tmux session named work.", answer:"tmux a -t work", explanation:"`a` is shorthand for attach." }
+    ],
+    dotfiles: [
+      { type:"mcq", prompt:"Which alias is a safety rail for delete?", choices:["alias rm='rm -i'","alias rm='rm -rf'","alias cp='cp -r'","alias mv='mv -f'"], answerIndex:0, explanation:"Interactive rm helps avoid accidental deletion." },
+      { type:"short", prompt:"Set safer copy alias from the lesson.", answer:"alias cp='cp -i'", explanation:"-i prompts before overwrite." }
+    ],
+    parsing: [
+      { type:"mcq", prompt:"Which tool is designed to query JSON on CLI?", choices:["awk","jq","grep","sed"], answerIndex:1, explanation:"jq is purpose-built for JSON." },
+      { type:"short", prompt:"Select error-status items with jq (assuming array at .items).", answer:'jq ".items[] | select(.status==\"error\")"', explanation:"Select filters objects by predicate." }
+    ],
+    scripting: [
+      { type:"mcq", prompt:"Which strict-mode header is recommended?", choices:["set -x","set -euo pipefail","set +e","set -f"], answerIndex:1, explanation:"`set -euo pipefail` is the baseline here." },
+      { type:"short", prompt:"What command should you run to lint shell scripts?", answer:"shellcheck script.sh", explanation:"shellcheck catches common shell bugs." }
+    ],
+    tools: [
+      { type:"mcq", prompt:"Which trio gives the fastest day-one speedup?", choices:["curl + ssh + rsync","rg + fzf + tmux","jq + yq + python","git + gh + make"], answerIndex:1, explanation:"The lesson calls out rg + fzf + tmux." },
+      { type:"short", prompt:"Name one monitoring tool from the toolbox section.", answer:"htop", explanation:"Any listed tool (e.g., htop, lsof, strace) is valid." }
+    ],
+    challenge: [
+      { type:"mcq", prompt:"Days 11–15 focus on which area?", choices:["Git workflows","Networking","Dotfiles","Permissions"], answerIndex:1, explanation:"The plan explicitly assigns networking to days 11–15." },
+      { type:"short", prompt:"What should you pick and build over the month?", answer:"one real project", explanation:"A real project compounds skills across lessons." }
+    ]
+  };
+
+  lessons.forEach(l => {
+    if (quizBank[l.id]) l.quiz = quizBank[l.id];
+  });
+
+  const drillTasks = [
+    "Find the 10 largest files under current directory.",
+    "List listening ports with owning processes.",
+    "Find TODO/FIXME lines in this repo.",
+    "Show top 5 memory-consuming processes.",
+    "Find files modified in the last 24 hours."
+  ];
+
   // --- Glossary -------------------------------------------------------------
   const glossary = [
     { term: "file", aliases:["files"], short:"Named data stored on disk.", long:"A file is a sequence of bytes with metadata like owner and permissions.", seeAlso:["filesystem","path","permission"] },
@@ -1069,22 +1176,25 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   });
 
   // --- UI State -------------------------------------------------------------
-  const allLessons = [...lessons, {id:"glossary",module:"15. Reference",title:"Glossary",tags:["reference","fundamentals"],content:""}];
+  const allLessons = [...lessons,
+    {id:"daily-drills",module:"15. Reference",title:"Daily Drills",tags:["reference","practice"],content:""},
+    {id:"glossary",module:"16. Reference",title:"Glossary",tags:["reference","fundamentals"],content:""}
+  ];
+  const storageKeys = {
+    practiceMode: "terminalCourse.v2.practiceMode",
+    complete: "terminalCourse.v2.completedLessons",
+    lessonPrefix: "terminalCourse.v2.lesson."
+  };
   const state = {
     filterTag: "All",
     search: "",
     visible: [...allLessons],
     currentIndex: 0,
-    tooltipTermKey: null
+    tooltipTermKey: null,
+    practiceMode: localStorage.getItem(storageKeys.practiceMode) === "1",
+    completedLessons: new Set(JSON.parse(localStorage.getItem(storageKeys.complete) || "[]"))
   };
   const annotatedCache = new Map();
-
-  // TODO: Add practice mode quiz widgets per lesson.
-  // TODO: Add command-output puzzle cards with reveal answers.
-  // TODO: Add install checklist page for major distros and macOS.
-  // TODO: Add dotfiles generator UI exporting a starter .zshrc.
-  // TODO: Add learning path progression and completion tracking.
-  // TODO: Add printable mini cheat sheets (rg/permissions/ssh/git/tmux).
 
   // --- Elements -------------------------------------------------------------
   const tocEl = document.getElementById("toc");
@@ -1100,6 +1210,9 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   const chiprowEl = document.getElementById("chiprow");
   const countEl = document.getElementById("count");
   const tooltipEl = document.getElementById("termTooltip");
+  const practiceToggleBtn = document.getElementById("practiceToggle");
+  const resetProgressBtn = document.getElementById("resetProgressBtn");
+  const completeBtn = document.getElementById("completeBtn");
 
   // --- Helpers --------------------------------------------------------------
   const uniqueTags = () => {
@@ -1112,13 +1225,107 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     return aliasIndex.get(String(raw || "").toLowerCase()) || null;
   }
 
+  function lessonStorageKey(lessonId){
+    return `${storageKeys.lessonPrefix}${lessonId}.quizState`;
+  }
+
+  function readQuizState(lessonId){
+    try {
+      return JSON.parse(localStorage.getItem(lessonStorageKey(lessonId)) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function writeQuizState(lessonId, payload){
+    localStorage.setItem(lessonStorageKey(lessonId), JSON.stringify(payload));
+  }
+
+  function saveCompleted(){
+    localStorage.setItem(storageKeys.complete, JSON.stringify(Array.from(state.completedLessons)));
+  }
+
+  function setPracticeMode(on){
+    state.practiceMode = !!on;
+    localStorage.setItem(storageKeys.practiceMode, on ? "1" : "0");
+    document.body.classList.toggle("practice-on", state.practiceMode);
+    practiceToggleBtn.textContent = `Practice Mode: ${state.practiceMode ? "ON" : "OFF"}`;
+  }
+
+  function normalizeAnswer(value){
+    return String(value || "").trim().replace(/\s+/g, " ").toLowerCase();
+  }
+
+  function seededPick(list, seed){
+    if (!list.length) return null;
+    let h = 0;
+    for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+    return list[h % list.length];
+  }
+
+  function allQuizQuestions(){
+    return lessons.flatMap(lesson => (lesson.quiz || []).map((q, idx) => ({lessonId: lesson.id, lessonTitle: lesson.title, idx, q})));
+  }
+
+  function createDailyDrillsHTML(){
+    const seed = state.drillSeed || new Date().toISOString().slice(0,10);
+    const term = seededPick(glossary, `${seed}:term`);
+    const quizPick = seededPick(allQuizQuestions(), `${seed}:quiz`);
+    const task = seededPick(drillTasks, `${seed}:task`);
+    return `
+      <h2>Daily Drills</h2>
+      <p>Seed for today: <code>${escapeHtml(seed)}</code></p>
+      <div class="drill-task"><b>Glossary drill:</b> <span>${escapeHtml(term.term)}</span> — ${escapeHtml(term.short)}<br/>Use it in a command of your own.</div>
+      <div class="drill-task"><b>Quiz drill:</b> ${escapeHtml(quizPick.lessonTitle)} — ${escapeHtml(quizPick.q.prompt)}</div>
+      <div class="drill-task"><b>Tiny task:</b> ${escapeHtml(task)}</div>
+      <button type="button" id="newDrillBtn">New set</button>
+    `;
+  }
+
+  function renderQuizSection(lesson){
+    if (!lesson.quiz?.length) return "";
+    const quizState = readQuizState(lesson.id);
+    const cards = lesson.quiz.map((q, idx) => {
+      const qState = quizState[idx] || {};
+      const prompt = annotateTerms(`<span>${escapeHtml(q.prompt)}</span>`, `${lesson.id}-q-${idx}-p`);
+      const explanation = qState.revealed || qState.checked ? `<div class="quiz-answer">${annotateTerms(`<span>${escapeHtml(q.explanation || "")}</span>`, `${lesson.id}-q-${idx}-e`)}</div>` : "";
+      if (q.type === "mcq") {
+        const options = q.choices.map((choice, cidx) => `<label><input type="radio" name="${lesson.id}-q-${idx}" data-quiz-choice="${cidx}" ${String(qState.selectedIndex)===String(cidx)?"checked":""}/> ${escapeHtml(choice)}</label>`).join("");
+        const feedback = qState.checked ? `<div class="quiz-feedback ${qState.correct ? "ok" : "bad"}">${qState.correct ? "Correct" : "Not yet"}</div>` : "";
+        return `<div class="quiz-card" data-quiz-index="${idx}"><h4>Question ${idx+1}</h4><p>${prompt}</p><div class="quiz-choices">${options}</div><button type="button" data-quiz-action="check">Check answer</button>${feedback}${explanation}</div>`;
+      }
+      if (q.type === "output") {
+        const user = escapeHtml(qState.userAnswer || "");
+        const compare = (qState.revealed && qState.userAnswer) ? `<pre>${escapeHtml(String(q.answer))}</pre>` : "";
+        return `<div class="quiz-card" data-quiz-index="${idx}"><h4>Question ${idx+1}</h4><p>${prompt}</p><textarea data-quiz-input="output" rows="4" style="width:100%; font-family:var(--mono);">${user}</textarea><div><button type="button" data-quiz-action="compare">Compare</button> <button type="button" data-quiz-action="reveal">Reveal answer</button></div>${compare}${explanation}</div>`;
+      }
+      const shortVal = escapeHtml(qState.userAnswer || "");
+      return `<div class="quiz-card" data-quiz-index="${idx}"><h4>Question ${idx+1}</h4><p>${prompt}</p><input data-quiz-input="short" value="${shortVal}" style="width:100%;"/><div><button type="button" data-quiz-action="reveal">Reveal answer</button></div>${qState.revealed ? `<div class="quiz-answer"><code>${escapeHtml(q.answer)}</code></div>` : ""}${explanation}</div>`;
+    }).join("");
+    return `<section class="quiz-wrap"><h2>${state.practiceMode ? "Practice" : "Lesson Quiz"}</h2>${cards}</section>`;
+  }
+
+  function updateLessonCompletion(lesson){
+    if (!lesson?.id) return;
+    const quiz = lesson.quiz || [];
+    if (!quiz.length) return;
+    const s = readQuizState(lesson.id);
+    const complete = quiz.every((q, idx) => {
+      const qState = s[idx] || {};
+      return q.type === "mcq" ? qState.checked : qState.revealed;
+    });
+    if (complete) state.completedLessons.add(lesson.id);
+    saveCompleted();
+  }
+
   function applyFilters() {
     const q = state.search.trim().toLowerCase();
     const tag = state.filterTag;
+    const currentId = getCurrentLesson()?.id;
 
     state.visible = allLessons.filter(l => {
       const matchesTag = (tag === "All") ? true : l.tags.includes(tag);
-      const base = l.id === "glossary" ? createGlossaryPageHTML() : l.content;
+      const base = l.id === "glossary" ? createGlossaryPageHTML() : (l.id === "daily-drills" ? createDailyDrillsHTML() : l.content);
       const blob = (l.module + " " + l.title + " " + l.tags.join(" ") + " " + stripHtml(base)).toLowerCase();
       const matchesQ = q ? blob.includes(q) : true;
       return matchesTag && matchesQ;
@@ -1127,7 +1334,6 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     if (state.visible.length === 0) {
       state.currentIndex = 0;
     } else {
-      const currentId = getCurrentLesson()?.id;
       const newIndex = currentId ? state.visible.findIndex(x => x.id === currentId) : 0;
       state.currentIndex = (newIndex >= 0) ? newIndex : Math.min(state.currentIndex, state.visible.length - 1);
     }
@@ -1347,13 +1553,21 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     state.visible.forEach(l => {
       const item = document.createElement("div");
       item.className = "toc-item" + (current && current.id === l.id ? " active" : "");
+      item.setAttribute("tabindex", "0");
+      const done = state.completedLessons.has(l.id) ? '<span class="complete-badge">✓</span>' : "";
       item.innerHTML = `
         <div class="kicker">${escapeHtml(l.module)}</div>
-        <p class="title">${escapeHtml(l.title)}</p>
+        <p class="title">${escapeHtml(l.title)} ${done}</p>
         <div class="meta">${escapeHtml(l.tags.join(" · "))}</div>
       `;
       item.addEventListener("click", () => {
         setCurrentById(l.id);
+      });
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setCurrentById(l.id);
+        }
       });
       tocEl.appendChild(item);
     });
@@ -1367,6 +1581,7 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
       contentEl.innerHTML = `<div class="hint warn">No lessons match your filter.</div>`;
       prevBtn.disabled = true;
       nextBtn.disabled = true;
+      completeBtn.disabled = true;
       barEl.style.width = "0%";
       footerLeft.textContent = "";
       footerRight.textContent = "";
@@ -1376,18 +1591,22 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
 
     kickerEl.textContent = l.module;
     titleEl.textContent = l.title;
-    const raw = l.id === "glossary" ? createGlossaryPageHTML() : l.content;
-    contentEl.innerHTML = annotateTerms(raw, l.id);
+    const raw = l.id === "glossary" ? createGlossaryPageHTML() : (l.id === "daily-drills" ? createDailyDrillsHTML() : l.content);
+    contentEl.innerHTML = annotateTerms(raw, l.id) + renderQuizSection(l);
     if (l.id === "glossary") bindGlossaryPage();
 
     prevBtn.disabled = state.currentIndex <= 0;
     nextBtn.disabled = state.currentIndex >= state.visible.length - 1;
+    updateLessonCompletion(l);
+    completeBtn.disabled = l.id === "glossary" || l.id === "daily-drills";
+    completeBtn.textContent = state.completedLessons.has(l.id) ? "Completed ✓" : "Mark complete ✓";
 
-    const progress = (state.visible.length <= 1) ? 100 : (state.currentIndex / (state.visible.length - 1)) * 100;
+    const progress = state.visible.length ? (Array.from(state.completedLessons).filter(id => state.visible.some(v => v.id === id)).length / state.visible.length) * 100 : 0;
     barEl.style.width = `${progress}%`;
 
     footerLeft.textContent = `Lesson ${state.currentIndex + 1} of ${state.visible.length}`;
     footerRight.textContent = `Filter: ${state.filterTag} • Search: ${state.search ? '"' + state.search + '"' : "—"}`;
+    document.body.classList.toggle("practice-on", state.practiceMode);
   }
 
   function escapeHtml(s){
@@ -1415,16 +1634,98 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
     }
   });
 
+  completeBtn.addEventListener("click", () => {
+    const l = getCurrentLesson();
+    if (!l || l.id === "glossary" || l.id === "daily-drills") return;
+    state.completedLessons.add(l.id);
+    saveCompleted();
+    renderLesson();
+    renderToc();
+  });
+
+  practiceToggleBtn.addEventListener("click", () => {
+    setPracticeMode(!state.practiceMode);
+    renderLesson();
+  });
+
+  resetProgressBtn.addEventListener("click", () => {
+    if (!confirm("Reset all completion and quiz progress?")) return;
+    state.completedLessons = new Set();
+    saveCompleted();
+    lessons.forEach(l => localStorage.removeItem(lessonStorageKey(l.id)));
+    renderLesson();
+    renderToc();
+  });
+
   searchEl.addEventListener("input", (e) => {
     state.search = e.target.value;
     applyFilters();
   });
 
   contentEl.addEventListener("click", (e) => {
+    const l = getCurrentLesson();
     const term = e.target.closest(".term");
     if (term){
       openTooltip(term.dataset.term, term);
+      return;
     }
+
+    if (e.target.id === "newDrillBtn"){
+      state.drillSeed = `${Date.now()}`;
+      renderLesson();
+      return;
+    }
+
+    const actionBtn = e.target.closest("[data-quiz-action]");
+    if (!actionBtn || !l?.quiz?.length) return;
+    const card = actionBtn.closest(".quiz-card");
+    if (!card) return;
+    const qIndex = Number(card.dataset.quizIndex);
+    const question = l.quiz[qIndex];
+    const quizState = readQuizState(l.id);
+    const qState = quizState[qIndex] || {};
+
+    if (question.type === "mcq") {
+      const selected = card.querySelector("input[type='radio']:checked");
+      qState.selectedIndex = selected ? Number(selected.dataset.quizChoice) : qState.selectedIndex;
+    } else {
+      const input = card.querySelector("[data-quiz-input]");
+      qState.userAnswer = input ? input.value : (qState.userAnswer || "");
+    }
+
+    const action = actionBtn.dataset.quizAction;
+    if (action === "check" && question.type === "mcq") {
+      qState.checked = true;
+      qState.correct = Number(qState.selectedIndex) === Number(question.answerIndex);
+      qState.revealed = true;
+    }
+    if (action === "reveal") qState.revealed = true;
+    if (action === "compare") qState.revealed = true;
+
+    quizState[qIndex] = qState;
+    writeQuizState(l.id, quizState);
+    updateLessonCompletion(l);
+    renderLesson();
+    renderToc();
+  });
+
+  contentEl.addEventListener("input", (e) => {
+    const l = getCurrentLesson();
+    if (!l?.quiz?.length) return;
+    const input = e.target.closest("[data-quiz-input], input[type='radio']");
+    if (!input) return;
+    const card = e.target.closest(".quiz-card");
+    if (!card) return;
+    const qIndex = Number(card.dataset.quizIndex);
+    const quizState = readQuizState(l.id);
+    const qState = quizState[qIndex] || {};
+    if (input.matches("input[type='radio']")) {
+      qState.selectedIndex = Number(input.dataset.quizChoice);
+    } else {
+      qState.userAnswer = input.value;
+    }
+    quizState[qIndex] = qState;
+    writeQuizState(l.id, quizState);
   });
 
   contentEl.addEventListener("mouseover", (e) => {
@@ -1489,6 +1790,7 @@ Pick one “real” project (e.g. log analysis, backups, deploy script) and buil
   }
 
   // --- Boot -----------------------------------------------------------------
+  setPracticeMode(state.practiceMode);
   renderChips();
   applyFilters();
   initFromHash();
