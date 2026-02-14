@@ -1,0 +1,1469 @@
+JOHN COTTINGHAM
+On
+the Meaning of Life
+
+First published 2003
+by Routledge
+11 New Fetter Lane, London EC4P 4EE
+Simultaneously published in the USA and Canada
+by Routledge
+29 West 35th Street, New York, NY 10001
+Routledge is an imprint of the Taylor & Francis Group
+© 2003 John Cottingham
+All rights reserved. No part of this book may be reprinted or
+reproduced or utilised in any form or by any electronic, mechanical,
+or other means, now known or hereafter invented,
+including photocopying and recording, or in any information storage or
+retrieval system, without permission in writing from the publishers.
+British Library Cataloguing in Publication Data
+A catalogue record for this book is available from the British Library
+Library of Congress Cataloging in Publication Data
+A catalog record for this book has been requested
+ISBN 0–415–24799–3 (hbk)
+ISBN 0–415–24800–0 (pbk)
+This edition published in the Taylor & Francis e-Library, 2005.
+“To purchase your own copy of this or any of Taylor & Francis or Routledge’s
+collection of thousands of eBooks please go to www.eBookstore.tandf.co.uk.”
+ISBN 0-203-16424-5 Master e-book ISBN
+ISBN 0-203-25838-X (Adobe eReader Format)
+
+Preface
+ix
+The QuestionOne
+1
+The Question that Won’t Go Away1
+Science and Meaning4
+Something Rather than Nothing7
+A Religious Question?9
+Meaning after God11
+Man, the Measure of All Things?16
+Variety, Meaning and Evaluation18
+What Meaningfulness Implies21
+Meaning and Morality24
+Humanity and Openness28
+The Barrier to MeaningTwo
+32
+The Void32
+The Challenge of Modernity36
+The Shadow of Darwin39
+Science, Religion and Meaning44
+Evolution and ‘Blind’ Forces47
+The ‘Nastiness’ of the Evolutionary Mechanism49
+Matter and Surplus Suffering53
+The Character of the Cosmos58
+Meaning, Vulnerability and HopeThree
+64
+Morality and Achievement64
+Futility and Fragility67
+Religion and the Buoyancy of the Good73
+
+Vulnerability and Finitude76
+Spirituality and Inner Change79
+Doctrine and Praxis86
+From Praxis to Faith92
+Coda: Intimations of Meaning99
+Notes
+105
+Index
+121
+viii
+Contents
+
+The Question
+One
+‘Alright’, said Deep Thought. ‘The Answer to the Great Question . . .’
+‘Yes!’
+‘Of Life the Universe and Everything . . .’ said Deep Thought.
+‘Yes!’
+‘Is . . .’ said Deep Thought, and paused.
+‘Yes!’
+‘Is . . .’
+‘Yes . . . !!! . . . ?’
+‘Forty-two’, said Deep Thought, with infinite majesty and calm . . .
+It was a long time before anyone spoke.
+‘Forty-two!’ yelled Loonquawl. ‘Is that all you’ve got to show for seven
+and a half million years’ work?’
+‘I checked it very thoroughly,’ said the computer . . . ‘I think the
+problem, to be quite honest with you, is that you’ve never actually known
+what the question is.’
+‘But it was the Great Question! The Ultimate Question of Life, the
+Universe and Everything’ howled Loonquawl.
+‘Yes’, said Deep Thought with the air of one who suffers fools gladly,
+‘but what actually is it?’
+A slow stupefied silence crept over the men as they stared at the
+computer and then at each other.
+‘Well, you know, it’s just Everything . . . Everything . . .’ offered
+Phouchg weakly.
+Douglas Adams, The Hitchhiker’s Guide to the Galaxy
+1
+THE QUESTION THAT WON’T GO AWAY
+Not all important-sounding questions make sense. For a fair
+part of the twentieth century it was common in much of the
+anglophone  world  to  dismiss  many  of  the  traditional  grand
+1
+
+On
+ the Meaning of Life
+
+questions  of  philosophy  as  pseudo-questions.  People  who
+felt  perplexed  by  the  ancient  puzzle  of  the  meaning  of  life
+were firmly  reminded  that  meaning  was  a  notion  properly
+confined  to  the  arena  of  language:  words  or  sentences  or
+propositions could be said to have meaning, but not objects
+or events in the world, like the lives of trees, or lobsters, or
+humans. So the very idea that philosophy could inquire into
+the meaning of life was taken as a sign of conceptual confu-
+sion.  The  solution  to  the  problem,  as  Ludwig  Wittgenstein
+once remarked, would lie in its disappearance.
+2
+But somehow the problem does not go away; the search for
+life’s meaning, confused or not, retains as powerful a hold on
+us  as  ever.  The  characters  in  Douglas  Adams’  Hitchhiker  saga
+may  seem  absurd  in  their  faith  that  a  supercomputer  could
+wrap  it  up  for  them,  and  hopelessly  vague  about  how  to
+formulate  the  problem  in  the first  place,  but  a  strong  sense
+remains that the ancient quest that has held so many in thrall
+is more than just a philosopher’s muddle.
+For  our  human  existence  is  mysterious  –  something
+strange,  frightening,  to  be  wondered  at.  Philosophy,  said
+Aristotle, is the child of wonder;
+3
+ and the capacity to be dis-
+turbed by what is ordinarily taken for granted is the hallmark
+of  that  questioning  spirit  that  is  inseparable  from  human
+nature itself. The human being is unique in that, as Heidegger
+put  it,  it  is  an  entity  for  whom  its  own  being  is  an  issue.  Or
+again: ‘Man alone of all beings, when addressed by the voice of
+Being, experiences the marvel of all marvels: that what-is is.’
+4
+What are we really asking when we ask about the meaning
+of life? Partly, it seems, we are asking about our relationship
+with the rest of the universe – who we are and how we came
+to be here. One aspect of this is a scientific question about our
+origins.  To  which  the  answer,  only  recently  discovered,  is
+2
+
+On
+ the Meaning of Life
+
+breathtaking:  we  came  from  the  stars.  If  we  manage  (the
+experience  is  rarer  and  harder  now)  to find  a  spot  far  away
+from the city, where no seepage of noise and dazzle pollutes
+the night, and look up in wonder at the vast and silent black-
+ness of space from which numberless brilliant points of light
+shine down upon us, then what we see is the same material
+from  which  we,  and  everything  else  on  this  fragile  planet,
+were  once  formed.  We  humans  are  part  of  the  cosmos:  not
+just as a pebble is part of a miscellaneous heap, not just as an
+item on a haphazard inventory that happens to include what-
+ever the universe contains; but truly one with it, sharing its
+common origin, built of its stuff. We are formed of stardust.
+Of it, yet alienated from it? It may be so. The ancient Stoics
+thought  that  our  human  rationality  was  a  microcosm  of  a
+governing principle of Reason, the spiritual substance pervad-
+ing  the  whole  cosmos;  centuries  later,  the  rationalist  phil-
+osopher Leibniz declared that ‘there is nothing waste, nothing
+sterile, nothing dead in the universe’.
+5
+ But the dominant view
+nowadays is that life and rationality are, cosmically speaking,
+local and untypical features of reality: nature is predominantly
+blind, irrational, dead. As the poet A. E. Housman lamented:
+. . . nature, heartless, witness nature,
+Will neither care nor know
+What stranger’s feet may cross the meadow
+And trespass there, and go.
+Nor ask amid the dews of morning
+If they are mine, or no.
+6
+We  humans  may  pride  ourselves  on  our  intellectual  and
+cultural achievements, but against the backdrop of unimagin-
+able  aeons  of  time  through  which  clouds  of  incandescent
+hydrogen expand without limit, we are a strange temporary
+3
+
+The Question
+
+accident,  no  more  significant  than  a  slime  or  mould  that
+forms  for  a  few  years  or  decades  on  a  barren  rockface  and
+then is seen no more.
+Assessments  of  this  kind  may  seem  linked  to  a  modern
+scientific  understanding  of  our  origins,  but  in  an  important
+sense they plainly go beyond science: they do not just report
+the ‘facts’,  but  talk  about  what  those  supposed  facts  ‘mean’
+for us, for our sense of ourselves and our self-worth. And it is
+hard  to  see  how  such  judgements  about  the  significance  of
+our  lives  can  be  established  by  scientific  inquiry  alone.  To
+quote  Wittgenstein  again,  this  time  sounding  rather  more
+hospitable  to  our  grand  question,  ‘we  feel  that  even  when
+all  possible  scientific  problems  have  been  answered,  the
+problems  of  life  have  not  been  put  to  rest’.
+7
+  Why  exactly
+should this be so?
+SCIENCE AND MEANING
+Science  has  advanced  so  spectacularly  and  with  such  an
+accelerated  pace  in  the  last  century  or  so  that  we  may  be
+tempted  to  suppose  that  given  a  bit  longer  it  could  even
+succeed  in  explaining  why  we  are  here  and  what  our  exist-
+ence means. This appears to be the view of one of our most
+distinguished contemporary scientists, Stephen Hawking:
+Up to now, most scientists have been too occupied with the
+development of new theories that describe 
+what the universe
+is to ask the question 
+why . . . However, if we discover a
+complete [and unified] theory [combining quantum physics
+with general relativity] . . . we shall all . . . be able to take part
+in the discussion of the question of why it is that we and the
+universe exist. If we find the answer to that, it would be the
+ultimate triumph of human reason . . .
+8
+4
+
+On
+ the Meaning of Life
+
+The distinction between what something is and why it is has
+become something of a cliché; in similar vein, people often
+say science tackles how questions but not why questions. But in
+fact  the  distinction  is  not  particularly  helpful  in  sorting  out
+what scientists characteristically do. Aristotle was rather more
+perspicuous in distinguishing four types of answer relevant to
+scientific inquiry:
+(1)  Answers indicating the component materials of which an
+object is made (its ‘material’ cause);
+(2)  Answers specifying the essence or kind of thing it is (its
+‘formal’ cause);
+(3)  Answers pointing to the motive force that got it into its
+present state (its ‘efficient’ cause); and
+(4)  Answers  citing  the  end  or  goal  towards  which  it  tends
+(its ‘final’ cause).
+9
+Explanations of all four kinds can be good scientific answers
+to the question ‘why?’
+(1)  ‘Why was the bridge strong?’ ‘Because [material] it was
+made of steel.’
+(2)  ‘Why  do  you  classify  that  ice  cube  as  water?’ ‘Because
+[formal] it is frozen H
+2
+O.’
+(3)  ‘Why  did  the  billiard  ball  move?’ ‘Because  [efficient]  it
+was struck with a cue.’
+(4)  ‘Why  do  trees  have  roots?’ ‘Because  [final]  in  order  to
+grow they need to take up water and nutrients.’
+The  last  type  of  answer  was  particularly  important  in
+Aristotle’s  work,  since  he  maintained  that  all  things  tend
+towards   some   natural   end-state;   but   although   modern
+scientists, especially biologists, still frequently use such goal-
+related or teleological explanations of phenomena, it has been
+5
+
+The Question
+
+a  guiding  principle  since  the  seventeenth  century  that  such
+teleology  must  always  eventually  be  explained  in  terms  of
+underlying microstructures of an entirely mechanical nature.
+It   is   in   this   sense   that   the   great   seventeenth-century
+philosopher-scientist  René  Descartes  is  often  said  to  have
+banished teleology from science. He envisaged a unified style
+of  explanation  based  ultimately  on  the  universal  laws  of
+mathematical  physics  that  governed  the  behaviour  of  all
+natural  phenomena,  celestial  and  terrestrial  alike.  There  was
+no  room  for  any  irreducible  purposiveness  or  goal-seeking
+deep down in nature. The job of the scientist was to subsume
+all observable events under the relevant mathematical cover-
+ing laws; and in respect of these ultimate laws there was no
+attainable answer to the question ‘why?’ One could say – and
+Descartes did say – that God had decreed that it should be so;
+but he immediately added that the rationale for God’s decrees
+was  not  for  human  scientists  to  discover:  it  was  ‘forever
+locked  up  in  the  inscrutable  abyss  of  His  wisdom’.
+10
+  David
+Hume,  writing  a  century  after  Descartes,  took  an  essentially
+parallel line, though couched in entirely secular language: the
+job of science was to map the observable natural world, but
+any supposed ‘ultimate springs and principles’ of nature were
+beyond human power to fathom.
+11
+Although  this  position  was first  established  by  the  philo-
+sophers  of  the  Enlightenment,  it  has  remained  pretty  much
+unshaken ever since; for it is hard to see how science, however
+it  may  develop,  could  address  such  ‘ultimate’  questions.  So
+although  modern  scientists  may  often  ask  various  kinds  of
+‘why?’  questions  about  particular  structures  or  events,  the
+ultimate  and  most  general  principles  taken  to  underlie  all
+phenomena  are  not  regarded  as  admitting  of  the  question
+‘why is it so?’ If we were to achieve a complete and unified
+6
+
+On
+ the Meaning of Life
+
+theory  of  the  universe  (fulfilling  the  grand  philosophical-
+cum-scientific vision that links Descartes and Hume, Newton
+and  Einstein,  right  down  to  present-day  cosmologists  such
+as  Hawking),  such  a  theory  would  subsume  all  observable
+phenomena in the universe under the fewest and most com-
+prehensive  laws  or  principles;  but  as  to  why  these  principles
+obtain, this would have to remain, in Hume’s graphic phrase,
+‘totally shut up from human curiosity and inquiry’.
+12
+So we have a problem about the modern hope for a grand
+comprehensive physics that would be the ‘ultimate triumph
+of human reason’. It is an inspiring aim, but one which leaves
+it very unclear why it should be supposed that a super-theory
+linking gravity and quantum physics might enable us to tackle
+the ultimate question of ‘why it is that we and the universe
+exist’.  It  is  sometimes  suggested  that  such  a  unified  theory
+might turn out to be the only possible theory, in view of the
+severe  constraints  that  must  govern  any  model  that  is  to  be
+consistent and capable accounting for the universe as we find
+it.  But  even  if  there  were  to  be  only  one  such  candidate,  it
+would  still  be  merely  the  only  possible  theory  given  that  the
+universe is as it is – which would still fall short of explaining
+why  there  should  be  a  universe  at  all.  Some  cosmologists
+(including Hawking) have speculated that the grand unified
+theory ‘might be so compelling that it brings about its own
+existence’;
+13
+  but  it  is  hard  to  take  this  seriously.  A  theory
+cannot generate a universe.
+SOMETHING RATHER THAN NOTHING
+The  position  we  have  reached  is  that  while  science  aims  to
+provide  as  complete  and  comprehensive  a  description  as  it
+can of the universe, no matter how successful and unified the
+theory it ends up with, it cannot explain why there should be
+7
+
+The Question
+
+a universe there to be explained. We collide with the ancient
+philosophical question ‘Why is there something rather than
+nothing?’ and it seems clear on reflection that nothing within
+the observable universe could really answer this. If there is a
+solution to the ‘riddle of life in space and time’, it would have
+to  lie  outside  space  and  time.
+14
+  Here  we  run  into  another
+blank wall: if any such solution must lie beyond the limits of
+the  temporal  and  spatial  universe,  outside  the  ‘phenomenal
+world’, as Immanuel Kant called it, then may it not be beyond
+the horizon of what is humanly knowable? If there is a tran-
+scendent  realm  of  the  ‘noumenal’ –  something  beyond  the
+phenomena,  which  explains  why  we  and  the  universe  are
+here – then there is a risk that there will be nothing whatever
+we can coherently say about it.
+We may have reached the limits of science here, but perhaps
+we  have  not  necessarily  reached  the  limits  of  human  dis-
+course. There is a rich tradition of religious language, both in
+our Western culture and elsewhere, that grapples with the task
+of addressing what cannot be fully captured by even the most
+complete  scientific  account  of  the  phenomenal  world.  One
+might say that it is the task of religious discourse to strain at
+the limits of the sayable. Some kinds of theology, to be sure,
+have  aimed  at  keeping  entirely  within  the  boundaries  of
+observable  evidence  and  rational  demonstration,  invoking
+God  as  an  explanatory  hypothesis  to  account  for  certain
+aspects of reality (such as order, design, motion, and so on),
+rather in the manner of a scientist looking for the best explan-
+ation of the data. That enduring strand of natural theology has
+appealed to many philosophers over the centuries, though it
+has suffered serious erosion in modern age from the success
+of rival non-theistic explanations of the relevant phenomena
+(in particular the triumph of Darwinism). But alongside this
+8
+
+On
+ the Meaning of Life
+
+quasi-scientific strand in theology, there is also a vast range of
+religious  language  that  invokes  symbol,  metaphor,  poetry,
+narrative,  and  other  elements  valued  for  their  supposed
+revelatory  power  rather  than  for  their  strict  demonstrative
+force;  religious  discourse  is  here  aimed  at  addressing  what
+cannot fully be put into words, at least into the words of our
+rational  scientific  culture,  but  which  can  still  somehow  be
+shown, disclosed, made manifest.
+15
+Such   religious   discourse   gropes   towards   something
+beyond the phenomenal world that may give meaning to the
+universe, and to our human lives. It may not provide a rational
+scientific solution to the old puzzle of why there is something
+rather  than  nothing,  for,  as  we  have  seen,  this  is  a  question
+which  may  lie  beyond  the  limits  of  systematic  knowledge.
+But its advocates would urge that it none the less assuages the
+vertigo, the ‘nausea’, as Jean-Paul Sartre called it, that we feel
+in confronting the blank mystery of existence. The religious
+answer  –  one  of  several  responses  to  the  problem  of  life’s
+meaning  to  be  examined  in  the  pages  that  follow  –  aims  to
+locate  our  lives  in  a  context  that  will  provide  them  with
+significance  and  value.  Instead  of  our  feeling  thrown  into  a
+arbitrary  alien  world  where  nothing  ultimately  matters,  it
+offers the hope that we can find a home.
+16
+A RELIGIOUS QUESTION?
+Religion  is  clearly  one  way  in  which  humans  have  found  a
+meaning  and  purpose  to  their  lives.  But  is  it  the  only  way?
+Albert  Einstein  asserted  bluntly  that  ‘to  know  an  answer  to
+the question “What is the meaning of human life?” means to
+be  religious’.
+17
+  That  other  giant  of  the  twentieth  century,
+Sigmund  Freud,  also  insisted  that  ‘the  idea  of  life  having  a
+purpose  stands  and  falls  with  the  religious  system’.
+18
+  Yet  of
+9
+
+The Question
+
+course it by no means automatically follows from this linkage
+that  the  religious  stance  is  therefore  something  to  be  advo-
+cated. Freud himself regarded the solution offered by religion
+as  pandering  to  something  unhealthy  and  disordered  in  the
+human psyche:
+The moment a man questions the meaning and value of life,
+he is sick . . . By asking this question one is merely admitting
+to a store of unsatisfied libido to which something else must
+have happened, a kind of fermentation leading to sadness and
+depression.
+19
+Belief  in  God,  according  to  Freud’s  view  in  Civilisation  and  its
+Discontents,  is  based  on  an  infantile  response:  the  terrifying
+‘feeling  of  helplessness’  in  childhood  aroused  the  ‘need
+for  protection’  –  for  protection  through  love  –  which  was
+provided by the father; and the recognition that this helpless-
+ness  lasts  throughout  life  made  it  necessary  to  cling  to  the
+existence of a Father, but this time a more powerful one.
+20
+This  Freudian  diagnosis  has  been  highly  influential,  and
+can  often  be  seen  as  informing  the  idea,  voiced  by  many
+contemporary  atheists,  that  God  is  merely  a  projection
+formed in response to our human insecurities. But there are at
+least two problems with this way of dismissing the religious
+impulse. First, though the abject helplessness of the infant is
+an apt image of the fragility of the human plight, that fragility,
+as  Freud’s  own  analysis  confirms,  is  clearly  not  confined  to
+infancy.  Our  vulnerability,  and  that  of  our  loved  ones,  to
+death,  disease  and  accident  is  an  inescapable  part  of  the
+human  condition;  and  this  being  so,  to  be  appropriately
+aware  of  it  seems  precisely  what  a  normal  rational  human
+ought to be (even granted that constantly dwelling on it may be
+a  sign  of  neurosis).
+21
+  In  the  second  place,  talk  of  God  as  a
+10
+
+On
+ the Meaning of Life
+
+projection  does  not  in  the  end  advance  the  debate  between
+theists  and  atheists  very  much,  since  it  cannot  settle  the
+question  of  whether  the  impulse  to  project  our  longings
+outwards  to  an  external  source  does  or  does  not  have  an
+objective  counterpart.  It  is  certainly  plausible  that  frail  and
+insecure humans would want to project their need for secur-
+ity onto a protective heavenly Father; but a religious believer
+can equally maintain that since our true destiny lies in union
+with  our  creator,  we  will  naturally  feel  insecure  and  restless
+until  we find  Him.  Indeed,  precisely  this  latter  theme  turns
+out to be the refrain of many ancient writers on theistic spiri-
+tuality: nata  est  anima  ad  percipiendum  bonum  infinitum,  quod  Deus  est;
+ideo in eo solo debet quiescere et eo frui – ‘the soul is born to perceive
+the infinite good that is God, and accordingly it must find its
+rest and contentment in Him alone’.
+22
+ The result of the debate
+over projection is thus a stand-off: the fact that humans feel
+a  powerful  need  for  God’s  loving  protection  logically  says
+nothing either way about whether that protection is a reality.
+For the sake of this phase of the argument, however, let us
+assume for the moment that there is no such divine reality –
+no objective correlative that could ground our search for life’s
+significance.  Would  human  life,  in  that  case,  be  empty  and
+pointless?  If  God  is  dead,  one  of  Dostoevsky’s  characters
+famously declares, everything is permitted;
+23
+ in similar vein,
+if there is no God, would everything be meaningless?
+MEANING AFTER GOD
+Depression,  so  say  the  experts,  is  of  two  kinds,  exogenous
+and endogenous: it can either be triggered by some painful
+external circumstance, like job loss or bereavement, or it can
+be apparently spontaneous, presenting as an internal malaise
+for which there is no immediate outside cause. In a somewhat
+11
+
+The Question
+
+analogous  way,  perhaps,  it  seems  that  meaning  might  be
+either exogenous or endogenous: someone might find their
+life  meaningful  in  so  far  as  it  conformed  to  the  will  of  a
+transcendent Creator ‘out there’ who was the ultimate source
+of value and significance; but they might instead find mean-
+ing ‘within’,  as  it  were,  constructing  it  from  the  inside  as  a
+function  of  their  own  choices  and  commitments.  Friedrich
+Nietzsche,  famous  for  his  announcement  of  the  ‘death  of
+God’,  was  clear  that  humankind,  in  the  post-theistic  world,
+would have to generate significance from within itself – and
+indeed  that  this  was  the  only  available  source  for  all  value:
+‘Ultimately man finds in things nothing but what he himself
+has  imported  into  them:  the finding  we  call  science,  the
+importing – art, religion, love, pride.’
+24
+This conception of  meaning as endogenous – the  idea of
+Man as the creator and generator of the meaning of his own
+life  –  has  plainly  had  a  vast  influence  on  our  modern  and
+postmodern  culture.  The  Nietzschean  vision  can  be  seen  as
+having three phases. The first is the idea of the ‘death of God’,
+which  appears  in  Die  Fröhliche  Wissenschaft  (The  Joyful  Science,
+1882). A madman lights a lantern at midday and runs into the
+market place crying that he seeks God. He is laughed at by the
+atheists  who  are  standing  around:  ‘Did  he  get  lost?’,  they
+sneer. ‘Or has he gone on a journey, or emigrated?’ At length
+the madman announces ‘We have killed him, you and I!’ And
+he goes off round the churches of the town to sing a requiem
+– one that parodies the traditional text of the mass: instead of
+a  prayer  for  God  to  grant  repose  to  the  dead,  it  becomes
+‘requiem  eternam  Deo’  –  God  himself  is  consigned  to  eternal
+rest.
+25
+Over a century later, the shock value of Nietzsche’s initial
+proclamation  has  faded  a  little.  Walking  round  the  ancient
+12
+
+On
+ the Meaning of Life
+
+cities of Western Europe, where typically less than 10 per cent
+of  the  people  now  attend  religious  services,  one  may  feel
+like  echoing  the  madman’s  challenge:  ‘What  are  all  these
+churches  now  if  they  are  not  the  tombs  and  sepulchres  of
+God?’ The culture which once made religious observance so
+central  –  in  the  rites  of  birth,  marriage  and  death,  in  the
+celebration of the changing seasons of sowing and harvest, in
+the weekly gatherings of the community Sunday after Sunday,
+in the massive yearly solemnities of Nativity and Resurrection
+each winter and spring – the culture underpinning all these
+elaborate structures, if not quite extinct, seems in many places
+to have either vanished, or be fast crumbling away.
+But here the second phase of Nietzsche’s predictions comes
+into play. Just as, after the Buddha was dead, ‘his tremendous,
+gruesome shadow was still shown for centuries in a cave’, so,
+after God is dead, ‘there may still be places for thousands of
+years in which his shadow will be shown – and we still have
+to vanquish the shadow’.
+26
+ Taking leave of God is not a simple
+process,  like  abandoning  belief  in  phlogiston  once  a  better
+scientific account of combustion comes along. Religious faith
+does not form an isolated corner of our conceptual map that
+can  be  torn  off  without  affecting  the  main  picture;  instead
+(to  change  the  metaphor)  it  lies  at  the  centre  of  a  vast  web
+of beliefs and attitudes and feelings that are all subtly inter-
+connected. Unravelling them, and coming to terms with the
+consequences  of  that  unravelling,  must  involve  a  radical
+upheaval,  not  just  in  the  cognitive  sphere,  like  adjusting  or
+modifying  a  scientific  hypothesis,  but  in  a  way  that  is  far
+more primitive, implying a shift, often at a pre-rational level,
+in  fundamental  aspects  of  our  moral,  social,  aesthetic  and
+psychological  orientation  towards  reality.  Large  numbers  of
+people  may  have  formally  abandoned  the  idea  of  God  as
+13
+
+The Question
+
+central  to  their  world-view,  but  it  seems  that  for  relatively
+few  does  this  feel  like  having  ‘arrived’;  many  instead  are
+left  with  a  sense  of  vague  discomfort,  manifested  in  some
+by  a  disquiet  about  the  moral  direction  of  a  wholly  secular
+society,  in  others  by  intermittent  attraction  to  fashionable
+alternative modes of spirituality, in others again by a certain
+melancholic  nostalgia  for  the  nourishment  and  stability  of
+the  faith  which  no  longer  seems  an  option.  In  Nietzsche’s
+eyes,  it  is  as  if  mankind  has  acquired  a  debilitating  depen-
+dency on the accumulated capital from its religious heritage,
+and  learning  to  live  without  the  weekly  remittance  will  not
+be  easy.  ‘Vanquishing  the  shadow’  requires  courage  and
+determination.
+Here emerges the third phase of the Nietzschean story. For
+Nietzsche’s  vision  is  not  a  purely  destructive  one;  still  less
+(like  the  brisk,  cheerful  atheism  purveyed  by  contemporary
+secular apologists like Richard Dawkins)
+27
+ is it a plea to sweep
+away  all  the  religious  rubble  with  the  vigorous  broom  of
+science that is supposed to clean everything up. Instead, the
+cry  of  the  madman  is  imbued  with  passionate  yearning,  a
+fierce lament for the loss of ‘the holiest and most powerful of
+all  that  the  world  has  yet  owned’,  and  a  determination  to
+attempt the heroic task of constructing a human surrogate for
+the defunct God. ‘Is not the greatness of this deed too great
+for us? Must not we ourselves become gods simply to seem
+worth of it?’
+28
+ Meaning, that vivid sense of purpose without
+which  life  slides  into flatness  and  banality,  must  at  all  costs
+be  recovered;  and  to  capture  this  Nietzsche  proposes  the
+existential myth of the Eternal Recurrence:
+This life as you now live it and have lived it you will have to
+live once more and innumerable times more; and there will
+14
+
+On
+ the Meaning of Life
+
+be nothing new in it, but every pain and every joy and every
+thought and sigh and everything unutterably small or great in
+your life will have to return to you – and all in the same
+succession and sequence – even this spider and this
+moonlight between the trees, and even this moment and I
+myself. The eternal hourglass of existence is turned over and
+over, and you with it, a dust grain of dust.
+29
+It  is  not  that  the  envisaged  eternal  reiteration  would
+somehow  bestow  objective  or  external  meaning  –  for  what
+difference  could  unlimited  duration  or  endless  repetition
+make to the significance of the spider I see in the moonlight?
+We are indeed alone, in Nietzsche’s universe, thrown entirely
+on our own resources, without any of what he regards as the
+flabby comforts of religion designed to console the weak. The
+darkness is all around us, and the only thing that can illumin-
+ate it is our own indomitable will, a determination to say such
+a  passionate  ‘Yes!’  to  each  single  existential  moment  of  life
+that even on the condition of eternally repeating it we would
+chose  no  other.  The  question  ‘Do  you  want  this  once  more
+and  innumerable  times  more?’  would  ‘weigh  upon  your
+actions  as  the  greatest  stress’,  to  be  overcome  only  by  an
+affirmation so powerful that you would ‘crave nothing more
+fervently than this ultimate confirmation and seal’.
+30
+Meaning, in Nietzsche’s vision, has to be generated entirely
+from  the  inside.  The  world  we  have  to  inhabit  following
+the  death  of  God  is  a  world  where,  in  the  poet  W.  B.  Yeats’
+celebrated lines,
+Whatever flames upon the night
+Man’s own resinous heart has fed.
+31
+15
+
+The Question
+
+MAN, THE MEASURE OF ALL THINGS?
+Man,  said  the  philosopher  Protagoras,  is  the  measure  of  all
+things: of what is, that it is, and of what is not, that it is not.
+32
+Socrates had little trouble refuting that piece of pretentious-
+ness. Pretentious it is, in its arrogance; the Psalmist’s cry ‘It is
+He that hath made us and not we ourselves’,
+33
+ whatever one
+may think of the underlying creed, at least has the humility to
+acknowledge the basic truth that we exist in the universe as
+wholly contingent beings, dependent on a reality we did not
+create.  And  pretentious  too,  in  its  pseudo-profundity.  For
+though Protagoras’ modern successors never tire of pointing
+out that
+there is nothing deep down inside us except what we have put
+there ourselves, no criterion that we have not created in the
+course of creating a practice, no standard of rationality that is
+not an appeal to such a criterion, no rigorous argumentation
+that is not obedience to our own conventions
+34
+the fact remains that none of these human procedures would
+have  any  use  or  value  unless  they  were  confronted  by  an
+independent  non-human  reality  that  in  the  long  run  allows
+those procedures that are effective to flourish, and eradicates
+those  that  are  faulty.  We,  mankind,  are  not  the  measure  of
+whether  a  given  plant  does  well  in  a  given  soil,  or  a  given
+engine  works  more  efficiently  than  another,  or  the  Earth
+revolves annually around the Sun or vice versa. We create our
+theories,  certainly,  but  we  can  only  delay,  never  ultimately
+prevent, their collapse when they fail to measure up to the bar
+of actual experience.
+Of  course  there  is  a  residual  truth  behind  the  inflated
+claims  of  Protagoras  and  his  more  sophisticated  modern
+successors.  Since  we  cannot  jump  outside  of  our  human
+16
+
+On
+ the Meaning of Life
+
+culture, inspect reality ‘as it really is’, and then jump back and
+pronounce such and such a theory true and another false, we
+should  acknowledge  that  we  always  have  to  operate  within
+the context of a continuing dialogue with our peers, with no
+instant hotline to the truth, no privileged access to a Golden
+Rule  or  Procedure  that  will  guarantee  that  our  hypotheses
+fit reality. Yet to abandon the misguided hope for such guar-
+antees should not lead us to forget that human science aims at
+discovering  (or  eliminating)  realities  that  are  there  (or  not
+there)  irrespective  of  anything  we  decide.  To  put  it  in  the
+more  evocative  terminology  of  Yeats’  poem,  the  fuel  from
+our  own  ‘resinous  hearts’  does  not  after  all  ‘feed’  reality:  it
+illuminates, but  cannot  determine, what is there to be seen upon
+the night.
+How does this bear on Nietzsche’s heroic attempt to gener-
+ate meaning from within? By supposing the unaided human
+will can create meaning, that it can merely by its own resolute
+affirmation  bypass  the  search  for  objectively  sourced  truth
+and value, he seems to risk coming close to the Protagorean
+fallacy.  For  meaning  and  worth  cannot  reside  in  raw  will
+alone:  they  have  to  involve  a fit  between  our  decisions  and
+beliefs  and  what  grounds  those  decisions  and  beliefs.  That
+grounding  may,  as  some  religious  thinkers  maintain,  be
+divinely  generated;  or  it  may  be  based  on  something  else  –
+for  example  certain  fundamental  facts  about  our  social  or
+biological  nature.  But  it  cannot  be  created  by  human fiat
+alone.
+The  Nietzschean  solution,  in  short,  is  untenable;  and  one
+may add that it is in any case inhuman, or at least inhumane.
+For a philosophy that exalts raw will as the key to value and
+meaning,  that  makes  salvation  dependent  on  the  kind  of
+heroic struggle, the greatest stress that can be endured only by
+17
+
+The Question
+
+the strong, is not likely simultaneously to respect the claims of
+the  tentative,  the  sceptical,  the  doubtful,  the  vacillating,  the
+weak  and  the  helpless  –  all  those  who  are  ill-equipped  or
+disinclined to ‘become gods’. Nietzsche, in the kind of rant
+that  sporadically  mars  his  literary  and  philosophical  genius,
+feverishly welcomed ‘the signs that a more manly, a warlike
+age is about to begin, an age which above all will give honour
+to  valour  once  again’.
+35
+  Over  a  century  of  dire  experience
+later, it would be good to hope that mankind is increasingly
+seeing  reason  to  prefer  the  more  mundane  virtues  of  com-
+promise and compassion, the less heroic but more democratic
+values rooted (historically) in the religious ethic of universal
+brotherhood  that  Nietzsche  scorned.  But  this  postscript  on
+Nietzsche will have to be left hanging for the moment, since
+it  raises  general  issues  about  the  connection  between  the
+quest for meaning and the foundations of morality that will
+need more time to unravel.
+VARIETY, MEANING AND EVALUATION
+If human beings cannot create meaning and value merely by
+an exercise of will, why can’t they nevertheless find meaning
+in  the  various  diverse  human  activities  and  projects  they
+undertake?  ‘Various’  and  ‘diverse’  are  the  key  words  here.
+Perhaps  the  difficulty  in  the  question  that  baffled  the  Hitch
+Hiker  philosophers  Loonquawl  and  Phouchg  was  that  they
+were looking for the meaning – a single grand all-encompass-
+ing answer. That, of course, is the way most religious thinkers
+have  traditionally  seen  it.  But  perhaps  we  need  to  get  away
+from  this  spell,  and  to  adopt  instead  a  more  modest,  piece-
+meal approach, more in tune with the metaphysically lower-
+key aspirations of what one might call contemporary secular
+humanism. Perhaps, as Isaiah Berlin has neatly put it:
+18
+
+On
+ the Meaning of Life
+
+The conviction . . . that there exists . . . a discoverable goal, or
+pattern of goals, the same for all mankind . . . is mistaken;
+and so too is the notion that is bound up with it, of a single
+true doctrine carrying salvation to all men everywhere’.
+36
+Consider  Alan,  a  golfer.  He  has  retired,  has  a  pension
+sufficient  for  his  needs,  is  reasonably  healthy,  and  enjoys
+above all his thrice-weekly game of golf. Let us assume that he
+is  free  from  the  self-deception  and  social  manipulation  that
+blight  the  lives  of  some  of  his  fellow  members  of  the  local
+club: he is not there as a social climber, or to make business
+contacts, or to show off his expensive golfclubs; he just genu-
+inely  enjoys  the  game.  His  playing  gives  his  life  a  structure:
+each week he looks forward to the coming games, and feels
+satisfied  when  they  go  well.  Clearly  he  has  not  found  ‘The
+Meaning of Life’, with capital letters. But why not say, quietly
+and in lower-case letters, that he has succeeded in finding a
+meaning,  or  some  meaning,  to  his  life;  and  that  this,  and
+countless   similar   stories   for   countless   other   individuals
+happily absorbed in their own favoured pursuits, amounts to
+all that can be said, or needs to be said, on the matter?
+Notice  that  to  reach  this  seemingly  modest  conclusion
+certain things need to be assumed. We’ve stipulated that Alan
+is comfortably off; and in this designation is included a whole
+nest  of  assumptions  about  a  certain  easy flow  to  his  life,  an
+absence of too much anxiety and constraint about day-to-day
+living,  an  available  measure  of  free  time,  and  an  ability  to
+exercise a degree of choice in the use of that time. We have
+also stipulated that  he plays for the sheer  joy of the game –
+uninfluenced    by    demeaning    motives    like    vain    self-
+importance, or a desire to crawl to the boss; and there is a host
+of further presuppositions here, this time about the extent to
+19
+
+The Question
+
+which the chosen pursuit reflects Alan’s status as an autono-
+mous agent. If he was playing out of abject fear of losing his
+job, or because of a subconscious compulsion to surpass his
+father’s  sporting  achievements,  then  we  would  be  more
+doubtful in allowing he had found a meaning to his life – or
+at  least  the  favourable  implications  of  that  phrase  would  be
+put in question.
+This last point brings out the fact that talk of ‘meaning’ in
+life  is  inescapably  evaluative  talk.  To  describe  an  activity,  or
+a  life,  as  meaningful  is  evidently  to  approve  or  commend
+it.  Now  there  are  many  people  who  have  come  to  think  of
+valuing as a matter of subjective preference; indeed, sentences
+like  ‘That’s  just  a  value  judgement!’  are  often  used  to  mean
+something like ‘That’s no more than your arbitrary personal
+preference!’  But  in  fact,  although  there  may  be  some  things
+we  just  arbitrarily  ‘take  a  fancy  to’,  without  any  objective
+rhyme or reason,  typically we value things  in  virtue  of  objective
+features  which  those  things  possess.  We  value  a  medicine
+because of its curative properties; we value a piece of music
+because it is uplifting, or relaxing, or beautifully harmonised;
+we value a colleague because of her skill or good humour or
+intelligence. In short, value is typically grounded not in arbitrary
+preference but in objectively assessable features of the world.
+And  characteristically,  our  value  terms  reflect  this  ‘ground-
+ing’ by being what philosophers term ‘thick’ concepts: they
+don’t  just  say,  thinly,  ‘wow,  that’s  good!’,  but  rather  they
+carry,  packaged-in  with  them  so  to  speak,  those  factual
+features in virtue of which we judge the object to be good.
+37
+Thus  concepts  like  ‘generous’  or  ‘courageous’  carry  with
+them  a  package  or  checklist  of  qualifications  relevant  to  the
+positive evaluation – courage has to do with standing firm in
+the  face  of  danger,  generosity  with  a  certain  liberal  attitude
+20
+
+On
+ the Meaning of Life
+
+towards giving to others. Granted for the moment that ‘mean-
+ingful’ is one of these thick concepts – and it certainly seems
+to be, since to call a life meaningful is not just thinly to say
+‘wow,  it’s  great!’  but  to  commend  it  in  virtue  of  some
+specific  features  you  can  point  to  –  let  us  ask  what  is  the
+package typically associated with this term.
+WHAT MEANINGFULNESS IMPLIES
+In  the first  place,  to  call  an  activity  or  a  life  meaningful
+normally  implies  a  certain  profundity  or  seriousness  (though
+‘serious’ here need not at all imply ‘solemn’). Pursuits can be
+meaningful  in  a  more  or  less  deep  way,  but  not,  as  it  were,
+in  a  shallow  way;  so  to  appraise  something  as  meaningful
+excludes  its  being  trivial  or  silly.  Pastimes  like  golf  appear
+somewhat  borderline  here:  it  seems  they  can  just  about
+qualify as meaningful, but only provided they have a substan-
+tial  and  important  recreational  function  (fostering,  perhaps,
+a certain relaxation, harmony or expansiveness of spirit), or
+else play some further role, for example by promoting health,
+or  furthering  a  professional  sporting  career.  But  lining  up
+balls of torn up newspaper in neat rows cannot normally be
+meaningful (except in some special context – maybe it keeps
+one sane in a prisoner-of-war camp). This links with a second
+feature:  to  be  meaningful  an  activity  must  be  achievement-
+oriented, that is, directed towards some goal, or requiring some
+focus of energy or concentration or rhythm in its execution.
+Aimlessly throwing darts without any attempt to keep score
+or any concern for accuracy could not count as a meaningful
+activity (again, in the absence of special circumstances).
+Perhaps the most salient feature of meaningfulness derives
+from  its  original  semantic  home  within  the  domain  of  lan-
+guage. Meaningfulness is what might be called a hermeneutic
+21
+
+The Question
+
+concept:  for  something  to  be  meaningful  to  a  agent,  that
+agent must interpret it or construe it in a certain way. The words
+of  a  marriage  ceremony  are  meaningful  because  they  are
+construed by the parties as an exchange of promises; exercise
+in the gym is meaningful because, rather than being an aim-
+less  set  of  bodily  movements,  it  is  seen  as  a  programme
+designed to improve cardiovascular fitness; thrusting a bunch
+of flowers  in  someone’s  hand  is  meaningful  because  it  is
+intended as an expression of romantic interest.
+Extrapolating  from  these  examples  of  intentional  speech
+and action, we may draw the further conclusion that mean-
+ingfulness in action implies a certain degree of self-awareness or
+transparency to the agent: for me to engage in a meaningful activity
+I must have some grasp of what I am doing, and my interpret-
+ation of it must reflect purposes of my own that are more or
+less  transparent  to  me.  This  is  why  someone  who  is  in  the
+grip  of  psychological  distortions  or  projections,  and  whose
+goals  are  therefore  not  self-transparent,  risks  an  erosion  of
+their  status  as  an  autonomous  agent  engaged  in  meaningful
+activities.  Their  actions  –  the  obsessive  washing  of  a  table-
+cloth, for instance – may have a deeper resonance that is not
+properly  accessed  at  the  time,  so  that  the  agent’s  own  con-
+scious  rationalisations  of  what  she  is  doing  (‘the  household
+linen must be kept clean’) signally fail to justify the endless
+relaundering of an already spotless cloth. Only when analysis
+brings to the surface the true significance of the soiled linen
+(in  Freud’s  famous  example,  the  repressed  memory  of  an
+embarrassment suffered on the wedding night) is the subject
+in a position to become self-aware of about her actions, and
+to regain control of her life.
+38
+ Introducing convoluted cases of
+this kind is not meant to suggest that all our actions have to be
+subjected to minute psychoanalytic scrutiny before they meet
+22
+
+On
+ the Meaning of Life
+
+the transparency condition that allows us to be sure that the
+way we view our actions does indeed correspond with their
+true  significance.  But  it  is  none  the  less  undeniable  that  the
+dynamics of human agency are often extremely complex, and
+that  there  is  therefore  something  amiss  with  simplistic
+accounts that blandly assure us the meaning of a life can be
+read  off  as  a  straightforward  function  of  the  goals  that  an
+agent consciously declares he has set himself to achieve or the
+activities he has consciously elected to pursue.
+Suppose,  however,  that  an  agent  is  fully  engaged,  in  a
+self-aware  way,  undistorted  by  external  manipulation  or
+unconscious projection, on systematic projects that reflect her
+own  rational  choice  as  an  autonomous  agent.  Is  this  all  we
+need to call their life meaningful? It may be so; but a problem
+immediately arises that on this showing we could not avoid
+calling  meaningful  the  life  of  a  dedicated  torturer,  working
+devotedly  in  the  service  of  a  corrupt  regime.  Admittedly,
+some of those who have reflected on this sort of case have had
+no difficulty biting the bullet:
+That immoral lives may be meaningful is shown by the
+countless dedicated Nazi and Communist mass murderers
+. . . and by people whose rage, resentment, greed, ambition,
+selfishness and sense of superiority or inferiority give
+meaning to their lives and lead them to inflict grievous
+unjustified harm on others. Such people may be successfully
+engaged in their projects, derive great satisfaction from
+them, and find their lives . . . very meaningful.
+39
+They  may  perhaps  ‘find’  their  lives  meaningful,  but  are
+such lives really meaningful? It would certainly not be a very
+natural use of our language to bestow the epithet ‘meaningful’
+on the life of the angry, resentful, greedy, ambitious, selfish
+23
+
+The Question
+
+torturer.  But  perhaps  that  is  just  a  cosy  parochial  prejudice:
+‘me  and  my  mates’  would  shrink  from  calling  such  a  life
+meaningful, but that might be mere squeamishness, or else an
+irrational hangover from an outmoded religious world-view
+–  a  sentimental  wish  that  only  good  people  can find  real
+meaning in their lives. Can a radically immoral life be really
+meaningful?
+MEANING AND MORALITY
+We have already observed that the term ‘meaningful’ carries
+with it a package of criteria for its appropriate use (there are
+problems,  for  example,  in  describing  trivial  projects  or  the
+projects of psychologically confused or unself-aware agents,
+as  meaningful).  We  are  now  asking  whether  the  life  of  the
+dedicated Nazi torturer can indeed qualify as meaningful, and
+the only  way to answer this  is to unpack  the example more
+carefully. If such a person is acting out of anger, resentment
+or a sense of inferiority, for example, it already looks as if they
+may  be  falling  short  of  the  autonomy  and  selfhood  that  is
+necessary for us to say that their projects represent their own
+unmanipulated choices about how best to live. A prostitute’s
+life is not meaningful if her ‘choice’ to go on the streets is the
+acting  out  of  pain  and  confusion  arising  from  her  being  a
+victim  of  childhood  abuse.  The  life  of  the  bully  who  serves
+the Nazis because he ‘derives great satisfaction’ from hurting
+others begins to looks less meaningful when we explore the
+background and find out that such satisfaction stems from a
+damaged sense of self-worth produced by his upbringing at
+the  hands  of  a  tyrannical  and  sadistic  father.  To  be  sure,  the
+unhealthy choices and actions described in these sorts of case
+have a certain sort of significance, just as the stunted growth
+of a plant sown in polluted ground is significant – it points to
+24
+
+On
+ the Meaning of Life
+
+something that has gone awry. But it would be wrong to infer,
+just because the agents find some kind of satisfaction in their
+activities, that these lives qualify as meaningful in the richer
+evaluative  sense  we  have  identified  as  belonging  to  the
+package typically associated with the label ‘meaningful’ – the
+sense  that  implies  an  agent’s  involvement  in  projects  that
+reflect his or her free and autonomous choices.
+But  could  there  not  be  a  completely  immoral  life  that
+none  the  less  reflected  the  wholly  unmanipulated  rational
+choices of the agent? Could not the rational immoralist – that
+familiar figure  from  philosophical  discussions  of  the  old
+question  ‘Why  should  one  be  moral?’  –  enjoy  a  perfectly
+meaningful life? If we make the case one of excessive or per-
+verted cruelty and inhumanity, then we may be drawn back
+into  questions  about  the  psychological  equilibrium  of  the
+agent; so let us stipulate instead that the immoralist we have in
+mind  is  no  monster  of  vice,  nor  victim  of  gross  childhood
+trauma,  but  is  instead  just  very,  very  selfish  –  and  selfish,
+moreover, in a way that signally promotes his chosen projects.
+He might be like Percy Berkeley, the gourmandising officer in
+Simon Raven’s Alms for Oblivion sequence, who ‘had not had a
+thought in his head for twenty years that was not connected
+with his own immediate pleasure or comfort’.
+40
+ To make the
+case  even  harder,  let  us  assume  that  the  chosen  projects  are
+very much more impressive than the shallow indulgences of
+the  bon  viveur,  amounting  instead  to  projects  of  great  cre-
+ative significance. The much discussed case of Paul Gauguin,
+who  selfishly  dumped  his  family  to  pursue  a  self-indulgent
+but  highly  creative  life  in  Tahiti,  is  the  case  of  someone
+now widely regarded as a painter of genius;
+41
+ and (our critic
+might ask) if the life of an artistic genius is not meaningful,
+whose is?
+25
+
+The Question
+
+It would be hard to deny that achievements of a high cre-
+ative order are naturally seen, both by the agents themselves
+and by onlookers, as meaningful. What holds good for artistic
+achievement  seems  to  hold  good  for  athletic,  technical  or
+intellectual achievement: the great athlete, the brilliant engin-
+eer or the gifted mathematician may all feel they have found
+meaning  in  their  projects  and  achievements,  and  may  be
+judged by those around them to lead meaningful lives. Yet in
+none of these cases does it at first sight appear necessary that
+the lives  in  question have  to be  morally decent  lives:  just as
+the  artistic  genius  can  be  a  selfish  philanderer,  so  the  great
+athlete could be a thug, the brilliant engineer a tax dodger, the
+gifted mathematician a heartless miser, all apparently without
+affecting  the  meaningfulness  of  their  lives,  so  judged.  This
+brings  out  a  disturbing  feature  of  the  pluralistic  account  of
+life’s meaning provided by the brand of secular humanism we
+are considering. If there is no overarching structure or theory
+that confers meaning on life, no normative pattern or model
+to which the meaningful life must conform, then a meaning-
+ful life reduces to little more than an engaged life in which
+the  agent  is  systematically  committed  to  certain  projects  he
+makes his own, irrespective of their moral status.
+But  this  is  not  quite  good  enough.  It  is  not  as  if  we  are
+speculating  in  a  vacuum  about  disembodied,  deracinated
+beings who have a clean slate on which to devise the plan that
+will confer meaning on their lives. We are talking about human
+lives – the lives of a very special kind of animal, subject to an
+array of interlinked imperatives – biological imperatives (for
+food,  warmth,  shelter,  procreation),  social  imperatives  (the
+need  to  cooperate,  the  drive  to  communicate),  emotional
+imperatives (the need for such things as mutual recognition
+and affection), and lastly and just as importantly what might
+26
+
+On
+ the Meaning of Life
+
+be called ‘rational imperatives’. Uniquely among known living
+things  we  are  capable  of  standing  back  from  our  environ-
+ment, questioning the way things are, challenging the actions
+of our fellows, entering into dialogues of criticism and justifi-
+cation. In the light of this complex context of interaction and
+interpersonal dialogue within which we must live our lives,
+there has to be something unstable about a compartmental-
+ised vision in which individual pursuits and activities can be
+thought of as bestowing meaning in isolation, irrespective of
+their moral status, of how they impinge on others. Fulfilment
+and  meaning  pursued  in  ways  that  involve  deceiving  or
+hurting others, or making use of them as mere instrumental
+fodder for one’s own success, closing one’s heart and mind to
+the voice of one’s fellow creatures – these are modes of activ-
+ity  that  make  one  less  human,  because  the  favoured  activities
+have to be conducted at the cost of sealing off one’s rational
+awareness and emotional sensibility so that one is no longer
+open to such dialogue.
+This  in  turn  suggests  that  to  pursue  meaning  in  these
+inhuman ways risks being self-defeating. Unless the concen-
+tration  camp  guard  proposes  to  turn  himself  into  nothing
+more  than  a  machine  for  the  infliction  of  cruelty,  he  will
+presumably need, if only in his off-duty hours, human con-
+versation,  emotional  warmth,  the  cultivation  of  friendships,
+family  ties  . . .  Furthermore,  since  the  sensibilities  required
+for  such  human  pursuits  cannot  be  switched  on  and  off  at
+will,  but  are  necessarily  a  matter  of  permanently  ingrained
+dispositions  of  character,  the  gratification  our  guard  is  sup-
+posed to be deriving from his gruesome work will inevitably
+create  a  psychic  dissonance,  which  will  sooner  or  later  to
+endanger  a  collapse  –  either  a  breakdown  of  his  ability  to
+continue as a torturer or a breakdown of his ability to live a
+27
+
+The Question
+
+fulfilling  home  life.  Of  course  it  is  (unhappily)  conceivable
+that  a  job  that  involves  cruelty  and  bullying  may  produce
+excitements  that  may  make  it  horribly  attractive  to  certain
+individuals; that is not in dispute. The point is that it cannot,
+for the reasons just given, constitute a coherent model for a
+meaningful human life.
+HUMANITY AND OPENNESS
+The  factors  which  constrain  our  ability  as  humans  to find
+meaning in our lives depend partly on our emotional make-up
+and partly on our rational endowments. There is no need to
+take  sides  here  in  an  artificial  philosopher’s  battle  between
+David  Hume,  the  champion  of  sensibility  as  the  basis  of
+morals,  and  Immanuel  Kant,  the  apostle  of  rationality.  Will
+anyone  who  ‘wears  a  human  heart’,  asks  Hume,  ‘tread  as
+willingly  on  another’s  gouty  toes,  whom  he  has  no  quarrel
+with, as on the hard flint and pavement?’
+42
+ There is, on this
+account, no plausible picture of a truly fulfilled human life cut
+off  from  the  patterns  of  feeling  that  make  us  naturally  dis-
+posed to have some minimal concern for our fellow creatures.
+Can  I,  asks  Kant,  rationally  conceive  of  myself  as  worthy  of
+respect, without recognising as a matter of reason that ‘every
+other  rational  being  conceives  his  existence  on  the  same
+rational  ground’?
+43
+  Legislating  a  privilege  for  oneself  which
+one will not extend to others shows a defective rationality; for
+to make use of others as a mere means to one’s selfish ends is
+to cut oneself off from the operation of that rational dialogue
+which  defines  our  humanity.  Those  determined  to  take
+issue with these famous defences of morality could perhaps
+produce  imaginary  (and  maybe  actual)  examples  of  people
+who insist they have satisfying and meaningful lives despite
+blocking  off  their  natural  sympathies  for  others,  or  despite
+28
+
+On
+ the Meaning of Life
+
+somehow  managing  to  insist  on  personal  privileges  they
+refuse to consider extending to others. But there will always
+be  a  certain  fragmentation  and  isolation  about  such  lives.
+They cannot, by their very nature, flourish into lives that fully
+embrace  our  human  potentialities  for  fellow  feeling  and
+rational dialogue with others.
+If  the  compartmentalised  life  is  less  than  fully  human,  it
+follows that a truly meaningful life as a human being can be
+achieved only by one whose pattern of living is in a certain
+sense open rather than closed; that is, whose fundamental dis-
+positions are structured is such a way as not to foreclose the
+possibility  of  genuine  emotional  interaction  and  genuine
+critical dialogue with their fellows. This need not mean that
+in a meaningful life any moral value always has to override all
+other  values:  perhaps  no  one  could  be  a  successful  artist  or
+scientist  or  athlete  if  they  were  so  saintly  as  to  sacrifice  all
+their  time  and  resources  to  the  needs  of  others.  But  it  does
+mean that the meaningful life for human beings is an integrated
+life – one where my pet projects and plans are not kept in an
+isolated category which allows me to pursue them perpetu-
+ally shielded from the demands on me as a parent, or a friend,
+or a colleague, or a citizen. Though I may of course have my
+own special priorities and goals – as I must do, if my life is to
+be genuinely my own, if I am to be a human agent, not a mere
+insect in the social hive –
+44
+ nevertheless the walls created by
+those priorities will never become so thick as to allow me to
+domineer like a tyrant within the domain of my own creative
+self-importance.
+So  what  of  the  Gauguin-type figure?  What  of  the  great
+creator whose string of neglected families and discarded mis-
+tresses and betrayed friends are regarded by him as walking
+wounded,  casualties  in  the  all-consuming  struggles  of  a
+29
+
+The Question
+
+genius?  Well,  it  would  be  naive  and  silly  to  deny  that  great
+artists often behave badly. Both Tolstoy and Dickens, though
+they  were  in  a  certain  sense  ‘family  men’,  could  in  some
+respects be regarded as husbands from hell. The claim is not
+that  a  meaningful  life  can  only  be  one  of  untiring  virtue:
+lapses  and  failures  of  all  kinds  are  a  universal  feature  of  all
+human lives, as prevalent among the great as they are among
+the ordinary. Indeed, they may be more prevalent, since the
+determination  required  to  excel  perhaps  needs  the  kind  of
+single-mindedness that has a certain kinship to raw egoism.
+But one can concede this obvious truth without succumbing
+to  the  muddled  romantic  fantasy  that  greatness  somehow
+requires or justifies callousness. All the evidence surely points
+the  other  way;  for  great  art  is  great  precisely  because  of  its
+humanity –  its  heightened  vision  of  the  pathos  and  tragedy
+and comedy and precariousness of the human condition; and
+it  verges  on  the  absurd  to  suggest  that  such  a  vision  is  best
+cultivated through a coarsened and blunted sensitivity to the
+needs of those fellow humans with whom one is most closely
+involved. Further reflection along these lines suggests a seri-
+ous  tension,  if  not  downright  incompatibility,  between  the
+morally  insensitive  life  and  the  pursuit  of  artistic  creativity.
+Artistic excellence does not after all operate in a compartment
+sealed off from the deeper humanity of the artist. That open-
+ness we have identified as central to a meaningful life will be
+as much in point here as anywhere.
+This chimes in with an old intuition of Aristotle – that the
+virtues cannot be fully present in isolation, but are somehow
+integrated or interconnected.
+45
+ And it accords with the idea to
+be  found  in  many  religious  traditions  that,  in  order  to  be
+meaningful,  life  must  meet  the  standards  of  some  pattern
+tailored  to  our  human  nature,  rather  than  being  a  pure
+30
+
+On
+ the Meaning of Life
+
+function  of  isolated  individual  choice.  To  the  followers  of
+Nietzsche, the champions of creativity and the lordship of the
+will,  such  ideas  can  appear  restrictive  and  confining,  like  a
+strait-jacket. But nothing about the idea of the meaningful life
+as  integrated  presupposes  that  every  human  has  to  lead  the
+same  kind  of  existence,  or  that  there  is  not  room  for  many
+varieties of human flourishing – artistic, athletic, intellectual,
+and so on. What is presupposed is that to count towards the
+meaningfulness  of  a  life  these  varied  activities  have  to  be
+more  than  just  performed  by  the  agent  with  an  eye  to  per-
+sonal satisfaction; they have to be capable of being informed by
+a  vision  of  their  value  in  the  whole,
+46
+  by  a  sense  of  the
+worthwhile  part  they  play  in  the  growth  and flowering  of
+each unique human individual, and of the other human lives
+with which that story is necessarily interwoven.
+The notions here may sound piously high-minded: moral,
+perhaps  even  spiritual,  values  seem  to  be  being  invoked  as
+touchstones  for  a  meaningful  life.  This  raises  the  question:
+what can be the basis of such exalted conceptions of meaning
+and value in a universe where, if current scientific orthodoxy
+is correct, our entire human existence is not much more than
+a random blip on the face of the cosmos? To that question we
+now turn.
+31
+
+The Question
+
+described as arising, in Kant’s phrase, from a ‘need of reason’.
+58
+According  to  Kant,  I  cannot  prove  (or  disprove)  God;  yet
+because it would be humanly impossible to devote my life to
+the good if I thought I was striving after ‘a conception which
+at bottom was empty and had no object’, it is appropriate for
+‘the  righteous  man  to  say  “I  will  that  there  be  a  God  . . .  I
+firmly abide by this and will not let this faith be taken from
+me”.’
+The plea is for an acknowledgement that human beings, in
+their  vulnerability  and finitude,  need,  in  order  to  survive,
+modes of responding to the world which go beyond what is
+disclosed in a rational scientific analysis of the relevant phe-
+nomena.  Such  modes  of  response,  moreover,  are  character-
+istically expressed through practices whose value and resonance
+cannot be exhausted by a cognitive analysis of propositional
+contents. Wittgenstein was fond of quoting Goethe’sIm Anfang
+war die Tat –‘In the beginning was the Deed’. He also warned,
+in  the  closing  sentence  of  his  early  masterpiece  the Tractatus,
+that ‘what we cannot speak of we must pass over in silence’.
+Altering  that final  phrase,  we  might  say  instead  that  the
+domain that ‘cannot be spoken of ’ must be handled through praxis
+– the practice of spirituality.
+59
+CODA: INTIMATIONS OF MEANING
+The Corn was Orient and Immortal Wheat, which never should be
+reaped nor was ever sown. I thought it had stood from everlasting to
+everlasting. The Dust and Stones of the Street were as Precious as
+GOLD . . . And yong Men Glittering and Sparkling Angels, and Maids
+strange Seraphic Pieces of Light and Beauty! . . . Eternity was
+Manifest in the Light of the Day and som thing infinit Behind evry
+thing appeared: which talked with my Expectation and moved my
+Desire.
+Thomas Traherne
+60
+99
+Meaning, Vulnerability and Hope
+
+Instruction may make men learned, said Bernard of Clairvaux,
+but  feeling  makes  them  wise.
+61
+  Learned  academics,  whose
+livelihood   is   linked   to   displays   of   their   erudition   and
+cleverness, may act as if all the questions of religion and the
+meaning  of  life  could  be  answered  from  the  study  or  the
+seminar room. But the illuminations that come from the prac-
+tice  of  spirituality  cannot  be  accessed  by  means  of  rational
+argument alone, since the relevant experiences are not avail-
+able  to  us  during  those  times  when  we  are  adopting  the
+stance of detached rationality.
+To  access,  however,  is  not  the  same  as  to  assess.  Even  if
+we  cannot  gain  access  to  spiritual  illumination  via  rational
+analysis,  this  is  not  to  say  philosophy,  or  critical  rationality,
+can have nothing to say about the quest for meaning via the
+path of spirituality. For philosophy has an obligation to take
+into account all experience that is part of the human condi-
+tion.  And  although  claims  about  the  divine  may  lie  beyond
+the horizon of scientific knowledge, it is not as if embarking
+on  the  spiritual  quest  is  a  total  ‘leap  in  the  dark’.  For  our
+human awareness, even of the everyday variety, indisputably
+includes experiences in which spiritual values are made mani-
+fest – experiences in which, arguably, we have intimations of
+a transcendent world of meaning that breaks through into the
+ordinary  world  of  our five  senses.  Our  apprehension  of
+beauty,  the  beauty  of  the  natural  world,  is  one  example.  As
+simple an experience as that of seeing the colours of the leaves
+in autumn discloses the world around us as resonating with
+an  astonishing  harmony  and  richness;  it  reveals  objects  as
+qualitatively  irradiated  in  modalities  which  even  the  most
+sober of analytic philosophers have agreed are not fully cap-
+turable  in  the  language  of  physics.
+62
+  When  William  Blake
+urged us ‘To see a World in a Grain of Sand and Heaven in a
+100
+
+On
+ the Meaning of Life
+
+Wild Flower’,
+63
+ he was not advocating some strange incoher-
+ent mindset of the kind philosophers sometimes disparage by
+using  the  label  ‘mystical’.  Rather,  he  was  pointing  to  some-
+thing that few humans can honestly deny: our ability, in those
+lucid  moments  that  Wordsworth  called  ‘spots  of  time’,
+64
+  to
+see  the  world  transfigured  with  beauty  and  meaning.  There
+is  a  clear  and  unbroken  continuum  from  our  immediate
+everyday experience of the natural world, through the more
+reflective poetic musings of Blake and Wordsworth, through
+to  the  ecstatic  vision  of  Thomas  Traherne  quoted  above,  a
+vision  in  which  the  wonder  and  preciousness  of  the  world,
+and its human inhabitants, is so vividly manifest.
+The  pervasive  modern  vision  of  the  cosmos  as  bleak  and
+meaningless,  with  life  no  more  than  an  accidental  scum  on
+the barren rocks, is a vision that is seen through the lens of
+our own fouled-up lives – the empty concrete wastes of lit-
+tered parking lots, the dirty, graffiti-defaced walls of decaying
+warehouses and overcrowded office buildings. But take away
+the grime our own greed has created, take away the perpetual
+fog of exhaust fumes and the endless drone of jetliners rip-
+ping up the ozone layer, the constant flickering of screens and
+blaring  of  speakers.  Think  back  instead  only  two  or  three
+centuries ago, to the limpid scenes captured by Canaletto, or
+the translucent interiors of Vermeer, the pure air shimmering
+and  sparkling,  the  colours  of  everyday  objects  bright  and
+vivid and new. Think instead of Moses emerging from his tent
+to gaze up at the brilliant canopy of blazing stars in the clear
+night of the Sinai desert; the clean pure silence, the astonish-
+ing  radiance  of  beauty.  That  is  our  world:  the  beauty  is  not
+‘projected’  onto  it  by  the  observer,  but  is  inescapably  real,
+calling forth an irresistible response in our hearts. We respond
+to beauty, as we respond to truth and goodness: as objective
+101
+
+Meaning, Vulnerability and Hope
+
+realities beyond ourselves, that have the power to inspire us
+and draw us forward into the light. Of course it is possible, as
+many philosophers since Hume have argued, that such object-
+ivity  is  an  illusion,  resulting  from  the  mind’s  tendency  to
+‘spread itself ’ or project its own feelings outwards onto the
+world.
+65
+ But it is at least worth considering that talk of ‘projec-
+tion’ may apply most aptly not to our natural joy and wonder at
+the  immeasurable  beauty  of  the  natural  world  but  rather  to
+the bleak modernistic vision of the universe as void of mean-
+ing  and  value.  It  may  stem  from  our  own  confusions  and
+bitterness as we wilfully turn away from the light, as we stead-
+ily  advance  with  our  bulldozers  until  we  cover  the  whole
+planet in concrete and then complain that the cosmos we live
+in is no more than meaningless rubble.
+Our aesthetic experience gives us intimations of a world of
+value outside our own urgent self-oriented concerns. But to
+call the wonder expressed in a vision like Traherne’s ‘aesthetic’
+is  in  a  certain  sense  to  trivialise  it,  to  make  it  seem  like  the
+precious  exclamations  of  an  effete  art  critic  showing  off  his
+refinement in a picture gallery. In reality, aesthetic wonder is
+also  suffused  with  a  moral  significance:  it  was  no  accident
+that  Immanuel  Kant  linked  the  brilliancy  of  the  starry
+heavens  above  with  the  moral  law  within,  as  the  two  most
+awe-inspiring  objects  in  creation.
+66
+  What  is  manifest  in  the
+beauty  of  the  people  who  walk  through  Traherne’s  corn-
+fields,  the  young  men  who  are  ‘angels’  and  the  young
+women who are ‘seraphic pieces of light and beauty’, is their
+human  worth:  the  preciousness  of  individuals  who  are  vul-
+nerable,  mortal,  and  yet  somehow  of  eternal  value,  since
+their human lot of fragility and suffering has the capacity to
+deepen  their  understanding  and  sympathy  – ‘that  one  poor
+word  that  involves  all  our  best  insight  and  our  best  love’ –
+102
+
+On
+ the Meaning of Life
+
+and   ultimately,   mysteriously,   to   provide   the   grace   for
+redemption and rebirth.
+To see the world as Traherne saw it is not something that is
+dictated by a scientific analysis of the given facts, yet neither is
+it incompatible with those facts. The moral categories of our
+experience,   so  closely   bound   up   with  the   question   of
+life’s meaning, are not arcane or mystical categories, but are
+inseparable  from  our  human  way  of  being  in  the  world.
+Inseparable, but not automatically achieved. When things go
+wrong,
+Life’s but a fleeting shadow, a poor player
+that struts and frets his hour upon the stage
+and then is heard no more. It is a tale
+told by an idiot, full of sound and fury,
+signifying . . . nothing.
+67
+Macbeth’s hell, his deep depression about his life and future,
+is bound up with a vivid sense of the collapse of any meaning
+in life. That in turn is triggered by his interior moral collapse,
+his  capitulation  to  greed  and  ambition,  which  lets  him  take
+the first step towards betrayal and murder: that capitulation,
+which was supposed to give him the crown and solve all his
+problems, turned out to be the first step to ethical disintegra-
+tion,  the first  step  on  the  ‘primrose  path  to  the  everlasting
+bonfire’.  Human  beings  cannot  live  wholly  and  healthily
+except  in  responsiveness  to  objective  values  of  truth  and
+beauty  and  goodness.  If  they  deny  those  values,  or  try  to
+subordinate  them  to  their  own  selfish  ends,  they find  that
+meaning slips away.
+Perhaps  there  are  some  who  can  achieve  a  systematic
+responsiveness to these values without the kind of focus pro-
+vided  by  the  disciplines  of  spirituality;  but  the  argument  of
+103
+
+Meaning, Vulnerability and Hope
+
+this book has been that such a ‘go it alone’ strategy is fraught
+with  problems.  We  cannot  create  our  own  values,  and  we
+cannot  achieve  meaning  just  by  inventing  goals  of  our
+own; the fulfilment of our nature depends on the systematic
+cultivation of our human capacities for wonder and delight in
+the beauty of the world, and the development of our moral
+sensibilities for compassion, sympathy and rational dialogue
+with others. Yet, because of the fragility of our human condi-
+tion,  we  need  more  than  a  rational  determination  to  orient
+ourselves  towards  the  good.  We  need  to  be  sustained  by  a
+faith in the ultimate resilience of the good; we need to live in
+the  light  of  hope.
+68
+  Such  faith  and  hope,  like  the  love  that
+inspires both, is not established within the domain of scien-
+tifically determinate knowledge, but there is good reason to
+believe it is available to us through cultivating the disciplines
+of  spirituality.  Nothing  in  life  is  guaranteed,  but  if  the  path
+we follow is integrally linked, as good spiritual paths are, to
+right action and self-discovery and respect for others, then we
+have little to lose; and if the claims of religion are true, then
+we  have  everything  to  gain.  For  in  acting  as  if  life  has
+meaning, we will find, thank God, that it does.
+104
+
+On
+ the Meaning of Life

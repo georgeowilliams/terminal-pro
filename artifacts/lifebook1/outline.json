@@ -1,0 +1,144 @@
+{
+  "courseId": "life-book",
+  "title": "Meaning of Life",
+  "docId": "lifebook1",
+  "modules": [
+    "Module 01: meaning",
+    "Module 01: Descartes",
+    "Module 02: God",
+    "Module 03: true doctrine",
+    "Module 03: Tahiti",
+    "Module 04: meaning"
+  ],
+  "lessons": [
+    {
+      "id": "life-book-ecb69d18d2",
+      "module": "Module 01: meaning",
+      "title": "meaning · life · science · religion",
+      "objectives": [
+        "Explain meaning · life · science · religion",
+        "Apply the topic in realistic terminal workflows"
+      ],
+      "requiredTerms": [
+        "meaning",
+        "life",
+        "science",
+        "religion",
+        "God",
+        "man"
+      ],
+      "sourceChunkIds": [
+        "c1",
+        "c11",
+        "c28"
+      ]
+    },
+    {
+      "id": "life-book-8832b082dd",
+      "module": "Module 01: Descartes",
+      "title": "Descartes · Hume · philosophers of the Enlightenment",
+      "objectives": [
+        "Explain descartes · hume · philosophers of the enlightenment",
+        "Apply the topic in realistic terminal workflows"
+      ],
+      "requiredTerms": [
+        "Descartes",
+        "Hume",
+        "philosophers of the Enlightenment"
+      ],
+      "sourceChunkIds": [
+        "c6",
+        "c5",
+        "c7"
+      ]
+    },
+    {
+      "id": "life-book-98f345c6fd",
+      "module": "Module 02: God",
+      "title": "God · Buddha · Nietzsche · Resurrection",
+      "objectives": [
+        "Explain god · buddha · nietzsche · resurrection",
+        "Apply the topic in realistic terminal workflows"
+      ],
+      "requiredTerms": [
+        "God",
+        "Buddha",
+        "Nietzsche",
+        "Resurrection",
+        "Nativity",
+        "Phlogiston"
+      ],
+      "sourceChunkIds": [
+        "c12",
+        "c11",
+        "c1"
+      ]
+    },
+    {
+      "id": "life-book-0ecab53ad0",
+      "module": "Module 03: true doctrine",
+      "title": "true doctrine · salvation · self-deception · social manipulation",
+      "objectives": [
+        "Explain true doctrine · salvation · self-deception · social manipulation",
+        "Apply the topic in realistic terminal workflows"
+      ],
+      "requiredTerms": [
+        "true doctrine",
+        "salvation",
+        "self-deception",
+        "social manipulation",
+        "golfer",
+        "retirement"
+      ],
+      "sourceChunkIds": [
+        "c17",
+        "c16",
+        "c18"
+      ]
+    },
+    {
+      "id": "life-book-74fcf5d4e1",
+      "module": "Module 03: Tahiti",
+      "title": "Lab: Tahiti · genius · painter of genius · artistic genius",
+      "objectives": [
+        "Explain tahiti · genius · painter of genius · artistic genius",
+        "Complete a guided terminal exercise"
+      ],
+      "requiredTerms": [
+        "Tahiti",
+        "genius",
+        "painter of genius",
+        "artistic genius",
+        "creative order",
+        "agent"
+      ],
+      "sourceChunkIds": [
+        "c23",
+        "c22",
+        "c26"
+      ]
+    },
+    {
+      "id": "life-book-7679e1e86d",
+      "module": "Module 04: meaning",
+      "title": "meaning · value · universe · human existence",
+      "objectives": [
+        "Explain meaning · value · universe · human existence",
+        "Apply the topic in realistic terminal workflows"
+      ],
+      "requiredTerms": [
+        "meaning",
+        "value",
+        "universe",
+        "human existence",
+        "Kant's phrase",
+        "God"
+      ],
+      "sourceChunkIds": [
+        "c28",
+        "c11",
+        "c1"
+      ]
+    }
+  ]
+}

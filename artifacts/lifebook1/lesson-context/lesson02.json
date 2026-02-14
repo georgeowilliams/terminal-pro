@@ -1,0 +1,136 @@
+{
+  "lessonId": "life-book-8832b082dd",
+  "title": "Descartes · Hume · philosophers of the Enlightenment",
+  "objectives": [
+    "Explain descartes · hume · philosophers of the enlightenment",
+    "Apply the topic in realistic terminal workflows"
+  ],
+  "extracts": [
+    {
+      "chunkId": "c6",
+      "excerpt": "or  goal-seeking\ndeep down in nature. The job of the scientist was to subsume\nall observable events under the relevant mathematical cover-\ning laws; and in respect of these ultimate laws there was no\nattainable answer to the question ‘why?’ One could say – and\nDescartes did say – that God had decreed that it should be so;\nbut he immediately added that the rationale for God’s decrees\nwas  not  for  human  scientists…",
+      "commandsFound": [
+        "or  goal-seeking",
+        "deep down in nature. The job of the scientist was to subsume",
+        "all observable events under the relevant mathematical cover-",
+        "beyond human power to fathom.",
+        "although  modern  scientists  may  often  ask  various  kinds  of",
+        "ultimate  and  most  general  principles  taken  to  underlie  all"
+      ],
+      "termsFound": [
+        "Descartes",
+        "Hume",
+        "philosophers of the Enlightenment"
+      ]
+    },
+    {
+      "chunkId": "c5",
+      "excerpt": "eaning of Life\n\nThe distinction between what something is and why it is has\n\nbecome something of a cliché; in similar vein, people often\nsay science tackles how questions but not why questions. But in\nfact  the  distinction  is  not  particularly  helpful  in  sorting  out\nwhat scientists characteristically do. Aristotle was rather more\nperspicuous in distinguishing four types of answer relevant to\nscientific…",
+      "commandsFound": [
+        "eaning of Life",
+        "say science tackles how questions but not why questions. But in",
+        "fact  the  distinction  is  not  particularly  helpful  in  sorting  out",
+        "what scientists characteristically do. Aristotle was rather more",
+        "perspicuous in distinguishing four types of answer relevant to",
+        "scientific inquiry:"
+      ],
+      "termsFound": [
+        "material cause",
+        "formal cause",
+        "efficient cause",
+        "final cause"
+      ]
+    },
+    {
+      "chunkId": "c7",
+      "excerpt": "xist’.  It  is  sometimes  suggested  that  such  a  unified  theory\nmight turn out to be the only possible theory, in view of the\nsevere  constraints  that  must  govern  any  model  that  is  to  be\nconsistent and capable accounting for the universe as we find\nit.  But  even  if  there  were  to  be  only  one  such  candidate,  it\nwould  still  be  merely  the  only  possible  theory  given  that  the\nuniverse is…",
+      "commandsFound": [
+        "severe  constraints  that  must  govern  any  model  that  is  to  be",
+        "consistent and capable accounting for the universe as we find",
+        "would  still  be  merely  the  only  possible  theory  given  that  the",
+        "why  there  should  be  a  universe  at  all.  Some  cosmologists",
+        "but  it  is  hard  to  take  this  seriously.  A  theory",
+        "cannot generate a universe."
+      ],
+      "termsFound": [
+        "unified theory",
+        "grand unified theory",
+        "philosophical question",
+        "nothing"
+      ]
+    }
+  ],
+  "relevantChunks": [
+    {
+      "chunkId": "c6",
+      "start": 11333,
+      "end": 13829,
+      "termsFound": [
+        "Descartes",
+        "Hume",
+        "philosophers of the Enlightenment"
+      ],
+      "commandsFound": [
+        "or  goal-seeking",
+        "deep down in nature. The job of the scientist was to subsume",
+        "all observable events under the relevant mathematical cover-",
+        "beyond human power to fathom.",
+        "although  modern  scientists  may  often  ask  various  kinds  of",
+        "ultimate  and  most  general  principles  taken  to  underlie  all"
+      ],
+      "whyItMatters": "Supports \"Descartes · Hume · philosophers of the Enlightenment\" via terms: Descartes, Hume, philosophers of the Enlightenment.",
+      "text": "or  goal-seeking\ndeep down in nature. The job of the scientist was to subsume\nall observable events under the relevant mathematical cover-\ning laws; and in respect of these ultimate laws there was no\nattainable answer to the question ‘why?’ One could say – and\nDescartes did say – that God had decreed that it should be so;\nbut he immediately added that the rationale for God’s decrees\nwas  not  for  human  scientists  to  discover:  it  was  ‘forever\nlocked  up  in  the  inscrutable  abyss  of  His  wisdom’.\n10\n\nDavid\n\nHume,  writing  a  century  after  Descartes,  took  an  essentially\nparallel line, though couched in entirely secular language: the\njob of science was to map the observable natural world, but\nany supposed ‘ultimate springs and principles’ of nature were\nbeyond human power to fathom.\n11\n\nAlthough  this  position  was first  established  by  the  philo-\n\nsophers  of  the  Enlightenment,  it  has  remained  pretty  much\nunshaken ever since; for it is hard to see how science, however\nit  may  develop,  could  address  such  ‘ultimate’  questions.  So\nalthough  modern  scientists  may  often  ask  various  kinds  of\n‘why?’  questions  about  particular  structures  or  events,  the\nultimate  and  most  general  principles  taken  to  underlie  all\nphenomena  are  not  regarded  as  admitting  of  the  question\n‘why is it so?’ If we were to achieve a complete and unified\n6\n\nOn\n\n the Meaning of Life\n\ntheory  of  the  universe  (fulfilling  the  grand  philosophical-\ncum-scientific vision that links Descartes and Hume, Newton\nand  Einstein,  right  down  to  present-day  cosmologists  such\nas  Hawking),  such  a  theory  would  subsume  all  observable\nphenomena in the universe under the fewest and most com-\nprehensive  laws  or  principles;  but  as  to  why  these  principles\nobtain, this would have to remain, in Hume’s graphic phrase,\n‘totally shut up from human curiosity and inquiry’.\n12\n\nSo we have a problem about the modern hope for a grand\n\ncomprehensive physics that would be the ‘ultimate triumph\nof human reason’. It is an inspiring aim, but one which leaves\nit very unclear why it should be supposed that a super-theory\nlinking gravity and quantum physics might enable us to tackle\nthe ultimate question of ‘why it is that we and the universe\nexist’.  It  is  sometimes  suggested  that  such  a  unified  theory\nmight turn out to be the only possible theory, in view of the\nsevere  constraints  that  must  govern  any  model  that  is  to  be"
+    },
+    {
+      "chunkId": "c5",
+      "start": 9078,
+      "end": 11533,
+      "termsFound": [
+        "material cause",
+        "formal cause",
+        "efficient cause",
+        "final cause"
+      ],
+      "commandsFound": [
+        "eaning of Life",
+        "say science tackles how questions but not why questions. But in",
+        "fact  the  distinction  is  not  particularly  helpful  in  sorting  out",
+        "what scientists characteristically do. Aristotle was rather more",
+        "perspicuous in distinguishing four types of answer relevant to",
+        "scientific inquiry:"
+      ],
+      "whyItMatters": "Supports \"Descartes · Hume · philosophers of the Enlightenment\" via terms: material cause, formal cause, efficient cause.",
+      "text": "eaning of Life\n\nThe distinction between what something is and why it is has\n\nbecome something of a cliché; in similar vein, people often\nsay science tackles how questions but not why questions. But in\nfact  the  distinction  is  not  particularly  helpful  in  sorting  out\nwhat scientists characteristically do. Aristotle was rather more\nperspicuous in distinguishing four types of answer relevant to\nscientific inquiry:\n(1)  Answers indicating the component materials of which an\nobject is made (its ‘material’ cause);\n(2)  Answers specifying the essence or kind of thing it is (its\n‘formal’ cause);\n(3)  Answers pointing to the motive force that got it into its\npresent state (its ‘efficient’ cause); and\n(4)  Answers  citing  the  end  or  goal  towards  which  it  tends\n(its ‘final’ cause).\n9\n\nExplanations of all four kinds can be good scientific answers\n\nto the question ‘why?’\n(1)  ‘Why was the bridge strong?’ ‘Because [material] it was\nmade of steel.’\n(2)  ‘Why  do  you  classify  that  ice  cube  as  water?’ ‘Because\n[formal] it is frozen H\n2\nO.’\n(3)  ‘Why  did  the  billiard  ball  move?’ ‘Because  [efficient]  it\nwas struck with a cue.’\n(4)  ‘Why  do  trees  have  roots?’ ‘Because  [final]  in  order  to\ngrow they need to take up water and nutrients.’\n\nThe  last  type  of  answer  was  particularly  important  in\n\nAristotle’s  work,  since  he  maintained  that  all  things  tend\ntowards   some   natural   end-state;   but   although   modern\nscientists, especially biologists, still frequently use such goal-\nrelated or teleological explanations of phenomena, it has been\n5\n\nThe Question\n\n\na  guiding  principle  since  the  seventeenth  century  that  such\nteleology  must  always  eventually  be  explained  in  terms  of\nunderlying microstructures of an entirely mechanical nature.\n\nIt   is   in   this   sense   that   the   great   seventeenth-century\n\nphilosopher-scientist  René  Descartes  is  often  said  to  have\nbanished teleology from science. He envisaged a unified style\nof  explanation  based  ultimately  on  the  universal  laws  of\nmathematical  physics  that  governed  the  behaviour  of  all\nnatural  phenomena,  celestial  and  terrestrial  alike.  There  was\nno  room  for  any  irreducible  purposiveness  or  goal-seeking\ndeep down in nature. The job of the scientist was to subsume\nall observable events under the relevant mathematical cover-\ning laws; and in respect of these ultimate laws there was no"
+    },
+    {
+      "chunkId": "c7",
+      "start": 13629,
+      "end": 16128,
+      "termsFound": [
+        "unified theory",
+        "grand unified theory",
+        "philosophical question",
+        "nothing"
+      ],
+      "commandsFound": [
+        "severe  constraints  that  must  govern  any  model  that  is  to  be",
+        "consistent and capable accounting for the universe as we find",
+        "would  still  be  merely  the  only  possible  theory  given  that  the",
+        "why  there  should  be  a  universe  at  all.  Some  cosmologists",
+        "but  it  is  hard  to  take  this  seriously.  A  theory",
+        "cannot generate a universe."
+      ],
+      "whyItMatters": "Supports \"Descartes · Hume · philosophers of the Enlightenment\" via terms: unified theory, grand unified theory, philosophical question.",
+      "text": "xist’.  It  is  sometimes  suggested  that  such  a  unified  theory\nmight turn out to be the only possible theory, in view of the\nsevere  constraints  that  must  govern  any  model  that  is  to  be\nconsistent and capable accounting for the universe as we find\nit.  But  even  if  there  were  to  be  only  one  such  candidate,  it\nwould  still  be  merely  the  only  possible  theory  given  that  the\nuniverse is as it is – which would still fall short of explaining\nwhy  there  should  be  a  universe  at  all.  Some  cosmologists\n(including Hawking) have speculated that the grand unified\ntheory ‘might be so compelling that it brings about its own\nexistence’;\n13\n  but  it  is  hard  to  take  this  seriously.  A  theory\ncannot generate a universe.\n\nSOMETHING RATHER THAN NOTHING\n\nThe  position  we  have  reached  is  that  while  science  aims  to\n\nprovide  as  complete  and  comprehensive  a  description  as  it\ncan of the universe, no matter how successful and unified the\ntheory it ends up with, it cannot explain why there should be\n7\n\nThe Question\n\n\na universe there to be explained. We collide with the ancient\nphilosophical question ‘Why is there something rather than\nnothing?’ and it seems clear on reflection that nothing within\nthe observable universe could really answer this. If there is a\nsolution to the ‘riddle of life in space and time’, it would have\nto  lie  outside  space  and  time.\n14\n\nHere  we  run  into  another\n\nblank wall: if any such solution must lie beyond the limits of\nthe  temporal  and  spatial  universe,  outside  the  ‘phenomenal\nworld’, as Immanuel Kant called it, then may it not be beyond\nthe horizon of what is humanly knowable? If there is a tran-\nscendent  realm  of  the  ‘noumenal’ –  something  beyond  the\nphenomena,  which  explains  why  we  and  the  universe  are\nhere – then there is a risk that there will be nothing whatever\nwe can coherently say about it.\nWe may have reached the limits of science here, but perhaps\nwe  have  not  necessarily  reached  the  limits  of  human  dis-\ncourse. There is a rich tradition of religious language, both in\nour Western culture and elsewhere, that grapples with the task\nof addressing what cannot be fully captured by even the most\ncomplete  scientific  account  of  the  phenomenal  world.  One\nmight say that it is the task of religious discourse to strain at\nthe limits of the sayable. Some kinds of theology, to be sure,\nhave  aimed  at  keeping  entirely  within  the  boundaries  of"
+    }
+  ],
+  "glossaryTerms": [
+    "Descartes",
+    "Hume",
+    "philosophers of the Enlightenment"
+  ],
+  "quizIdeas": [
+    "Short-answer: explain Descartes in your own words.",
+    "Command challenge tied to: Descartes · Hume · philosophers of the Enlightenment."
+  ]
+}
