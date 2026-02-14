@@ -16,45 +16,31 @@ function resolveJsonPath(basePath, relativePath) {
 
 function normalizeIndexEntry(item) {
   if (!item || typeof item !== 'object') return null;
+  if (!item.courseId || !item.defaultLocale) return null;
 
-  if (item.courseId && item.defaultLocale) {
-    return {
-      courseId: item.courseId,
-      defaultLocale: item.defaultLocale,
-      locales: Array.isArray(item.locales) && item.locales.length ? item.locales : [item.defaultLocale],
-      paths: item.paths || {},
-      path: item.path,
-    };
-  }
+  const locales = Array.isArray(item.locales) && item.locales.length
+    ? item.locales
+    : [item.defaultLocale];
 
-  if (item.id && item.path) {
-    return {
-      courseId: item.id,
-      defaultLocale: 'en',
-      locales: ['en'],
-      path: item.path,
-      paths: { en: item.path },
-    };
-  }
-
-  return null;
+  return {
+    courseId: item.courseId,
+    defaultLocale: item.defaultLocale,
+    locales,
+    paths: item.paths || {},
+    path: item.path,
+  };
 }
 
 function resolveCourseJsonPath(entry, locale) {
   if (entry.paths && entry.paths[locale]) return entry.paths[locale];
-  if (entry.path) return entry.path;
+  if (entry.path && locale === entry.defaultLocale) return entry.path;
   return `/content/courses/${entry.courseId}/${locale}/course.json`;
 }
 
 export async function loadCourseIndex() {
   if (indexCache.value) return indexCache.value;
 
-  let list;
-  try {
-    list = await fetchJson('/content/courses/index.json');
-  } catch (error) {
-    list = await fetchJson('/courses/index.json');
-  }
+  const list = await fetchJson('/content/courses/index.json');
 
   if (!Array.isArray(list)) {
     throw new Error('Invalid content/courses/index.json: expected an array');

@@ -5,15 +5,9 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "validate": "node tools/validateContent.js",
-    "ingest": "node tools/ingest.js",
-    "extract": "node tools/extract-concepts.js",
-    "outline": "node tools/build-outline.js",
-    "context": "node tools/build-lesson-context.js",
-    "batch": "node tools/batch.js"
+    "check:courses": "node scripts/check-course-discovery.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "pdf-parse": "^1.1.1"
+    "express": "^4.19.2"
   }
 }

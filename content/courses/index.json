@@ -2,10 +2,23 @@
   {
     "courseId": "linux-terminal",
     "defaultLocale": "en",
-    "locales": ["en", "es"],
+    "locales": [
+      "en",
+      "es"
+    ],
     "paths": {
       "en": "/content/courses/linux-terminal/en/course.json",
       "es": "/content/courses/linux-terminal/es/course.json"
+    }
+  },
+  {
+    "courseId": "life-book",
+    "defaultLocale": "en",
+    "locales": [
+      "en"
+    ],
+    "paths": {
+      "en": "/content/courses/life-book/en/course.json"
     }
   }
 ]
