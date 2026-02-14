@@ -2,10 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const { parseArgs, ensureDir, readJson, writeJson } = require('./common');
+const { parseArgs, ensureDir, readJson, writeJson, slugify } = require('./common');
 const { generateLocal } = require('./llm/localClient');
 
 const CACHE_DIR = path.join('tools', 'cache');
+const PROMPT_VERSION = 'v2';
+const GENERATE_ENDPOINT = '/api/generate';
 
 function promptForChunk(chunkText) {
   return [
@@ -18,8 +20,11 @@ function promptForChunk(chunkText) {
   ].join('\n');
 }
 
-function hashInput(model, prompt) {
-  return crypto.createHash('sha256').update(`${model}\n${prompt}`).digest('hex');
+function hashInput({ model, prompt, baseUrl }) {
+  return crypto
+    .createHash('sha256')
+    .update([PROMPT_VERSION, baseUrl, GENERATE_ENDPOINT, model, prompt].join('\n'))
+    .digest('hex');
 }
 
 function parseResponse(text) {
@@ -50,6 +55,7 @@ async function main() {
   const args = parseArgs(process.argv);
   const docId = args.docId;
   const model = args.model || 'qwen2.5:3b';
+  const ollamaBaseUrl = String(process.env.OLLAMA_URL || 'http://127.0.0.1:11434').replace(/\/+$/, '');
 
   if (!docId) {
     throw new Error('Usage: node tools/extract-concepts.js --docId linuxbook1 --model qwen2.5:3b');
@@ -57,15 +63,17 @@ async function main() {
 
   const chunksPath = path.join('artifacts', docId, 'chunks.json');
   const chunks = readJson(chunksPath);
-  ensureDir(CACHE_DIR);
+
+  const modelCacheDir = path.join(CACHE_DIR, slugify(model) || 'model');
+  ensureDir(modelCacheDir);
 
   const aggregate = { concepts: [], commands: [], flags: [], tools: [], filePaths: [] };
   const perChunk = [];
 
   for (const chunk of chunks) {
     const prompt = promptForChunk(chunk.text);
-    const key = hashInput(model, prompt);
-    const cachePath = path.join(CACHE_DIR, `${key}.json`);
+    const key = hashInput({ model, prompt, baseUrl: ollamaBaseUrl });
+    const cachePath = path.join(modelCacheDir, `${key}.json`);
 
     let parsed;
     if (fs.existsSync(cachePath)) {

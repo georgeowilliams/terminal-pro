@@ -71,6 +71,25 @@ async function processJob(job, steps, resume, model) {
   }
 }
 
+
+async function runWithConcurrency(items, concurrency, worker) {
+  const queue = [...items];
+  const runners = [];
+
+  async function next() {
+    const item = queue.shift();
+    if (!item) return;
+    await worker(item);
+    await next();
+  }
+
+  for (let i = 0; i < Math.min(concurrency, items.length); i += 1) {
+    runners.push(next());
+  }
+
+  await Promise.all(runners);
+}
+
 async function main() {
   const args = parseArgs(process.argv);
   const inputDir = args.input || 'sources';
@@ -78,6 +97,8 @@ async function main() {
   const resume = Boolean(args.resume);
   const only = args.only;
   const lessons = Number(args.lessons || 40);
+  const requestedConcurrency = Number(args.concurrency || 1);
+  const concurrency = Number.isFinite(requestedConcurrency) ? Math.max(1, Math.min(requestedConcurrency, 4)) : 1;
 
   ensureDir(path.join('tools', 'jobState'));
   const steps = stepList(only);
@@ -88,20 +109,26 @@ async function main() {
     return;
   }
 
-  for (const input of files) {
+  const jobs = files.map((input) => {
     const base = path.basename(input, path.extname(input));
     const docId = slugify(base);
-    const job = {
+    return {
       input,
       docId,
       courseId: slugify(base),
       title: titleCase(base),
       lessons,
     };
+  });
 
-    console.log(`\n== Processing ${docId} ==`);
-    await processJob(job, steps, resume, model);
+  if (requestedConcurrency !== concurrency) {
+    console.log(`Concurrency capped at ${concurrency} for local Ollama stability.`);
   }
+
+  await runWithConcurrency(jobs, concurrency, async (job) => {
+    console.log(`\n== Processing ${job.docId} ==`);
+    await processJob(job, steps, resume, model);
+  });
 }
 
 main().catch((err) => {
