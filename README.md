@@ -51,6 +51,8 @@ Use these scripts from the project root:
 - `npm run dev` (or `npm start`) — run the local server.
 - `npm run ingest -- --input "sources/linux.pdf" --docId linuxbook1` — ingest source docs.
 - `npm run extract -- --docId linuxbook1` — extract concepts from ingested sources (requires Ollama running).
+- `npm run extract -- --docId lifebook1 --model phi3:mini` — fast extraction with a smaller local model.
+- `npm run extract -- --docId lifebook1 --maxChars 1400 --maxPredict 192` — extraction with tighter prompt/response limits.
 - `npm run outline -- --docId linuxbook1 --courseId linux-terminal --title "Linux Terminal Expert" --lessons 40` — build deterministic course outline.
 - `npm run outline -- --docId linuxbook1 --courseId linux-terminal --title "Linux Terminal Expert" --lessons 40 --out artifacts/linuxbook1/outline-custom.json` — optional custom output path.
 - `npm run context -- --docId linuxbook1` — build lesson context files for manual prompting.
@@ -60,6 +62,8 @@ Use these scripts from the project root:
 ## Workflow
 
 `PDF → ingest → extract → outline → lesson context → manual Codex prompt → course JSON → platform`
+
+During extraction, the CLI shows a live progress bar with chunk progress, per-chunk timing, average time, and ETA so long CPU runs are visibly active.
 
 Place PDFs into `/sources/`.
 
