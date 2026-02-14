@@ -1,0 +1,17 @@
+{
+  "id": "life-book",
+  "title": "Meaning of Life",
+  "subtitle": "A structured philosophical journey through Cottingham's themes",
+  "version": 1,
+  "files": {
+    "lessons": "./lessons.json",
+    "glossary": "./glossary.json"
+  },
+  "drillTasks": [
+    "Compare exogenous and endogenous sources of meaning in one paragraph.",
+    "Map one Enlightenment thinker to a modern scientific worldview.",
+    "Evaluate whether value can be objective without explicit theology.",
+    "Analyze a life-case for self-deception versus authentic purpose.",
+    "Draft your own working definition of meaningful human existence."
+  ]
+}

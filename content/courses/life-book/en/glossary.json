@@ -1,0 +1,320 @@
+[
+  {
+    "termId": "meaning",
+    "display": "Meaning",
+    "aliases": [],
+    "short": "Significance or worth attributed to life, actions, or existence.",
+    "long": "In this course, meaning is evaluative language about what makes a life matter, not merely descriptive language about biological or social facts.",
+    "seeAlso": [
+      "value",
+      "human existence"
+    ]
+  },
+  {
+    "termId": "life",
+    "display": "life",
+    "aliases": [],
+    "short": "A lived human trajectory shaped by choices, relationships, and practices.",
+    "long": "Life is treated as an evaluative whole, not just a sequence of events.",
+    "seeAlso": [
+      "meaning",
+      "human existence"
+    ]
+  },
+  {
+    "termId": "science",
+    "display": "science",
+    "aliases": [],
+    "short": "Systematic inquiry into natural phenomena using observation and theory.",
+    "long": "Science explains mechanisms and causal patterns but may not by itself settle ultimate questions of purpose.",
+    "seeAlso": [
+      "universe",
+      "meaning"
+    ]
+  },
+  {
+    "termId": "religion",
+    "display": "religion",
+    "aliases": [],
+    "short": "Traditions, beliefs, and practices concerning ultimate reality and value.",
+    "long": "Religion appears as one major domain for grounding meaning, morality, and hope.",
+    "seeAlso": [
+      "God",
+      "salvation"
+    ]
+  },
+  {
+    "termId": "god",
+    "display": "God",
+    "aliases": [],
+    "short": "A transcendent source of value in many theistic frameworks.",
+    "long": "God functions in the text as a candidate external ground for meaning and moral order.",
+    "seeAlso": [
+      "religion",
+      "exogenous meaning"
+    ]
+  },
+  {
+    "termId": "man",
+    "display": "man",
+    "aliases": [],
+    "short": "Historical term for human beings in philosophical writing.",
+    "long": "Used in source language to discuss humanity's role in generating or receiving meaning.",
+    "seeAlso": [
+      "human existence"
+    ]
+  },
+  {
+    "termId": "descartes",
+    "display": "Descartes",
+    "aliases": [],
+    "short": "Early modern philosopher linked to mechanistic science.",
+    "long": "Descartes helps frame the shift toward mathematically ordered explanation in modern thought.",
+    "seeAlso": [
+      "philosophers of the Enlightenment",
+      "science"
+    ]
+  },
+  {
+    "termId": "hume",
+    "display": "Hume",
+    "aliases": [],
+    "short": "Empiricist philosopher known for skepticism about necessary connection.",
+    "long": "Hume's analysis constrains what can be inferred from experience about ultimate causes.",
+    "seeAlso": [
+      "philosophers of the Enlightenment"
+    ]
+  },
+  {
+    "termId": "philosophers-of-the-enlightenment",
+    "display": "philosophers of the Enlightenment",
+    "aliases": [],
+    "short": "Thinkers emphasizing reason, critique, and scientific method.",
+    "long": "They shaped modern assumptions about valid explanation and the limits of metaphysical claims.",
+    "seeAlso": [
+      "Descartes",
+      "Hume"
+    ]
+  },
+  {
+    "termId": "buddha",
+    "display": "Buddha",
+    "aliases": [],
+    "short": "Founder associated with the Buddhist path of liberation.",
+    "long": "In this course, Buddha represents a non-theistic route to meaning through transformation of suffering and desire.",
+    "seeAlso": [
+      "meaning",
+      "salvation"
+    ]
+  },
+  {
+    "termId": "nietzsche",
+    "display": "Nietzsche",
+    "aliases": [],
+    "short": "Philosopher who proclaimed the 'death of God'.",
+    "long": "Nietzsche challenges inherited religious grounding and emphasizes human value creation.",
+    "seeAlso": [
+      "God",
+      "endogenous meaning"
+    ]
+  },
+  {
+    "termId": "resurrection",
+    "display": "Resurrection",
+    "aliases": [],
+    "short": "Religious claim of life beyond death.",
+    "long": "Appears as part of Christian symbolic and doctrinal structure for hope and meaning.",
+    "seeAlso": [
+      "Nativity",
+      "salvation"
+    ]
+  },
+  {
+    "termId": "nativity",
+    "display": "Nativity",
+    "aliases": [],
+    "short": "Commemoration of birth in Christian tradition.",
+    "long": "Used as an example of religious ritual structure in communal meaning-making.",
+    "seeAlso": [
+      "Resurrection"
+    ]
+  },
+  {
+    "termId": "phlogiston",
+    "display": "Phlogiston",
+    "aliases": [],
+    "short": "Obsolete scientific theory once used to explain combustion.",
+    "long": "Included to illustrate paradigm change in intellectual history.",
+    "seeAlso": [
+      "science"
+    ]
+  },
+  {
+    "termId": "true-doctrine",
+    "display": "true doctrine",
+    "aliases": [],
+    "short": "Claim to uniquely correct ultimate teaching.",
+    "long": "The lesson critiques how doctrine claims can both guide and distort the search for meaning.",
+    "seeAlso": [
+      "salvation",
+      "social manipulation"
+    ]
+  },
+  {
+    "termId": "salvation",
+    "display": "salvation",
+    "aliases": [],
+    "short": "Deliverance or ultimate fulfillment in religious/moral frameworks.",
+    "long": "Used broadly for narratives of rescue, completion, or liberation.",
+    "seeAlso": [
+      "religion",
+      "true doctrine"
+    ]
+  },
+  {
+    "termId": "self-deception",
+    "display": "self-deception",
+    "aliases": [],
+    "short": "Failure to acknowledge relevant truths about oneself.",
+    "long": "A key obstacle to meaningful living when comfort replaces honest evaluation.",
+    "seeAlso": [
+      "social manipulation"
+    ]
+  },
+  {
+    "termId": "social-manipulation",
+    "display": "social manipulation",
+    "aliases": [],
+    "short": "External shaping of beliefs or values for control.",
+    "long": "Discussed as a force that can counterfeit meaning by scripting inauthentic aims.",
+    "seeAlso": [
+      "self-deception"
+    ]
+  },
+  {
+    "termId": "golfer",
+    "display": "golfer",
+    "aliases": [],
+    "short": "Retired case-study figure used for evaluative analysis.",
+    "long": "The golfer example tests whether comfortable routine alone constitutes meaningfulness.",
+    "seeAlso": [
+      "retirement"
+    ]
+  },
+  {
+    "termId": "retirement",
+    "display": "retirement",
+    "aliases": [],
+    "short": "Life stage after regular professional work.",
+    "long": "In the lesson, retirement becomes a lens on purpose, habit, and reflective agency.",
+    "seeAlso": [
+      "golfer"
+    ]
+  },
+  {
+    "termId": "tahiti",
+    "display": "Tahiti",
+    "aliases": [],
+    "short": "Place invoked in discussion of artistic life and genius.",
+    "long": "Used in a case study to probe whether creative achievement guarantees meaningfulness.",
+    "seeAlso": [
+      "genius",
+      "artistic genius"
+    ]
+  },
+  {
+    "termId": "genius",
+    "display": "genius",
+    "aliases": [],
+    "short": "Exceptional creative or intellectual capacity.",
+    "long": "The course treats genius as important but insufficient by itself for fully meaningful life.",
+    "seeAlso": [
+      "artistic genius"
+    ]
+  },
+  {
+    "termId": "painter-of-genius",
+    "display": "painter of genius",
+    "aliases": [],
+    "short": "An artist regarded as extraordinarily creative.",
+    "long": "A test case in balancing achievement with integrity and relational openness.",
+    "seeAlso": [
+      "genius",
+      "Tahiti"
+    ]
+  },
+  {
+    "termId": "artistic-genius",
+    "display": "artistic genius",
+    "aliases": [],
+    "short": "Outstanding artistic excellence.",
+    "long": "Evaluated alongside broader human criteria such as dialogue and responsibility.",
+    "seeAlso": [
+      "creative order"
+    ]
+  },
+  {
+    "termId": "creative-order",
+    "display": "creative order",
+    "aliases": [],
+    "short": "High-level structured creativity in achievement.",
+    "long": "Refers to significant constructive accomplishment valued by agents and observers.",
+    "seeAlso": [
+      "artistic genius"
+    ]
+  },
+  {
+    "termId": "agent",
+    "display": "agent",
+    "aliases": [],
+    "short": "A person acting, choosing, and interpreting purposes.",
+    "long": "Used in evaluation of meaningful life from first-person and third-person standpoints.",
+    "seeAlso": [
+      "meaning"
+    ]
+  },
+  {
+    "termId": "value",
+    "display": "value",
+    "aliases": [],
+    "short": "Normative worth or importance attributed to persons, acts, or lives.",
+    "long": "Value-talk is central to meaning discourse and cannot be reduced to neutral description.",
+    "seeAlso": [
+      "meaning",
+      "value judgement"
+    ]
+  },
+  {
+    "termId": "universe",
+    "display": "universe",
+    "aliases": [],
+    "short": "The total physical cosmos considered by science and metaphysics.",
+    "long": "The course asks whether meaning can persist in a vast and apparently indifferent universe.",
+    "seeAlso": [
+      "science",
+      "human existence"
+    ]
+  },
+  {
+    "termId": "human-existence",
+    "display": "human existence",
+    "aliases": [],
+    "short": "The condition of being human in time, vulnerability, and finitude.",
+    "long": "Human existence is the site where cosmology, ethics, and purpose intersect.",
+    "seeAlso": [
+      "meaning",
+      "universe"
+    ]
+  },
+  {
+    "termId": "kants-phrase",
+    "display": "Kant's phrase",
+    "aliases": [],
+    "short": "Reference to Kantian moral language used in the source.",
+    "long": "Invoked to highlight rational commitment to moral orientation despite uncertainty.",
+    "seeAlso": [
+      "value",
+      "meaning"
+    ]
+  }
+]

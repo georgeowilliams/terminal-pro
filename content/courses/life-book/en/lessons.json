@@ -1,0 +1,188 @@
+[
+  {
+    "id": "life-book-ecb69d18d2",
+    "module": "Module 01: meaning",
+    "title": "meaning · life · science · religion",
+    "tags": [
+      "meaning",
+      "science",
+      "religion"
+    ],
+    "content": "<p>This opening lesson frames the central question: what makes a human life meaningful, and how do science and religion each shape answers to that question?</p>\n<p>From the source text, we can see a tension between scientific description and existential evaluation. Science can describe mechanisms and origins, while questions of <b>meaning</b> and <b>value</b> ask whether and why life matters.</p>\n<pre>\nCore landscape:\n\n        [Human Life]\n             |\n   +---------+---------+\n   |                   |\n[Science]          [Religion]\n   |                   |\nexplains how       asks ultimate why\ncausal models      purpose, value, God\n   \\                   /\n    +------[Meaning]--+\n</pre>\n<p>Key distinction: describing a universe is not automatically the same as interpreting significance within that universe. The lesson also introduces classic vocabulary: meaning, life, science, religion, God, and man.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "Which pair best captures the lesson's central contrast?",
+        "choices": [
+          "Grammar vs rhetoric",
+          "Scientific explanation vs existential meaning",
+          "Politics vs economics",
+          "Emotion vs memory"
+        ],
+        "answerIndex": 1,
+        "explanation": "The lesson contrasts descriptive scientific accounts with meaning-oriented existential and religious inquiry."
+      },
+      {
+        "type": "short",
+        "prompt": "In one sentence, define 'meaning in life' as used in this lesson.",
+        "answer": "Meaning in life is the evaluative sense that a human life has significance, purpose, or worth beyond mere biological existence.",
+        "explanation": "This reflects the lesson's distinction between description and significance."
+      }
+    ]
+  },
+  {
+    "id": "life-book-8832b082dd",
+    "module": "Module 01: Descartes",
+    "title": "Descartes · Hume · philosophers of the Enlightenment",
+    "tags": [
+      "enlightenment",
+      "philosophy",
+      "reason"
+    ],
+    "content": "<p>This lesson examines how Enlightenment thinkers narrowed scientific explanation to mathematical and causal regularities while bracketing teleology (purpose in nature).</p>\n<p><b>Descartes</b> supports mechanistic intelligibility of nature; <b>Hume</b> sharpens skepticism about deriving necessity or ultimate purpose from observation alone. Together, Enlightenment philosophy helps explain why modern science often avoids final-cause language.</p>\n<pre>\nShift in explanatory style:\n\nAristotelian model            Enlightenment model\n------------------            -------------------\nmaterial cause               measurable properties\nformal cause                 mathematical structure\nefficient cause              causal interaction\nfinal cause (purpose)   ->   often suspended/contested\n</pre>\n<p>The result is not that purpose is disproved, but that purpose may lie outside strict empirical method.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "What happened to 'final cause' in many Enlightenment scientific approaches?",
+        "choices": [
+          "It became the only valid cause",
+          "It was translated into theology only",
+          "It was often set aside in favor of mechanistic explanation",
+          "It replaced efficient causation"
+        ],
+        "answerIndex": 2,
+        "explanation": "Many Enlightenment approaches privileged mathematically expressible and efficient-cause explanations."
+      },
+      {
+        "type": "short",
+        "prompt": "Name one contribution of Hume relevant to this lesson.",
+        "answer": "Hume emphasized skepticism about necessary connections and cautioned against inferring ultimate purpose directly from empirical patterns.",
+        "explanation": "This supports the lesson's framing of limits on empirical inference."
+      }
+    ]
+  },
+  {
+    "id": "life-book-98f345c6fd",
+    "module": "Module 02: God",
+    "title": "God · Buddha · Nietzsche · Resurrection",
+    "tags": [
+      "religion",
+      "traditions",
+      "value"
+    ],
+    "content": "<p>Here we compare distinct religious and post-religious frameworks for making sense of human meaning.</p>\n<p><b>God</b> and <b>Resurrection</b> represent a theistic narrative of ultimate grounding; <b>Buddha</b> suggests transformation of desire and suffering; <b>Nietzsche</b> challenges inherited theism and asks humanity to create value after the \"death of God.\" The lesson also references symbols like <b>Nativity</b> and historical conceptual shifts such as discarded theories (e.g., <b>Phlogiston</b>) to show how worldviews evolve.</p>\n<pre>\nCompeting meaning frameworks:\n\nTheistic frame:      God -> moral order -> salvation / resurrection\nBuddhist frame:      insight -> non-attachment -> liberation from suffering\nNietzschean frame:   no given cosmic source -> value creation by humans\n\nShared problem: How should we live meaningfully?\n</pre>\n<p>The point is comparison, not forced agreement: each framework diagnoses meaning, suffering, and hope differently.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "In this lesson, Nietzsche is primarily used to highlight what?",
+        "choices": [
+          "A proof of resurrection",
+          "Human value creation in a post-theistic context",
+          "Buddhist monastic rules",
+          "A chemical theory of combustion"
+        ],
+        "answerIndex": 1,
+        "explanation": "The lesson uses Nietzsche to frame endogenous value creation."
+      },
+      {
+        "type": "short",
+        "prompt": "What is one way the Buddha-oriented frame differs from the Nietzschean frame?",
+        "answer": "The Buddha-oriented frame emphasizes liberation through transforming attachment and suffering, while Nietzsche emphasizes creating values after rejecting inherited theological grounding.",
+        "explanation": "Both address meaning, but through different metaphysical and ethical orientations."
+      }
+    ]
+  },
+  {
+    "id": "life-book-0ecab53ad0",
+    "module": "Module 03: true doctrine",
+    "title": "true doctrine · salvation · self-deception · social manipulation",
+    "tags": [
+      "ethics",
+      "authenticity",
+      "critique"
+    ],
+    "content": "<p>This lesson investigates how claims of <b>true doctrine</b> and <b>salvation</b> can be ethically productive or ideologically distorting.</p>\n<p>Using examples like the retired <b>golfer</b>, it asks whether an apparently contented life can still be shallow, self-deceived, or socially scripted. The issue is evaluative: meaning-talk commends some forms of life and criticizes others.</p>\n<pre>\nAssessment grid for a life-plan:\n\n            Inner honesty      Social pressure\n            ------------      ---------------\nHigh             A                   B\nLow              C                   D\n\nA: authentic commitment\nD: self-deception + manipulation risk\n</pre>\n<p>The core argument: a life may feel satisfying yet still fail deeper standards if it is built on denial, manipulation, or unexamined values.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "Why does the lesson discuss self-deception?",
+        "choices": [
+          "To reject all leisure activities",
+          "To show felt satisfaction is not always a reliable marker of meaningfulness",
+          "To argue doctrine is always false",
+          "To defend manipulation as necessary"
+        ],
+        "answerIndex": 1,
+        "explanation": "The lesson distinguishes subjective satisfaction from deeper evaluative standards."
+      },
+      {
+        "type": "short",
+        "prompt": "Give one example of social manipulation that could distort meaning judgments.",
+        "answer": "A community might pressure people to treat status symbols as ultimate success, leading them to confuse conformity with genuine purpose.",
+        "explanation": "This captures the lesson's concern with external scripting of value."
+      }
+    ]
+  },
+  {
+    "id": "life-book-74fcf5d4e1",
+    "module": "Module 03: Tahiti",
+    "title": "Lab: Tahiti · genius · painter of genius · artistic genius",
+    "tags": [
+      "lab",
+      "creativity",
+      "evaluation"
+    ],
+    "content": "<p><b>Lab lesson:</b> evaluate meaningfulness through case analysis of artistic life trajectories, including the figure of a painter in <b>Tahiti</b>.</p>\n<p>High creative output can indicate purpose and achievement, yet the lesson probes whether artistic brilliance alone guarantees an integrated, ethically sound life. We compare agent-centered and observer-centered judgments.</p>\n<pre>\nCase-evaluation flow:\n\n[Creative achievement]\n          |\n          v\n[Agent's own stance] ----> [Onlooker assessment]\n          |                        |\n          +-----------+------------+\n                      v\n            [Meaningful life?]\n\nCheck: creativity, relationships, integrity, openness\n</pre>\n<p>The lab asks learners to balance admiration for <b>genius</b> with broader criteria: dialogue, emotional openness, and responsibility to others.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "What is the central caution in this lab?",
+        "choices": [
+          "Art is always meaningless",
+          "Only social approval matters",
+          "Creative genius alone may be insufficient for a fully meaningful life",
+          "Meaning can never be discussed objectively"
+        ],
+        "answerIndex": 2,
+        "explanation": "The lab widens assessment beyond achievement to integration and ethical openness."
+      },
+      {
+        "type": "short",
+        "prompt": "List two criteria (besides talent) used to assess meaningfulness in this lesson.",
+        "answer": "Possible criteria include integrity, emotional openness, quality of relationships, and willingness to engage in critical dialogue.",
+        "explanation": "These criteria come directly from the lesson's evaluative framework."
+      }
+    ]
+  },
+  {
+    "id": "life-book-7679e1e86d",
+    "module": "Module 04: meaning",
+    "title": "meaning · value · universe · human existence",
+    "tags": [
+      "synthesis",
+      "metaphysics",
+      "value"
+    ],
+    "content": "<p>This final lesson synthesizes the course: can robust <b>value</b> survive within a scientifically described <b>universe</b> where human existence may appear contingent and fragile?</p>\n<p>We revisit the contrast between exogenous grounding (meaning from beyond us, e.g., God) and endogenous grounding (meaning constructed through commitment, practice, and relation). The lesson closes by emphasizing vulnerability, moral seriousness, and hope.</p>\n<pre>\nSynthesis map:\n\nCosmic scale -> contingency -> existential anxiety\n         |                         |\n         v                         v\n  Need for value language <--- human existence\n         |\n   +-----+------------------+\n   |                        |\nExogenous meaning      Endogenous meaning\n(source beyond self)   (constructed within life)\n</pre>\n<p>Working conclusion: meaningful life discourse remains possible when we combine honest finitude-awareness with responsible value-commitment.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "What question anchors the final synthesis?",
+        "choices": [
+          "How to maximize productivity",
+          "Whether value is possible in a scientifically understood universe",
+          "How to eliminate disagreement",
+          "Whether language is meaningless"
+        ],
+        "answerIndex": 1,
+        "explanation": "The lesson explicitly asks about grounding meaning and value under modern scientific cosmology."
+      },
+      {
+        "type": "short",
+        "prompt": "Define exogenous vs endogenous meaning in one contrastive sentence.",
+        "answer": "Exogenous meaning is grounded in a source beyond human agents, whereas endogenous meaning is generated through human commitments, practices, and interpretations.",
+        "explanation": "This distinction is central to the final module's synthesis."
+      }
+    ]
+  }
+]
