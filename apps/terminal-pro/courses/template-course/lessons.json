@@ -1,0 +1,18 @@
+[
+  {
+    "id": "intro",
+    "module": "0. Welcome",
+    "title": "Introduction",
+    "tags": ["fundamentals"],
+    "content": "<p>Replace this with your lesson HTML content.</p>",
+    "quiz": [
+      {
+        "type": "mcq",
+        "prompt": "Example question?",
+        "choices": ["Option A", "Option B"],
+        "answerIndex": 0,
+        "explanation": "Explain why Option A is correct."
+      }
+    ]
+  }
+]

@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js",
-    "check:courses": "node scripts/check-course-discovery.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.19.2"

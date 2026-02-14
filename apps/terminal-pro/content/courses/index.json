@@ -1,0 +1,11 @@
+[
+  {
+    "courseId": "linux-terminal",
+    "defaultLocale": "en",
+    "locales": ["en", "es"],
+    "paths": {
+      "en": "/content/courses/linux-terminal/en/course.json",
+      "es": "/content/courses/linux-terminal/es/course.json"
+    }
+  }
+]
