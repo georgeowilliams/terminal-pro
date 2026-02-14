@@ -4,6 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { parseArgs, ensureDir, readJson, writeJson, slugify } = require('./common');
 const { generateLocal } = require('./llm/localClient');
+const { createProgress } = require('./utils/progressBar');
 
 const CACHE_DIR = path.join('tools', 'cache');
 const PROMPT_VERSION = 'v2';
@@ -51,14 +52,34 @@ function uniq(values) {
   return [...new Set(values.map((v) => String(v).trim()).filter(Boolean))];
 }
 
+function parseNumber(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function parseBoolean(value, fallback) {
+  if (value === true) return true;
+  if (value === false) return false;
+  if (value == null) return fallback;
+  const text = String(value).trim().toLowerCase();
+  if (['1', 'true', 'yes', 'y'].includes(text)) return true;
+  if (['0', 'false', 'no', 'n'].includes(text)) return false;
+  return fallback;
+}
+
 async function main() {
   const args = parseArgs(process.argv);
   const docId = args.docId;
   const model = args.model || 'qwen2.5:3b';
+  const maxChars = parseNumber(args.maxChars, 1600);
+  const maxPredict = parseNumber(args.maxPredict, 256);
+  const timeoutMs = parseNumber(args.timeoutMs, 180000);
+  const retries = parseNumber(args.retries, 2);
+  const skipFailed = parseBoolean(args.skipFailed, true);
   const ollamaBaseUrl = String(process.env.OLLAMA_URL || 'http://127.0.0.1:11434').replace(/\/+$/, '');
 
   if (!docId) {
-    throw new Error('Usage: node tools/extract-concepts.js --docId linuxbook1 --model qwen2.5:3b');
+    throw new Error('Usage: node tools/extract-concepts.js --docId linuxbook1 [--model qwen2.5:3b] [--maxChars 1600]');
   }
 
   const chunksPath = path.join('artifacts', docId, 'chunks.json');
@@ -69,19 +90,41 @@ async function main() {
 
   const aggregate = { concepts: [], commands: [], flags: [], tools: [], filePaths: [] };
   const perChunk = [];
+  const failedChunks = [];
+  const progress = createProgress(chunks.length);
 
   for (const chunk of chunks) {
-    const prompt = promptForChunk(chunk.text);
+    const startedAt = Date.now();
+    const truncatedText = String(chunk.text || '').slice(0, maxChars);
+    const prompt = promptForChunk(truncatedText);
     const key = hashInput({ model, prompt, baseUrl: ollamaBaseUrl });
     const cachePath = path.join(modelCacheDir, `${key}.json`);
 
     let parsed;
+    let cached = false;
     if (fs.existsSync(cachePath)) {
       parsed = readJson(cachePath);
+      cached = true;
     } else {
-      const output = await generateLocal({ prompt, model, timeoutMs: 90000 });
-      parsed = parseResponse(output);
-      writeJson(cachePath, parsed);
+      try {
+        const output = await generateLocal({
+          prompt,
+          model,
+          timeoutMs,
+          retries,
+          numPredict: maxPredict,
+          temperature: 0.1,
+        });
+        parsed = parseResponse(output);
+        writeJson(cachePath, parsed);
+      } catch (error) {
+        if (!skipFailed) {
+          throw error;
+        }
+        failedChunks.push({ chunkId: chunk.chunkId, error: String(error.message || error) });
+        progress.tick(Date.now() - startedAt, { cached: false });
+        continue;
+      }
     }
 
     perChunk.push({ chunkId: chunk.chunkId, ...parsed });
@@ -91,6 +134,8 @@ async function main() {
     aggregate.flags.push(...parsed.flags);
     aggregate.tools.push(...parsed.tools);
     aggregate.filePaths.push(...parsed.filePaths);
+
+    progress.tick(Date.now() - startedAt, { cached });
   }
 
   const concepts = {
@@ -100,6 +145,7 @@ async function main() {
     tools: uniq(aggregate.tools),
     filePaths: uniq(aggregate.filePaths),
     perChunk,
+    failedChunks,
   };
 
   const outPath = path.join('artifacts', docId, 'concepts.json');
