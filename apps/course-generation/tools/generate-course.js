@@ -104,11 +104,21 @@ async function main() {
   writeJson(path.join(outDir, 'lessons.json'), lessons);
   writeJson(path.join(outDir, 'glossary.json'), glossary);
 
-  const indexPath = path.join('content', 'courses', 'index.json');
-  const index = fs.existsSync(indexPath) ? readJson(indexPath) : [];
-  const entry = { id: courseId, path: `/content/courses/${courseId}/en/course.json` };
-  const next = [...index.filter((i) => i.id !== courseId), entry];
-  writeJson(indexPath, next);
+  const normalizedOut = path.resolve(outDir);
+  const splitToken = `${path.sep}content${path.sep}courses${path.sep}`;
+  const splitAt = normalizedOut.indexOf(splitToken);
+
+  if (splitAt !== -1) {
+    const contentCoursesRoot = normalizedOut.slice(0, splitAt + splitToken.length - 1);
+    const indexPath = path.join(contentCoursesRoot, 'index.json');
+    const index = fs.existsSync(indexPath) ? readJson(indexPath) : [];
+    const entry = { id: courseId, path: `/content/courses/${courseId}/en/course.json` };
+    const next = [...index.filter((i) => i.id !== courseId), entry];
+    writeJson(indexPath, next);
+    console.log(`Updated index: ${indexPath}`);
+  } else {
+    console.warn('Could not infer content/courses root from --outDir, skipped index update.');
+  }
 
   console.log(`Generated course JSON in ${outDir}`);
 }
